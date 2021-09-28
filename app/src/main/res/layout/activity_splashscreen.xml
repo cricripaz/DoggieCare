@@ -24,10 +24,10 @@
         android:id="@+id/appicon"
         android:layout_width="210dp"
         android:layout_height="200dp"
-        android:src="@drawable/ic_launcher_foreground"
+        android:src="@drawable/ic_perrito"
         app:layout_constraintBottom_toTopOf="@+id/appname"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        />
+        app:tint="@color/darkblue" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
