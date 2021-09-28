@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="primary">#EF8275</color>
-    <color name="secondary">#1C448E</color>
+    <color name="darkblue">#1C448E</color>
     <color name="lavander">#DBD8F0</color>
     <color name="turquoise">#63C7B2</color>
     <color name="yellow">#FFD166</color>
