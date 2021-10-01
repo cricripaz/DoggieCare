@@ -15,7 +15,8 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintVertical_bias="0.2"
-        android:src="@drawable/ic_femaleowner" >
+        android:src="@drawable/ic_femaleowner"
+        android:contentDescription="usuario">
     </ImageView>
 
     <TextView
@@ -23,9 +24,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="mockeado mokito"
-        android:layout_marginHorizontal="20dp"
+        android:layout_marginHorizontal="30dp"
         android:textColor="@color/darkblue"
-        android:textSize="35dp"
+        android:textSize="35sp"
         android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -39,7 +40,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="username"
-        android:layout_marginHorizontal="20dp"
+        android:layout_marginHorizontal="30dp"
         android:textColor="@color/primary"
         android:textSize="25dp"
         android:gravity="center"
@@ -51,12 +52,12 @@
     <TextView
         android:id="@+id/bio_usuario"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="130dp"
         android:text="mucho texto nycho texto mucho texto mucho mucho texto
          texto mucho texto mucho texto mucho texto mucho texto mucho texto"
-        android:layout_margin="20dp"
+        android:layout_margin="30dp"
         android:textColor="@color/darkblue"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:gravity="center"
         app:layout_constraintTop_toBottomOf="@+id/id_usuario"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -64,6 +65,7 @@
     </TextView>
 
     <Button
+        android:id="@+id/button_editar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -74,11 +76,20 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.88">
-
-
-
+        app:layout_constraintTop_toBottomOf="@id/bio_usuario"
+        android:textSize="20dp"
+        android:layout_marginBottom="30dp">
     </Button>
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/container_edit_profile"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/foto_usuario"
+        app:layout_constraintVertical_bias="1.0">
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
