@@ -50,16 +50,31 @@
     </TextView>
 
     <TextView
+        android:id="@+id/extra_usuario"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="17 - Bolivia"
+        android:layout_marginHorizontal="30dp"
+        android:textColor="@color/darkblue"
+        android:textSize="20dp"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@+id/id_usuario"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+    </TextView>
+
+
+
+    <TextView
         android:id="@+id/bio_usuario"
         android:layout_width="match_parent"
         android:layout_height="130dp"
-        android:text="mucho texto nycho texto mucho texto mucho mucho texto
-         texto mucho texto mucho texto mucho texto mucho texto mucho texto"
-        android:layout_margin="30dp"
+        android:text="mucho texto nycho texto mucho texto mucho mucho texto texto mucho texto mucho texto mucho texto mucho texto mucho texto"
+        android:layout_marginHorizontal="30dp"
         android:textColor="@color/darkblue"
-        android:textSize="20sp"
+        android:textSize="17dp"
         android:gravity="center"
-        app:layout_constraintTop_toBottomOf="@+id/id_usuario"
+        app:layout_constraintTop_toBottomOf="@+id/extra_usuario"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent">
     </TextView>
@@ -78,7 +93,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/bio_usuario"
         android:textSize="20dp"
-        android:layout_marginBottom="30dp">
+        android:layout_marginBottom="10dp">
     </Button>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -89,7 +104,9 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="@id/foto_usuario"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintVertical_bias="1.0"
+        android:translationZ="30dp"
+        >
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

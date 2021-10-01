@@ -1,9 +1,10 @@
-package com.backyardigans.doggiecare
+package com.backyardigans.doggiecare.activities
 
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
+import com.backyardigans.doggiecare.R
 
 class SplashScreenActivity  : AppCompatActivity() {
 
@@ -15,7 +16,7 @@ class SplashScreenActivity  : AppCompatActivity() {
         supportActionBar?.hide()
 
         Handler().postDelayed({
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, ProfileActivity::class.java)
             startActivity(intent)
             finish()
         }, 2000)
