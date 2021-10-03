@@ -2,4 +2,10 @@
     <string name="app_name">Doggie Care</string>
     <string name="editar">EDITAR</string>
     <string name="guardar">GUARDAR</string>
+
+    <string name="name_bottom_home">Home</string>
+    <string name="name_bottom_plus">Add</string>
+    <string name="name_bottom_search">Search</string>
+    <string name="name_bottom_message">Chat</string>
+    <string name="name_bottom_profile">Profile</string>
 </resources>
