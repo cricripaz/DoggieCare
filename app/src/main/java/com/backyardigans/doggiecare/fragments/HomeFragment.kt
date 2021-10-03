@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.backyardigans.doggiecare.FeedAdapter
+import com.backyardigans.doggiecare.adapters.FeedAdapter
 import com.backyardigans.doggiecare.R
 import com.backyardigans.doggiecare.data.TemptDataSource
 

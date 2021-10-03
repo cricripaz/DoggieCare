@@ -1,12 +1,11 @@
-package com.backyardigans.doggiecare
+package com.backyardigans.doggiecare.adapters
 
-import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.backyardigans.doggiecare.Model.Feed
-import com.backyardigans.doggiecare.R.drawable.ic_icon_perrito
+import com.backyardigans.doggiecare.R
 import com.backyardigans.doggiecare.databinding.ActivityCardsBinding
 
 class FeedAdapter(): RecyclerView.Adapter<FeedAdapter.ViewHolder>() {

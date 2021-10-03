@@ -1,9 +1,10 @@
-package com.backyardigans.doggiecare
+package com.backyardigans.doggiecare.activities
 
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
+import com.backyardigans.doggiecare.R
 
 class SplashScreenActivity  : AppCompatActivity() {
 

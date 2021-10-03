@@ -1,10 +1,10 @@
-package com.backyardigans.doggiecare
+package com.backyardigans.doggiecare.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.backyardigans.doggiecare.Model.Feed
-import com.backyardigans.doggiecare.databinding.ActivityFeedBinding
+import com.backyardigans.doggiecare.R
 import com.backyardigans.doggiecare.fragments.*
+import com.backyardigans.doggiecare.replaceFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class FeedActivity : AppCompatActivity() {
