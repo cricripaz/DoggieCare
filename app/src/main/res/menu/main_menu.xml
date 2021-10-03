@@ -4,22 +4,22 @@
     <item
         android:id="@+id/itmHome"
         android:icon="@drawable/ic_icon_home"
-        android:title="TODO" />
+        android:title="@string/name_bottom_home" />
     <item
         android:id="@+id/itmSearch"
         android:icon="@drawable/ic_icon_search"
-        android:title="TODO" />
+        android:title="@string/name_bottom_search" />
     <item
         android:id="@+id/itmAdd"
         android:icon="@drawable/ic_icon_add"
-        android:title="TODO" />
+        android:title="@string/name_bottom_plus" />
     <item
         android:id="@+id/itmChat"
         android:icon="@drawable/ic_icon_chat"
-        android:title="TODO" />
+        android:title="@string/name_bottom_message" />
     <item
         android:id="@+id/itmProfile"
         android:icon="@drawable/ic_icon_profile"
-        android:title="TODO" />
+        android:title="@string/name_bottom_profile" />
 
 </menu>
