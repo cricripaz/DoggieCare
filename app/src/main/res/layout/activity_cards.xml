@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="250dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/card_view"
+    android:background="@color/primary"
+    android:orientation="vertical"
+
+
+    >
+
+    <ImageView
+
+        android:id="@+id/imgFeed"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:cropToPadding="false"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@drawable/ic_icon_perrito"
+        tools:tint="@color/darkblue"
+        android:paddingTop="20dp"/>
+
+    <TextView
+        android:id="@+id/tvFeedUserName"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/lavander"
+        android:textSize="10dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgFeed"
+        tools:text="Calvo Peinado" />
+
+    <TextView
+        android:id="@+id/tvFeedNickName"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/lavander"
+        android:textSize="10dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/imgFeed"
+        app:layout_constraintTop_toBottomOf="@+id/tvFeedUserName"
+        tools:text="$@quqa" />
+
+    <TextView
+        android:id="@+id/tvAnimalName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/lavander"
+        android:textSize="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        app:layout_constraintStart_toEndOf="@+id/tvFeedUserName"
+        app:layout_constraintTop_toBottomOf="@+id/imgFeed"
+        tools:text="Pancho geremeio" />
+
+    <TextView
+        android:id="@+id/tvAnimalAge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/lavander"
+        android:textSize="10dp"
+        android:layout_marginStart="10dp"
+        app:layout_constraintStart_toEndOf="@+id/tvFeedNickName"
+        app:layout_constraintTop_toBottomOf="@+id/tvAnimalName"
+        tools:text="10 semanas" />
+
+    <ImageView
+
+            android:id="@+id/imgFeedMore"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_icon_more"
+            android:layout_marginBottom="20dp"
+            android:layout_marginEnd="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:tint="@color/darkblue" />
+</androidx.constraintlayout.widget.ConstraintLayout>
