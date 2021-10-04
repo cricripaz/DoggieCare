@@ -20,18 +20,19 @@
             android:orientation="horizontal">
 
             <EditText
-                android:layout_width="350dp"
+                android:layout_width="300dp"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="20dp"
+                android:layout_marginLeft="50dp"
                 android:background="@drawable/round_shaped_input"
                 android:gravity="center"
                 android:hint="@string/name_bottom_search"
+                android:textColor="@color/white"
                 tools:ignore="TouchTargetSizeCheck" />
 
             <ImageView
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_marginRight="20dp"
+                android:layout_marginRight="50dp"
                 android:src="@drawable/ic_icon_search"
                 app:tint="@color/darkblue" />
 
