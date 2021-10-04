@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+    <RelativeLayout tools:context=".activities.LoginActivity" android:background="@color/primary" android:layout_height="match_parent" android:layout_width="match_parent" xmlns:tools="http://schemas.android.com/tools" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <TextView android:layout_height="wrap_content" android:layout_width="match_parent" android:textStyle="bold" android:gravity="center" android:layout_margin="50dp" android:textSize="35dp" android:textColor="@color/white" android:id="@+id/login" android:text="Login"/>
+
+    <EditText android:background="#30ffffff" android:layout_height="wrap_content" android:layout_width="match_parent" android:layout_margin="10dp" android:textColor="@color/white" android:id="@+id/username" android:drawablePadding="20dp" android:drawableLeft="@drawable/ic_baseline_person_24" android:padding="20dp" android:textColorHint="@color/white" android:hint="Username" android:layout_below="@+id/login"/>
+
+    <EditText android:background="#30ffffff" android:layout_height="wrap_content" android:layout_width="match_parent" android:layout_margin="10dp" android:textColor="@color/white" android:id="@+id/password" android:drawablePadding="20dp" android:drawableLeft="@drawable/ic_baseline_lock" android:padding="20dp" android:textColorHint="@color/white" android:hint="Password" android:layout_below="@+id/username"/>
+
+    <com.google.android.material.button.MaterialButton android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/loginButton" android:text="Login" android:layout_below="@+id/password" android:layout_marginTop="50dp" android:layout_centerHorizontal="true" android:backgroundTint="@color/darkblue"/>
+
+</RelativeLayout>
