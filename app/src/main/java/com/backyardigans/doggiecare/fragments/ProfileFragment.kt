@@ -7,10 +7,31 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.backyardigans.doggiecare.R
+import android.widget.Button
+import androidx.fragment.app.FragmentTransaction
 
-class ProfileFragment : Fragment() {
+
+class ProfileFragment :  Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
-        return inflater.inflate(R.layout.activity_profile_fragment, container, false)
+
+        val view: View = inflater.inflate(
+            R.layout.activity_profile_fragment,
+            container, false
+        )
+        val button = view.findViewById<View>(R.id.button_editar) as Button
+        button.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(v: View?) {
+                val someFragment: Fragment = EditProfileFragment()
+                val transaction: FragmentTransaction = fragmentManager!!.beginTransaction()
+                transaction.replace(
+                    R.id.container_edit_profile,
+                    someFragment
+                )
+                transaction.addToBackStack(null) // if written, this transaction will be added to backstack
+                transaction.commit()
+            }
+        })
+        return view
     }
 }

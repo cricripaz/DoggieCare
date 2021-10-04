@@ -1,6 +1,5 @@
 package com.backyardigans.doggiecare.fragments
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,7 +10,7 @@ import com.backyardigans.doggiecare.Model.Feed
 import com.backyardigans.doggiecare.R
 import com.backyardigans.doggiecare.data.TemptDataSource
 import com.backyardigans.doggiecare.databinding.ActivityAddFragmentBinding
-import com.backyardigans.doggiecare.replaceFragment
+
 
 class AddFragment : Fragment() {
     private var _binding:ActivityAddFragmentBinding?=null
