@@ -8,13 +8,12 @@
 
     <ImageView
         android:id="@+id/foto_usuario"
-        android:layout_width="210dp"
-        android:layout_height="210dp"
+        android:layout_width="190dp"
+        android:layout_height="190dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintVertical_bias="0.06"
+        android:layout_marginTop="15dp"
         android:src="@drawable/ic_femaleowner"
         android:contentDescription="usuario">
     </ImageView>
@@ -26,12 +25,13 @@
         android:text="mockeado mokito"
         android:layout_marginHorizontal="30dp"
         android:textColor="@color/darkblue"
-        android:textSize="35sp"
+        android:textSize="35dp"
         android:gravity="center"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="10dp"
+        app:layout_constraintBottom_toTopOf="@id/id_usuario"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/foto_usuario"
         app:layout_constraintVertical_bias="0.37">
     </TextView>
 
@@ -49,52 +49,20 @@
         app:layout_constraintRight_toRightOf="parent">
     </TextView>
 
-    <TextView
-        android:id="@+id/extra_usuario"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="17 - Bolivia - Femenino"
-        android:layout_marginHorizontal="30dp"
-        android:textColor="@color/darkblue"
-        android:textSize="20dp"
-        android:gravity="center"
-        app:layout_constraintTop_toBottomOf="@+id/id_usuario"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent">
-    </TextView>
-
-
-
-    <TextView
-        android:id="@+id/bio_usuario"
-        android:layout_width="match_parent"
-        android:layout_height="130dp"
-        android:text="mucho texto nycho texto mucho texto mucho mucho texto texto mucho texto mucho texto mucho texto mucho texto mucho texto"
-        android:layout_marginHorizontal="30dp"
-        android:textColor="@color/darkblue"
-        android:textSize="17dp"
-        android:gravity="center"
-        app:layout_constraintTop_toBottomOf="@+id/extra_usuario"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent">
-    </TextView>
-
-    <Button
-        android:id="@+id/button_editar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="@string/editar"
-        android:textColor="@color/lavander"
-        android:background="@drawable/round_shaped_button"
-        app:backgroundTint="@null"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/bio_usuario"
-        android:textSize="20dp"
-        android:layout_marginBottom="10dp">
-    </Button>
-
+<RatingBar
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/ratingUsuario"
+    app:layout_constraintTop_toBottomOf="@+id/id_usuario"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    android:rating="3"
+    android:scaleX=".5"
+    android:scaleY=".5"
+    android:isIndicator="true"
+    android:numStars="5"
+    android:progressTint="@color/primary"
+    />
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/container_edit_profile"
         android:layout_width="match_parent"
@@ -106,6 +74,74 @@
         app:layout_constraintVertical_bias="1.0"
         android:translationZ="30dp"
         >
-
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ScrollView
+        android:id="@+id/scrollprofile"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@id/ratingUsuario"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:fillViewport="true"
+
+        app:layout_constraintRight_toRightOf="parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+    <TextView
+        android:id="@+id/bio_usuario"
+        android:layout_width="match_parent"
+        android:background="@drawable/round_shaped_input"
+        android:layout_height="180dp"
+        android:text="mucho texto nycho texto mucho texto mucho mucho texto texto mucho texto mucho texto mucho texto mucho texto mucho texto"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/darkblue"
+        android:textSize="17dp"
+        android:gravity="center"
+        android:padding="15dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+    </TextView>
+
+    <Button
+        android:id="@+id/button_editar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:text="@string/editar"
+        android:textColor="@color/lavander"
+        android:background="@drawable/round_shaped_button"
+        app:backgroundTint="@null"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/bio_usuario"
+        android:textSize="17dp"
+        android:layout_marginVertical="15dp">
+    </Button>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/misposts"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:background="@drawable/round_shaped_input"
+                android:padding="15dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:layout_marginBottom="15dp"
+                app:layout_constraintTop_toBottomOf="@id/button_editar">
+
+
+
+            </androidx.recyclerview.widget.RecyclerView>
+        </LinearLayout>
+    </ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

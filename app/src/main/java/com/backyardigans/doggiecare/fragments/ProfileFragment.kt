@@ -9,11 +9,18 @@ import androidx.fragment.app.Fragment
 import com.backyardigans.doggiecare.R
 import android.widget.Button
 import androidx.fragment.app.FragmentTransaction
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.backyardigans.doggiecare.adapters.FeedAdapter
+import com.backyardigans.doggiecare.data.TemptDataSource
 import com.bumptech.glide.Glide
 
 class ProfileFragment :  Fragment() {
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View {
+    private val feedAdapter = FeedAdapter()
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
 
         val view: View = inflater.inflate(
             R.layout.activity_profile_fragment,
@@ -33,5 +40,16 @@ class ProfileFragment :  Fragment() {
             }
         })
         return view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val recyclerView = view.findViewById<RecyclerView>(R.id.misposts)
+        recyclerView.adapter = feedAdapter
+        recyclerView.layoutManager =
+            LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+
+        feedAdapter.addAll(TemptDataSource.postList)
+
     }
 }

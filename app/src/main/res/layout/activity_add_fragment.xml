@@ -100,7 +100,7 @@
         app:backgroundTint="@null"
         android:textColor="@color/lavander"
         android:layout_margin="10dp"
-        android:textSize="20dp"
+        android:textSize="17dp"
         android:paddingVertical="10dp"
         android:paddingHorizontal="40dp"
 

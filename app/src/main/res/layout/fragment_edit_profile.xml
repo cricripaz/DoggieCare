@@ -83,7 +83,7 @@
             android:textColor="@color/lavander"
             android:background="@drawable/round_shaped_button"
             app:backgroundTint="@null"
-            android:textSize="20dp"
+            android:textSize="17dp"
             android:layout_marginVertical="30dp"
             android:paddingVertical="10dp"
             android:paddingHorizontal="40dp"
