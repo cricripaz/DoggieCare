@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/lavander">
@@ -45,10 +46,12 @@
             </TextView>
 
             <LinearLayout
+                android:id="@+id/detalleTarjetaUsuario"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_margin="15dp"
+                android:layout_marginHorizontal="15dp"
+                android:layout_marginTop="15dp"
                 android:background="@drawable/round_shaped_container"
                 android:orientation="horizontal"
                 android:paddingHorizontal="15dp">
@@ -70,7 +73,6 @@
                     android:layout_gravity="center|left"
                     android:layout_marginVertical="15dp"
                     android:layout_marginRight="15dp"
-
                     android:orientation="vertical">
 
                     <TextView
@@ -80,7 +82,6 @@
                         android:text="nombre dueño"
                         android:textColor="@color/darkblue"
                         android:textSize="20dp"
-
                         app:layout_constraintBottom_toTopOf="@id/detalleUsuarioMascota"
                         app:layout_constraintTop_toTopOf="parent">
 
@@ -111,6 +112,14 @@
                 </ImageButton>
             </LinearLayout>
 
+            <androidx.fragment.app.FragmentContainerView
+                android:id="@+id/containerFragmentPopUp"
+                android:layout_width="match_parent"
+                android:layout_height="86dp"
+                app:layout_constraintBottom_toTopOf="@id/detalleDescripcionMascota"
+                app:layout_constraintEnd_toEndOf="@id/detalleTarjetaUsuario"
+                app:layout_constraintTop_toBottomOf="@+id/detalleTarjetaUsuario"
+                />
             <TextView
                 android:id="@+id/detalleDescripcionMascota"
                 android:layout_width="match_parent"
@@ -120,6 +129,7 @@
                 android:textSize="18dp"
                 android:layout_marginHorizontal="15dp"
                 android:layout_marginBottom="10dp"
+                android:layout_marginTop="-70dp"
                 android:paddingHorizontal="15dp"
                 android:paddingTop="10dp"
                 android:paddingBottom="60dp"
@@ -137,8 +147,11 @@
                 android:padding="15dp"
                 app:tint="@color/primary"
                 >
-
             </ImageButton>
+
         </LinearLayout>
+
     </ScrollView>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
