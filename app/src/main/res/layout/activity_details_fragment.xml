@@ -112,14 +112,6 @@
                 </ImageButton>
             </LinearLayout>
 
-            <androidx.fragment.app.FragmentContainerView
-                android:id="@+id/containerFragmentPopUp"
-                android:layout_width="match_parent"
-                android:layout_height="86dp"
-                app:layout_constraintBottom_toTopOf="@id/detalleDescripcionMascota"
-                app:layout_constraintEnd_toEndOf="@id/detalleTarjetaUsuario"
-                app:layout_constraintTop_toBottomOf="@+id/detalleTarjetaUsuario"
-                />
             <TextView
                 android:id="@+id/detalleDescripcionMascota"
                 android:layout_width="match_parent"
@@ -129,7 +121,7 @@
                 android:textSize="18dp"
                 android:layout_marginHorizontal="15dp"
                 android:layout_marginBottom="10dp"
-                android:layout_marginTop="-70dp"
+                android:layout_marginTop="15dp"
                 android:paddingHorizontal="15dp"
                 android:paddingTop="10dp"
                 android:paddingBottom="60dp"
@@ -153,5 +145,15 @@
 
     </ScrollView>
 
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/containerFragmentPopUp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
