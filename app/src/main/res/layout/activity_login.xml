@@ -36,4 +36,13 @@
         app:iconTint="@null" />
 
 
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/containerBio"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:defaultNavHost="true"
+        android:layout_below="@id/loginButton"
+        app:navGraph="@navigation/login_nav_graph"/>
+
 </RelativeLayout>

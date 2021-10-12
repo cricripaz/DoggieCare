@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/login_nav_graph"
+    app:startDestination="@id/NewBioFragment">
+
+    <fragment
+        android:id="@+id/NewBioFragment"
+        android:name="com.backyardigans.doggiecare.fragments.WelcomeBioFragment"
+        android:label="LoginOptionsFragment"
+        tools:layout="@layout/fragment_welcome_bio">
+        <action
+            android:id="@+id/action_go_to_app"
+            app:destination="@id/activity_feed"
+            app:enterAnim="@anim/slide_in_from_bottom"
+            app:exitAnim="@anim/slide_out_to_top"
+            app:popEnterAnim="@anim/slide_in_to_top"
+            app:popExitAnim="@anim/slide_out_from_bottom" />
+
+    </fragment>
+
+    <activity
+        android:id="@+id/activity_feed"
+        android:name="com.backyardigans.doggiecare.activities.FeedActivity"
+        android:label="activity_main_menu"
+        tools:layout="@layout/activity_feed" />
+</navigation>
