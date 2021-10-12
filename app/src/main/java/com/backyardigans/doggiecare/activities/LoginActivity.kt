@@ -1,12 +1,8 @@
 package com.backyardigans.doggiecare.activities
 
-import android.content.ContentValues
-import android.content.ContentValues.TAG
-import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import com.backyardigans.doggiecare.R
 import com.backyardigans.doggiecare.databinding.ActivityLoginBinding
@@ -18,15 +14,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import com.google.firebase.auth.FirebaseUser
-import android.net.NetworkInfo
-
-import android.net.ConnectivityManager
-
-
-
-
-
+import androidx.navigation.findNavController
 
 
 class LoginActivity : AppCompatActivity() {
@@ -87,7 +75,11 @@ class LoginActivity : AppCompatActivity() {
                     val credential = GoogleAuthProvider.getCredential(account.idToken, null)
                     FirebaseAuth.getInstance().signInWithCredential(credential).addOnCompleteListener {
                         if (it.isSuccessful){
+                            //si la cuenta ya está registrada
                             goFeed()
+                            //si es la primera vez que se registra
+                            //val goToBio = LoginActivityDirections.actionGoToBio()
+                            //findNavController().navigate(goToBio)
                         }else{
                             error("Error al hacer Sign In")
                         }

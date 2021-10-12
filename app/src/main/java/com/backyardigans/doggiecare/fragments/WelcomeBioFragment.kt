@@ -11,7 +11,7 @@ import com.backyardigans.doggiecare.databinding.FragmentWelcomeBioBinding
 
 class WelcomeBioFragment : StepsBaseFragment() {
 
-    private lateinit var btLoginEmail: View
+    private lateinit var btlisto: View
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -22,11 +22,11 @@ class WelcomeBioFragment : StepsBaseFragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        btLoginEmail = view.findViewById(R.id.loginButton)
+       btlisto = view.findViewById(R.id.welcomelisto)
 
-        btLoginEmail.setOnClickListener {
-            val goToFeed = WelcomeBioFragmentDirections.actionGoToApp()
-            findNavController().navigate(goToFeed)
+       btlisto.setOnClickListener {
+    val goToFeed = WelcomeBioFragmentDirections.actionWelcomeBioFragmentToFeedActivity()
+           findNavController().navigate(goToFeed)
         }
     }
 }
