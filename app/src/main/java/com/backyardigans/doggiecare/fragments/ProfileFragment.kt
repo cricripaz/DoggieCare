@@ -1,13 +1,12 @@
 package com.backyardigans.doggiecare.fragments
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.backyardigans.doggiecare.R
-import android.widget.Button
+import android.widget.ImageButton
 import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -26,7 +25,7 @@ class ProfileFragment :  Fragment() {
             R.layout.activity_profile_fragment,
             container, false
         )
-        val button = view.findViewById<View>(R.id.button_editar) as Button
+        val button = view.findViewById<View>(R.id.profilebotonconfig) as ImageButton
         button.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
                 val someFragment: Fragment = EditProfileFragment()
