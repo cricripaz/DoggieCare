@@ -9,4 +9,9 @@
     <string name="name_bottom_message">Chat</string>
     <string name="name_bottom_profile">Profile</string>
     <string name="login">Login</string>
+    <string name="contactar">CONTACTAR</string>
+    <string name="denunciar">DENUNCIAR</string>
+    <string name="bloquear">BLOQUEAR</string>
+    <string name="ver_perfil">VER PERFIL</string>
+    <string name="borrar_cuenta">BORRAR CUENTA</string>
 </resources>

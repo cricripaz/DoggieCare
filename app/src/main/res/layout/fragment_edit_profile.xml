@@ -7,18 +7,18 @@
     android:layout_marginTop="170dp"
     android:background="@android:color/transparent">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="40dp"
-        android:paddingVertical="15dp"
+        android:orientation="vertical"
+        android:paddingHorizontal="30dp"
+        android:paddingTop="80dp"
         android:background="@drawable/round_shaped_fragment">
 
         <EditText
             android:id="@+id/input_nombre"
             android:layout_width="match_parent"
-            android:layout_marginTop="40dp"
-            android:layout_marginHorizontal="30dp"
             android:background="@drawable/round_shaped_input"
             android:text="nombre completo"
             android:paddingLeft="20dp"
@@ -29,49 +29,32 @@
             android:layout_marginBottom="15dp"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             android:textSize="18dp"
-            app:layout_constraintBottom_toTopOf="@id/input_extra">
+            app:layout_constraintBottom_toTopOf="@id/input_bio">
         </EditText>
 
-        <EditText
-            android:id="@+id/input_extra"
-            android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:layout_marginBottom="15dp"
-            android:layout_marginHorizontal="30dp"
-            android:background="@drawable/round_shaped_input"
-            android:paddingLeft="20dp"
-            android:text="residencia"
-            android:maxLength="30"
-            android:textColor="@color/white"
-            android:textSize="18dp"
-            app:layout_constraintBottom_toTopOf="@id/input_bio"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/input_nombre">
-        </EditText>
 
         <EditText
             android:id="@+id/input_bio"
             android:layout_width="match_parent"
-            android:layout_marginHorizontal="30dp"
             android:background="@drawable/round_shaped_input"
             android:text="biografía"
             android:paddingVertical="20dp"
             android:paddingLeft="20dp"
             android:gravity="top|start"
             android:textColor="@color/white"
-            android:inputType="textMultiLine"
-            android:maxLines="3"
-            android:maxLength="180"
-            android:layout_height="120dp"
+            android:layout_height="190dp"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/input_extra"
-            android:textSize="18dp"
-            android:layout_marginBottom="95dp"
-            app:layout_constraintBottom_toBottomOf="parent">
+            app:layout_constraintTop_toBottomOf="@id/input_nombre"
+            app:layout_constraintBottom_toTopOf="@id/button_save"
+            android:inputType="textMultiLine"
+            android:maxLines="9"
+            android:maxLength="140"
+            android:layout_marginVertical="15dp"
+            android:paddingHorizontal="20dp"
+            android:paddingBottom="15dp"
+            android:textSize="18dp">
         </EditText>
 
         <Button
@@ -83,8 +66,9 @@
             android:textColor="@color/lavander"
             android:background="@drawable/round_shaped_button"
             app:backgroundTint="@null"
-            android:textSize="20dp"
-            android:layout_marginVertical="30dp"
+            android:textSize="17dp"
+            android:layout_gravity="center"
+            android:layout_marginVertical="20dp"
             android:paddingVertical="10dp"
             android:paddingHorizontal="40dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -92,7 +76,8 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/input_bio">
         </Button>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
 
     <ImageButton
         android:id="@+id/edit_imageButton"
