@@ -14,44 +14,37 @@
         android:id="@+id/login"
         android:text="@string/login"/>
 
-    <EditText android:background="@drawable/round_shaped_input"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:layout_margin="20dp"
-        android:textColor="@color/white"
-        android:id="@+id/username"
-        android:drawablePadding="20dp"
-        android:drawableLeft="@drawable/ic_baseline_person_24"
-        android:padding="20dp"
-        android:textColorHint="@color/white"
-        android:hint="Username"
-        android:layout_below="@+id/login"/>
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/googleButton"
 
-    <EditText
-        android:id="@+id/password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/username"
-        android:layout_margin="20dp"
-        android:background="@drawable/round_shaped_input"
-        android:drawableLeft="@drawable/ic_baseline_lock"
-        android:drawablePadding="20dp"
-        android:hint="Password"
-        android:padding="20dp"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white" />
+        android:layout_below="@+id/login"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="40dp"
+        android:background="@drawable/round_shaped_button"
+        android:paddingHorizontal="40dp"
+
+        android:paddingVertical="10dp"
+        android:text="Google SignIn"
+        android:textSize="20dp"
+        app:backgroundTint="@null"
+        app:icon="@drawable/ic_icon_google"
+        app:iconSize="30dp"
+        app:iconTint="@null" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/loginButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/password"
+        android:layout_below="@+id/googleButton"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
-        android:paddingVertical="10dp"
-        android:paddingHorizontal="40dp"
+        android:layout_marginTop="71dp"
         android:background="@drawable/round_shaped_button"
-        android:text="Login"
+        android:paddingHorizontal="40dp"
+        android:paddingVertical="10dp"
+        android:text="Ir Feed"
         android:textSize="17dp"
         app:backgroundTint="@null" />
 
