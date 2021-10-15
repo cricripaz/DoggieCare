@@ -14,7 +14,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import androidx.navigation.findNavController
+
 
 
 class LoginActivity : AppCompatActivity() {
@@ -32,8 +32,11 @@ class LoginActivity : AppCompatActivity() {
 
         auth = Firebase.auth
 
-        binding.loginButton.setOnClickListener {
+        binding.googleButton.setOnClickListener {
             signIn()
+        }
+        binding.loginButton.setOnClickListener {
+            goFeed()
         }
 
 
@@ -52,7 +55,7 @@ class LoginActivity : AppCompatActivity() {
     private fun signIn() {
         val gso = GoogleSignInOptions
             .Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken(getString(R.string.web_client_id))
+            .requestIdToken(getString(R.string.default_web_client_id))
             .requestEmail()
             .build()
 
@@ -75,11 +78,7 @@ class LoginActivity : AppCompatActivity() {
                     val credential = GoogleAuthProvider.getCredential(account.idToken, null)
                     FirebaseAuth.getInstance().signInWithCredential(credential).addOnCompleteListener {
                         if (it.isSuccessful){
-                            //si la cuenta ya está registrada
                             goFeed()
-                            //si es la primera vez que se registra
-                            //val goToBio = LoginActivityDirections.actionGoToBio()
-                            //findNavController().navigate(goToBio)
                         }else{
                             error("Error al hacer Sign In")
                         }

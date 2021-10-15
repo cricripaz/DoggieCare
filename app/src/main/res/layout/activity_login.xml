@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
-    <RelativeLayout tools:context=".activities.LoginActivity"
+<androidx.constraintlayout.widget.ConstraintLayout tools:context=".activities.LoginActivity"
     android:background="@color/primary"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
@@ -8,31 +6,27 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
+
     <TextView android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:textStyle="bold"
-        android:gravity="center"
-        android:layout_marginHorizontal="50dp"
-        android:layout_marginTop="60dp"
-        android:layout_marginBottom="50dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+       app:layout_constraintTop_toTopOf="parent"
         android:textSize="35dp"
         android:textColor="@color/white"
         android:id="@+id/login"
         android:text="@string/login"/>
 
-
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/loginButton"
-
+        android:id="@+id/googleButton"
         android:layout_width="match_parent"
+        app:layout_constraintTop_toBottomOf="@id/login"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/login"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="40dp"
         android:background="@drawable/round_shaped_button"
         android:paddingHorizontal="40dp"
-
         android:paddingVertical="10dp"
         android:text="Google SignIn"
         android:textSize="20dp"
@@ -41,15 +35,29 @@
         app:iconSize="30dp"
         app:iconTint="@null" />
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/loginButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/round_shaped_button"
+        android:paddingHorizontal="40dp"
+        app:layout_constraintTop_toBottomOf="@id/googleButton"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:paddingVertical="10dp"
+        android:text="Ir Feed"
+        android:textSize="17dp"
+        app:backgroundTint="@null" />
 
     <androidx.fragment.app.FragmentContainerView
+        app:layout_constraintTop_toBottomOf="@id/loginButton"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         android:id="@+id/containerBio"
         android:name="androidx.navigation.fragment.NavHostFragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/loginButton"
-        android:layout_marginTop="30dp"
         app:defaultNavHost="true"
-        app:navGraph="@navigation/login_nav_graph" />
+        app:navGraph="@navigation/login_nav_graph"
+        android:layout_width="0dp"
+        android:layout_height="0dp" />
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
