@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.backyardigans.doggiecare.Preferences.UserApplication.Companion.prefs
 import com.backyardigans.doggiecare.R
 import com.backyardigans.doggiecare.databinding.ActivityAddFragmentBinding
 import com.backyardigans.doggiecare.databinding.FragmentPopupConfigurationsBinding
@@ -33,7 +34,8 @@ class ConfigPopUpFragment : Fragment() {
         }
 
         binding.popupSalir.setOnClickListener {
-            Toast.makeText(activity, "Saliendo de la aplicación", Toast.LENGTH_SHORT).show()
+            prefs.erase()
+            Toast.makeText(activity, "Saliendo de la cuenta", Toast.LENGTH_SHORT).show()
         }
 
 
