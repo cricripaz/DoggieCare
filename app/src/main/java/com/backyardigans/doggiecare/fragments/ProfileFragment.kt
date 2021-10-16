@@ -28,10 +28,10 @@ class ProfileFragment :  Fragment() {
         val button = view.findViewById<View>(R.id.profilebotonconfig) as ImageButton
         button.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
-                val someFragment: Fragment = EditProfileFragment()
+                val someFragment: Fragment = ConfigPopUpFragment()
                 val transaction: FragmentTransaction = fragmentManager!!.beginTransaction()
                 transaction.replace(
-                    R.id.container_edit_profile,
+                    R.id.container_configurations_popup,
                     someFragment
                 )
                 transaction.addToBackStack(null)

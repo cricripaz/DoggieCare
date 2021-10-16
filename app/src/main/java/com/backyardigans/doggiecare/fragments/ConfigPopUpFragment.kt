@@ -8,33 +8,35 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.backyardigans.doggiecare.R
+import com.backyardigans.doggiecare.databinding.ActivityAddFragmentBinding
+import com.backyardigans.doggiecare.databinding.FragmentPopupConfigurationsBinding
 
 class ConfigPopUpFragment : Fragment() {
+    private var _binding: FragmentPopupConfigurationsBinding?=null
+    private val binding get() = _binding!!
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
 
-        val  editar= view?.findViewById<View>(R.id.popupEditarPerfil) as TextView
-        editar?.setOnClickListener {
+        _binding = FragmentPopupConfigurationsBinding.inflate(inflater, container, false)
+
+        binding.popupEditarPerfil.setOnClickListener {
             //hacer con navigation
-            Toast.makeText(activity, "editar perfil", Toast.LENGTH_LONG).show()
+            Toast.makeText(activity, "editar perfil", Toast.LENGTH_SHORT).show()
         }
 
-        val  verificar= view?.findViewById<View>(R.id.popupSolicitarVerificacion) as TextView
-        editar?.setOnClickListener {
-            Toast.makeText(activity, "Su solicitud será procesada por nuestro equipo", Toast.LENGTH_LONG).show()
+        binding.popupSolicitarVerificacion.setOnClickListener {
+            Toast.makeText(activity, "Su solicitud será procesada por nuestro equipo", Toast.LENGTH_SHORT).show()
         }
 
-        val  modo= view?.findViewById<View>(R.id.popupCambiarModo) as TextView
-        editar?.setOnClickListener {
-            Toast.makeText(activity, "Cambiado a modo nocturno", Toast.LENGTH_LONG).show()
+        binding.popupCambiarModo.setOnClickListener {
+            Toast.makeText(activity, "Cambiado a modo nocturno", Toast.LENGTH_SHORT).show()
         }
 
-        val  salir= view?.findViewById<View>(R.id.popupSalir) as TextView
-        editar?.setOnClickListener {
-            Toast.makeText(activity, "Saliendo de la aplicación", Toast.LENGTH_LONG).show()
+        binding.popupSalir.setOnClickListener {
+            Toast.makeText(activity, "Saliendo de la aplicación", Toast.LENGTH_SHORT).show()
         }
 
 
-        return inflater.inflate(R.layout.activity_search_fragment, container, false)
+        return binding.root
     }
 }
