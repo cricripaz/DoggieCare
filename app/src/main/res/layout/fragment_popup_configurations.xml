@@ -1,84 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginHorizontal="30dp"
     android:layout_gravity="top|center"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    android:background="@color/transparent"
+    android:backgroundTint="#00FFFFFF">
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
+        android:background="@color/primary"
+        android:padding="20dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:padding="20dp"
-        android:background="@drawable/round_shaped_container">
+        app:layout_constraintTop_toTopOf="parent"
+
+        >
 
         <Button
             android:id="@+id/popupEditarPerfil"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="18dp"
+            android:layout_marginTop="10dp"
             android:paddingVertical="10dp"
 
             android:stateListAnimator="@null"
-            android:textColor="@color/white"
-            android:layout_marginTop="10dp"
             android:text="EDITAR INFORMACIÓN"
-            app:layout_constraintTop_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
+            android:textColor="@color/white"
+            android:textSize="18dp"
             app:layout_constraintBottom_toTopOf="@id/popupSolicitarVerificacion"
-            app:layout_constraintRight_toRightOf="parent">
-        </Button>
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="parent"></Button>
 
         <Button
             android:id="@+id/popupCambiarModo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="18dp"
+            android:layout_marginTop="10dp"
             android:paddingVertical="10dp"
             android:stateListAnimator="@null"
-            android:textColor="@color/white"
-            android:layout_marginTop="10dp"
             android:text="CAMBIAR MODO"
-            app:layout_constraintTop_toBottomOf="@id/popupSolicitarVerificacion"
+            android:textColor="@color/white"
+            android:textSize="18dp"
             app:layout_constraintBottom_toTopOf="@id/popupSalir"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent">
-        </Button>
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/popupSolicitarVerificacion"></Button>
 
         <Button
             android:id="@+id/popupSolicitarVerificacion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="18dp"
-            android:stateListAnimator="@null"
-            android:textColor="@color/white"
-            android:paddingVertical="10dp"
             android:layout_marginTop="10dp"
+            android:paddingVertical="10dp"
+            android:stateListAnimator="@null"
             android:text="SOLICITAR VERIFICACIÓN"
-            app:layout_constraintTop_toBottomOf="@id/popupEditarPerfil"
-            app:layout_constraintLeft_toLeftOf="parent"
+            android:textColor="@color/white"
+            android:textSize="18dp"
             app:layout_constraintBottom_toTopOf="@id/popupCambiarModo"
-            app:layout_constraintRight_toRightOf="parent">
-        </Button>
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/popupEditarPerfil"></Button>
 
 
         <Button
             android:id="@+id/popupSalir"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="18dp"
-            android:stateListAnimator="@null"
-            android:paddingVertical="10dp"
-            android:textColor="@color/white"
             android:layout_marginTop="10dp"
+            android:paddingVertical="10dp"
             android:paddingBottom="10dp"
+            android:stateListAnimator="@null"
             android:text="CERRAR SESIÓN"
-            app:layout_constraintTop_toBottomOf="@id/popupCambiarModo"
+            android:textColor="@color/white"
+            android:textSize="18dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent">
-        </Button>
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/popupCambiarModo"></Button>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

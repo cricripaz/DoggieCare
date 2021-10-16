@@ -12,11 +12,14 @@ class Prefs(val context: Context) {
     }
 
     fun getEmail(): String{
-        return storage.getString(SHARED_EMAIL, "Error email no encontrado")!!
+        return storage.getString(SHARED_EMAIL, "")!!
     }
 
 
     fun erase(){
+
         storage.edit().clear().apply()
+
+
     }
 }
