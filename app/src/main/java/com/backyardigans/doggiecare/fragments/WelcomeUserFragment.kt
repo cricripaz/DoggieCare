@@ -1,4 +1,4 @@
 package com.backyardigans.doggiecare.fragments
 
-class ContactPopUpFragmene {
+class WelcomeUserFragment {
 }
