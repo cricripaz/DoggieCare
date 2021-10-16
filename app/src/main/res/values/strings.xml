@@ -14,4 +14,6 @@
     <string name="bloquear">BLOQUEAR</string>
     <string name="ver_perfil">VER PERFIL</string>
     <string name="borrar_cuenta">BORRAR CUENTA</string>
+
+    <string name="prefs_file">com.backyardigans.doggiecare.PREFERENCE_FILE_KEY</string>
 </resources>
