@@ -6,7 +6,9 @@ import android.widget.Button
 import android.widget.ImageButton
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.backyardigans.doggiecare.Model.Profile
 import com.backyardigans.doggiecare.R
 import com.backyardigans.doggiecare.databinding.ActivityAddFragmentBinding
@@ -18,18 +20,20 @@ class EditProfileFragment : BottomSheetDialogFragment() {
 
     private var _binding: FragmentEditProfileBinding?=null
     private val binding get() = _binding!!
-    private val profileViewModel: ProfileViewModel by viewModels()
+    private val profileViewModel:ProfileViewModel by activityViewModels()
+
     override fun  onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                                savedInstanceState: Bundle?): View {
 
         _binding = FragmentEditProfileBinding.inflate(inflater, container, false)
 
-        binding.buttonSave.setOnClickListener(object : View.OnClickListener {
+        binding.buttonSave.setOnClickListener{
+            profileViewModel.actualizar(Profile(binding.inputNombre.text.toString(), binding.inputBio.text.toString()))
+            findNavController().navigate(R.id.action_editProfileFragment_to_profileFragment)
+            Toast.makeText(context, "Perfil Actualizado", Toast.LENGTH_SHORT).show()
 
-            override fun onClick(v: View?) {
-                profileViewModel.actualizar(Profile(binding.inputNombre.text.toString(), binding.inputBio.text.toString()))
-            }
-        })
+        }
+
 
         binding.editImageButton.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {

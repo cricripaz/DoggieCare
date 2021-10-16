@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="500dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -20,7 +21,7 @@
             android:id="@+id/input_nombre"
             android:layout_width="match_parent"
             android:background="@drawable/round_shaped_input"
-            android:text="nombre completo"
+            android:hint="nombre completo"
             android:paddingLeft="20dp"
             android:maxLength="40"
             android:textColor="@color/white"
@@ -38,7 +39,7 @@
             android:id="@+id/input_bio"
             android:layout_width="match_parent"
             android:background="@drawable/round_shaped_input"
-            android:text="biografía"
+            android:hint="biografía"
             android:paddingVertical="20dp"
             android:paddingLeft="20dp"
             android:gravity="top|start"

@@ -9,12 +9,14 @@ import androidx.fragment.app.Fragment
 import com.backyardigans.doggiecare.R
 import android.widget.ImageButton
 import androidx.fragment.app.FragmentTransaction
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.backyardigans.doggiecare.Preferences.UserApplication.Companion.prefs
 import com.backyardigans.doggiecare.adapters.FeedAdapter
 import com.backyardigans.doggiecare.data.TemptDataSource
 import com.backyardigans.doggiecare.databinding.ActivityAddFragmentBinding
@@ -26,7 +28,7 @@ class ProfileFragment :  Fragment() {
     private var _binding: ActivityProfileFragmentBinding?=null
     private val binding get() = _binding!!
 
-    private val profileViewModel:ProfileViewModel by viewModels()
+    private val profileViewModel:ProfileViewModel by activityViewModels()
     private val feedAdapter = FeedAdapter()
 
     override fun onCreateView(
@@ -37,15 +39,6 @@ class ProfileFragment :  Fragment() {
         _binding = ActivityProfileFragmentBinding.inflate(inflater, container, false)
 
 
-
-
-
-
-        profileViewModel.profileModel.observe(viewLifecycleOwner, Observer {
-            binding.bioUsuario.text = it.bio
-            binding.idUsuario.text = it.nickName
-
-        })
         return binding.root
     }
 
@@ -67,6 +60,12 @@ class ProfileFragment :  Fragment() {
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
 
         feedAdapter.addAll(TemptDataSource.postList)
+
+        profileViewModel.profileModel.observe(viewLifecycleOwner, Observer {
+            binding.bioUsuario.text = it.bio
+            binding.idUsuario.text = it.nickName
+
+        })
 
     }
 }
