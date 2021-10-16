@@ -1,14 +1,11 @@
 package com.backyardigans.doggiecare.activities
 
-import android.content.ContentValues
-import android.content.ContentValues.TAG
-import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import com.backyardigans.doggiecare.R
+import com.backyardigans.doggiecare.Preferences.UserApplication.Companion.prefs
 import com.backyardigans.doggiecare.databinding.ActivityLoginBinding
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -18,16 +15,6 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import com.google.firebase.auth.FirebaseUser
-import android.net.NetworkInfo
-
-import android.net.ConnectivityManager
-
-
-
-
-
-
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
@@ -43,6 +30,12 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         auth = Firebase.auth
+
+        if (prefs.getEmail().isNotEmpty()){
+            goFeed()
+        }
+
+
 
         binding.googleButton.setOnClickListener {
             signIn()
@@ -85,11 +78,12 @@ class LoginActivity : AppCompatActivity() {
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
             try {
                 // Google Sign In was successful, authenticate with Firebase
-                val account = task.getResult(ApiException::class.java)!!
+                 val account = task.getResult(ApiException::class.java)!!
                 if (account != null){
                     val credential = GoogleAuthProvider.getCredential(account.idToken, null)
                     FirebaseAuth.getInstance().signInWithCredential(credential).addOnCompleteListener {
                         if (it.isSuccessful){
+                            prefs.saveEmail(it.result.user?.email.toString())
                             goFeed()
                         }else{
                             error("Error al hacer Sign In")
