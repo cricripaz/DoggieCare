@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_menu_nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.backyardigans.doggiecare.fragments.HomeFragment"
+        android:label="HomeFragment"
+        tools:layout="@layout/activity_home_fragment"
+        />
+    <fragment
+        android:id="@+id/addFragment"
+        android:name="com.backyardigans.doggiecare.fragments.AddFragment"
+        android:label="AddFragment"
+        tools:layout="@layout/activity_add_fragment"/>
+    <fragment
+        android:id="@+id/chatFragment"
+        android:name="com.backyardigans.doggiecare.fragments.ChatFragment"
+        android:label="ChatFragment"
+        tools:layout="@layout/activity_chat_fragment"
+        />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.backyardigans.doggiecare.fragments.ProfileFragment"
+        android:label="ProfileFragment"
+        tools:layout="@layout/activity_profile_fragment"
+        >
+        <action
+            android:id="@+id/action_profileFragment_to_configPopUpFragment2"
+            app:destination="@id/configPopUpFragment2" />
+    </fragment>
+    <dialog
+        android:id="@+id/configPopUpFragment2"
+        android:name="com.backyardigans.doggiecare.fragments.ConfigPopUpFragment"
+        android:label="ConfigPopUpFragment"
+        tools:layout="@layout/fragment_popup_configurations">
+        <action
+            android:id="@+id/action_configPopUpFragment2_to_loginActivity"
+            app:destination="@id/loginActivity" />
+        <action
+            android:id="@+id/action_configPopUpFragment2_to_editProfileFragment"
+            app:destination="@id/editProfileFragment" />
+    </dialog>
+    <activity
+        android:id="@+id/loginActivity"
+        android:name="com.backyardigans.doggiecare.activities.LoginActivity"
+        android:label="activity_login"
+        tools:layout="@layout/activity_login" />
+    <dialog
+        android:id="@+id/editProfileFragment"
+        android:name="com.backyardigans.doggiecare.fragments.EditProfileFragment"
+        android:label="EditProfileFragment"
+        tools:layout="@layout/fragment_edit_profile">
+        <action
+            android:id="@+id/action_editProfileFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </dialog>
+
+
+</navigation>
