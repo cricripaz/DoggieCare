@@ -7,11 +7,10 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.backyardigans.doggiecare.R
 import com.backyardigans.doggiecare.base.StepsBaseFragment
-import com.backyardigans.doggiecare.databinding.FragmentWelcomeBioBinding
 
-class WelcomeBioFragment : StepsBaseFragment() {
+class WelcomeBioFragment :  StepsBaseFragment() {
 
-    private lateinit var btlisto: View
+    private lateinit var btListo: View
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -22,11 +21,11 @@ class WelcomeBioFragment : StepsBaseFragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-       btlisto = view.findViewById(R.id.welcomelisto)
+        btListo = view.findViewById(R.id.welcomelisto)
 
-       btlisto.setOnClickListener {
-    val goToFeed = WelcomeBioFragmentDirections.actionWelcomeBioFragmentToFeedActivity()
-           findNavController().navigate(goToFeed)
+        btListo.setOnClickListener {
+            val goToFeed = WelcomeBioFragmentDirections.actionWelcomeBioFragmentToFeedActivity()
+            findNavController().navigate(goToFeed)
         }
     }
 }

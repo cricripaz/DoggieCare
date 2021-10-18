@@ -16,4 +16,6 @@
     <string name="bloquear">BLOQUEAR</string>
     <string name="ver_perfil">VER PERFIL</string>
     <string name="borrar_cuenta">BORRAR CUENTA</string>
+    <string name="verificar">VERIFICAR</string>
+    <string name="google_sign_in">Google Sign In</string>
 </resources>

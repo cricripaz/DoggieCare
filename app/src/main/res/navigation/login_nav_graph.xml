@@ -3,24 +3,27 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/login_nav_graph"
-    app:startDestination="@id/loginActivity">
-    <activity
-        android:id="@+id/loginActivity"
-        android:name="com.backyardigans.doggiecare.activities.LoginActivity"
-        android:label="activity_login"
-        tools:layout="@layout/activity_login">
-    <action
-        android:id="@+id/action_go_to_bio"
-        app:destination="@id/welcomeBioFragment"
-        app:enterAnim="@anim/slide_in_from_bottom"
-        app:exitAnim="@anim/slide_out_to_top"
-        app:popEnterAnim="@anim/slide_in_to_top"
-        app:popExitAnim="@anim/slide_out_from_bottom" />
-    </activity>
+    app:startDestination="@id/welcomeUserFragment">
+
+
+    <fragment
+        android:id="@+id/welcomeUserFragment"
+        android:name="com.backyardigans.doggiecare.fragments.WelcomeUserFragment"
+        android:label="WelcomeUserFragment"
+        tools:layout="@layout/fragment_welcome_username">
+        <action
+            android:id="@+id/action_welcomeUserFragment_to_welcomeBioFragment"
+            app:destination="@id/welcomeBioFragment"
+            app:enterAnim="@anim/slide_in_from_bottom"
+            app:exitAnim="@anim/slide_out_to_top"
+            app:popEnterAnim="@anim/slide_in_to_top"
+            app:popExitAnim="@anim/slide_out_from_bottom"/>
+    </fragment>
     <fragment
         android:id="@+id/welcomeBioFragment"
         android:name="com.backyardigans.doggiecare.fragments.WelcomeBioFragment"
-        android:label="WelcomeBioFragment" >
+        android:label="WelcomeBioFragment"
+        tools:layout="@layout/fragment_welcome_bio">
         <action
             android:id="@+id/action_welcomeBioFragment_to_feedActivity"
             app:destination="@id/feedActivity" />

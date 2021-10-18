@@ -1,6 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:layout_height="wrap_content"
+    android:clickable="true"
+    android:focusable="true"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@android:color/transparent"
+    android:paddingHorizontal="30dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <EditText
+        android:id="@+id/welcomeusuario"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/round_shaped_input"
+        android:paddingVertical="15dp"
+        android:textColor="@color/white"
+        android:hint="¡Elige un usuario único!"
+        android:textColorHint="@color/white"
+        android:gravity="center|top"
+        android:inputType="text"
+        android:maxLength="16"
+        android:paddingHorizontal="15dp"
+        android:paddingBottom="15dp"
+        android:textSize="18dp" />
+
+    <Button
+        android:id="@+id/welcomeverificar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/verificar"
+        android:textColor="@color/lavander"
+        android:layout_marginHorizontal="50dp"
+        android:layout_marginVertical="20dp"
+        android:paddingVertical="10dp"
+        android:paddingHorizontal="30dp"
+        app:backgroundTint="@null"
+        android:textSize="20dp"
+        android:background="@drawable/round_shaped_button"/>
+</LinearLayout>
+
