@@ -6,32 +6,25 @@ import android.widget.Button
 import android.widget.ImageButton
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.backyardigans.doggiecare.R
 
 class EditProfileFragment : Fragment() {
 
-    override fun  onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                               savedInstanceState: Bundle?): View {
-
-        val view: View = inflater.inflate(R.layout.fragment_edit_profile, container, false)
-
-        val button = view.findViewById<View>(R.id.button_save) as Button
-        button.setOnClickListener(object : View.OnClickListener {
-
-            override fun onClick(v: View?) {
-                val ft = activity!!.getSupportFragmentManager().beginTransaction().remove(this@EditProfileFragment).commit()
-            }
-        })
-
-        val editphoto = view.findViewById<View>(R.id.edit_imageButton) as ImageButton
-        editphoto.setOnClickListener(object : View.OnClickListener {
-            override fun onClick(v: View?) {
-                Toast.makeText(context, "Woops! todavía no puedes cambiar tu foto de perfil", Toast.LENGTH_SHORT).show()
-            }
-        })
-
-        return view
+    private lateinit var btGuardar: View
+    override fun  onCreateView(inflater: LayoutInflater,
+                               container: ViewGroup?,
+                               savedInstanceState: Bundle?
+    ): View {
+        return inflater.inflate(R.layout.fragment_edit_profile, container, false)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        btGuardar = view.findViewById(R.id.button_save)
 
+        btGuardar.setOnClickListener {
+            val goToProfile = WelcomeBioFragmentDirections.actionWelcomeBioFragmentToFeedActivity()
+            findNavController().navigate(goToProfile)
+        }
+    }
 }
