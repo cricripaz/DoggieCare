@@ -1,5 +1,6 @@
 package com.backyardigans.doggiecare.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,34 +8,49 @@ import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import com.backyardigans.doggiecare.Preferences.UserApplication.Companion.prefs
 import com.backyardigans.doggiecare.R
+import com.backyardigans.doggiecare.activities.FeedActivity
+import com.backyardigans.doggiecare.activities.LoginActivity
+import com.backyardigans.doggiecare.databinding.FragmentPopupConfigurationsBinding
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
-class ConfigPopUpFragment : Fragment() {
+class ConfigPopUpFragment : BottomSheetDialogFragment() {
+    private var _binding: FragmentPopupConfigurationsBinding?=null
+    private val binding get() = _binding!!
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
 
-        val  editar= view?.findViewById<View>(R.id.popupEditarPerfil) as TextView
-        editar?.setOnClickListener {
+        _binding = FragmentPopupConfigurationsBinding.inflate(inflater, container, false)
+
+        binding.popupEditarPerfil.setOnClickListener {
             //hacer con navigation
-            Toast.makeText(activity, "editar perfil", Toast.LENGTH_LONG).show()
+            Toast.makeText(activity, "editar perfil", Toast.LENGTH_SHORT).show()
+            findNavController().navigate(R.id.action_configPopUpFragment2_to_editProfileFragment)
+            //TODO mejorar el como se muestra
+
         }
 
-        val  verificar= view?.findViewById<View>(R.id.popupSolicitarVerificacion) as TextView
-        editar?.setOnClickListener {
-            Toast.makeText(activity, "Su solicitud será procesada por nuestro equipo", Toast.LENGTH_LONG).show()
+        binding.popupSolicitarVerificacion.setOnClickListener{
+            Toast.makeText(activity, "Solicitando verificacion", Toast.LENGTH_SHORT).show()
+
         }
 
-        val  modo= view?.findViewById<View>(R.id.popupCambiarModo) as TextView
-        editar?.setOnClickListener {
-            Toast.makeText(activity, "Cambiado a modo nocturno", Toast.LENGTH_LONG).show()
+        binding.popupCambiarModo.setOnClickListener {
+            Toast.makeText(activity, "Cambiado a modo nocturno", Toast.LENGTH_SHORT).show()
         }
 
-        val  salir= view?.findViewById<View>(R.id.popupSalir) as TextView
-        editar?.setOnClickListener {
-            Toast.makeText(activity, "Saliendo de la aplicación", Toast.LENGTH_LONG).show()
+        binding.popupSalir.setOnClickListener {
+            prefs.erase()
+
+            Toast.makeText(activity, "Saliendo de la cuenta", Toast.LENGTH_SHORT).show()
+            activity?.let{
+                val intent = Intent (it, LoginActivity::class.java)
+                it.startActivity(intent)
+            }
         }
 
-
-        return inflater.inflate(R.layout.activity_search_fragment, container, false)
+        return binding.root
     }
 }
