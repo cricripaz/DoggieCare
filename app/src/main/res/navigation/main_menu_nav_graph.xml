@@ -10,7 +10,15 @@
         android:name="com.backyardigans.doggiecare.fragments.HomeFragment"
         android:label="HomeFragment"
         tools:layout="@layout/activity_home_fragment"
-        />
+        >
+        <action
+            android:id="@+id/action_homeFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment"
+            app:enterAnim="@anim/slide_in_left_to_right"
+            app:exitAnim="@anim/slide_in_right_to_left"
+            app:popEnterAnim="@anim/slide_out_left_to_right"
+            app:popExitAnim="@anim/slide_out_right_to_left"/>
+    </fragment>
     <fragment
         android:id="@+id/addFragment"
         android:name="com.backyardigans.doggiecare.fragments.AddFragment"
@@ -62,6 +70,28 @@
         android:id="@+id/searchFragment"
         android:name="com.backyardigans.doggiecare.fragments.SearchFragment"
         android:label="SearchFragment" />
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="com.backyardigans.doggiecare.fragments.DetailsFragment"
+        android:label="DetailsFragment"
+        tools:layout="@layout/fragment_details">
+
+        <action
+            android:id="@+id/action_detailsFragment_to_contactPopUpFragment"
+            app:destination="@id/contactPopUpFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/contactPopUpFragment"
+        android:name="com.backyardigans.doggiecare.fragments.ContactPopUpFragment"
+        android:label="ContactPopUpFragment"
+        tools:layout="@layout/fragment_popup_contact_menu">
+        <action
+            android:id="@+id/action_contactPopUpFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_contactPopUpFragment_to_chatFragment"
+            app:destination="@id/chatFragment" />
+    </dialog>
 
 
 </navigation>
