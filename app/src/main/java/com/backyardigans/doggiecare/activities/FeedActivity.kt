@@ -2,15 +2,20 @@ package com.backyardigans.doggiecare.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.backyardigans.doggiecare.R
 import com.backyardigans.doggiecare.fragments.*
 import com.backyardigans.doggiecare.replaceFragment
+import com.backyardigans.doggiecare.viewModel.ProfileViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class FeedActivity : AppCompatActivity() {
     private lateinit var bottomNavigationView: BottomNavigationView
+
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -20,8 +20,6 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
     private val RC_SIGN_IN = 100
     private lateinit var googleSignInClient:GoogleSignInClient
-    private lateinit var auth: FirebaseAuth
-
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,7 +27,6 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        auth = Firebase.auth
 
         if (prefs.getEmail().isNotEmpty()){
             goFeed()
@@ -38,6 +35,7 @@ class LoginActivity : AppCompatActivity() {
 
 
         binding.googleButton.setOnClickListener {
+
             signIn()
         }
         binding.loginButton.setOnClickListener {
@@ -63,10 +61,9 @@ class LoginActivity : AppCompatActivity() {
             .requestIdToken(getString(R.string.default_web_client_id))
             .requestEmail()
             .build()
-
         googleSignInClient = GoogleSignIn.getClient(this, gso)
-
         val signInIntent = googleSignInClient.signInIntent
+        googleSignInClient.signOut()
         startActivityForResult(signInIntent, RC_SIGN_IN)
     }
 

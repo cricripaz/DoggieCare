@@ -27,13 +27,37 @@
         android:name="com.backyardigans.doggiecare.fragments.ProfileFragment"
         android:label="ProfileFragment"
         tools:layout="@layout/activity_profile_fragment"
-        />
-    <fragment
-        android:id="@+id/searchFragment"
-        android:name="com.backyardigans.doggiecare.fragments.SearchFragment"
-        android:label="SearchFragment"
-        tools:layout="@layout/activity_search_fragment"
-        />
+        >
+        <action
+            android:id="@+id/action_profileFragment_to_configPopUpFragment2"
+            app:destination="@id/configPopUpFragment2" />
+    </fragment>
+    <dialog
+        android:id="@+id/configPopUpFragment2"
+        android:name="com.backyardigans.doggiecare.fragments.ConfigPopUpFragment"
+        android:label="ConfigPopUpFragment"
+        tools:layout="@layout/fragment_popup_configurations">
+        <action
+            android:id="@+id/action_configPopUpFragment2_to_loginActivity"
+            app:destination="@id/loginActivity" />
+        <action
+            android:id="@+id/action_configPopUpFragment2_to_editProfileFragment"
+            app:destination="@id/editProfileFragment" />
+    </dialog>
+    <activity
+        android:id="@+id/loginActivity"
+        android:name="com.backyardigans.doggiecare.activities.LoginActivity"
+        android:label="activity_login"
+        tools:layout="@layout/activity_login" />
+    <dialog
+        android:id="@+id/editProfileFragment"
+        android:name="com.backyardigans.doggiecare.fragments.EditProfileFragment"
+        android:label="EditProfileFragment"
+        tools:layout="@layout/fragment_edit_profile">
+        <action
+            android:id="@+id/action_editProfileFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </dialog>
 
 
 </navigation>
