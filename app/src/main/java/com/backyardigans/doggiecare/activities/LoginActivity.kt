@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.core.view.isVisible
 import com.backyardigans.doggiecare.R
+import com.backyardigans.doggiecare.Preferences.UserApplication.Companion.prefs
 import com.backyardigans.doggiecare.databinding.ActivityLoginBinding
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -17,13 +18,10 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
 
-
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
     private val RC_SIGN_IN = 100
     private lateinit var googleSignInClient:GoogleSignInClient
-    private lateinit var auth: FirebaseAuth
-
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,9 +29,15 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        auth = Firebase.auth
+
+        if (prefs.getEmail().isNotEmpty()){
+            goFeed()
+        }
+
+
 
         binding.googleButton.setOnClickListener {
+
             signIn()
         }
         binding.loginButton.setOnClickListener {
@@ -59,10 +63,9 @@ class LoginActivity : AppCompatActivity() {
             .requestIdToken(getString(R.string.default_web_client_id))
             .requestEmail()
             .build()
-
         googleSignInClient = GoogleSignIn.getClient(this, gso)
-
         val signInIntent = googleSignInClient.signInIntent
+        googleSignInClient.signOut()
         startActivityForResult(signInIntent, RC_SIGN_IN)
     }
 
@@ -74,12 +77,17 @@ class LoginActivity : AppCompatActivity() {
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
             try {
                 // Google Sign In was successful, authenticate with Firebase
-                val account = task.getResult(ApiException::class.java)!!
+                 val account = task.getResult(ApiException::class.java)!!
                 if (account != null){
                     val credential = GoogleAuthProvider.getCredential(account.idToken, null)
                     FirebaseAuth.getInstance().signInWithCredential(credential).addOnCompleteListener {
                         if (it.isSuccessful){
+<<<<<<< HEAD
                             binding.container.isVisible = true
+=======
+                            prefs.saveEmail(it.result.user?.email.toString())
+                            goFeed()
+>>>>>>> develop
                         }else{
                             error("Error al hacer Sign In")
                         }

@@ -54,6 +54,7 @@
         app:backgroundTint="@null" />
 
 <androidx.fragment.app.FragmentContainerView
+    android:id="@+id/container"
     android:name="androidx.navigation.fragment.NavHostFragment"
     app:defaultNavHost="true"
     android:id="@+id/container"
