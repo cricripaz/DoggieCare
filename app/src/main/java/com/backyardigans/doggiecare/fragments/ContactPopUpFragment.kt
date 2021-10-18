@@ -9,10 +9,10 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.backyardigans.doggiecare.R
 
-class PopUpFragment : Fragment() {
+class ContactPopUpFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
-        val  contactar= view?.findViewById<View>(R.id.popupEditarPerfil) as TextView
+        val  contactar= view?.findViewById<View>(R.id.popupContactar) as TextView
         contactar?.setOnClickListener {
             //integrar
             Toast.makeText(activity, "abriendo mensajería", Toast.LENGTH_LONG).show()
