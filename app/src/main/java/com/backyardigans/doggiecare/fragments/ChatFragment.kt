@@ -1,17 +1,24 @@
 package com.backyardigans.doggiecare.fragments
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ListView
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.backyardigans.doggiecare.Model.Chat
 import com.backyardigans.doggiecare.R
 import com.backyardigans.doggiecare.adapters.ChatAdapter
+import com.backyardigans.doggiecare.adapters.FeedAdapter
+import com.backyardigans.doggiecare.data.ChatDataSource
+import com.backyardigans.doggiecare.data.TemptDataSource
 
 class ChatFragment : Fragment() {
+
+   private val chatAdapter  = ChatAdapter()
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
         return inflater.inflate(R.layout.activity_chat_fragment, container, false)
@@ -19,33 +26,11 @@ class ChatFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-        var listview  = view.findViewById<ListView>(R.id.lvchat)
+        val recyclerView = view.findViewById<RecyclerView>(R.id.rvChat)
+        recyclerView.adapter = chatAdapter
+        recyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
 
-        var list = mutableListOf<Chat>()
-
-        list.add(Chat("Persona 1","Hola Como Estas ?",R.drawable.ic_profile_chat))
-
-        list.add(Chat("Persona 2","Hola Como Estas ?",R.drawable.ic_profile_chat))
-
-        list.add(Chat("Persona 3","Hola Como Estas ?",R.drawable.ic_profile_chat))
-
-        list.add(Chat("Persona 4","Hola Como Estas ?",R.drawable.ic_profile_chat))
-
-        list.add(Chat("Persona 5","Hola Como Estas ?",R.drawable.ic_profile_chat))
-
-        list.add(Chat("Persona 6","Hola Como Estas ?",R.drawable.ic_profile_chat))
-
-        list.add(Chat("Persona 7","Hola Como Estas ?",R.drawable.ic_profile_chat))
-
-        list.add(Chat("Persona 8","Hola Como Estas ?",R.drawable.ic_profile_chat))
-
-
-
-
-
-
-        listview.adapter = ChatAdapter(view.context,R.layout.row ,list)
-
+        chatAdapter.addAll(ChatDataSource.chatList)
     }
 
 }
