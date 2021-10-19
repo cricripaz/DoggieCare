@@ -32,7 +32,7 @@ class FeedAdapter(): RecyclerView.Adapter<FeedAdapter.ViewHolder>() {
 
     class ViewHolder(view: View): RecyclerView.ViewHolder(view){
         val binding = ActivityCardsBinding.bind(view)
-        //Todo ??
+
 
 
         fun bind(feed: Feed) {

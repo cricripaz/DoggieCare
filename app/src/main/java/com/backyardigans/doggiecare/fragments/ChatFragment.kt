@@ -14,14 +14,19 @@ import com.backyardigans.doggiecare.adapters.ChatAdapter
 import com.backyardigans.doggiecare.adapters.FeedAdapter
 import com.backyardigans.doggiecare.data.ChatDataSource
 import com.backyardigans.doggiecare.data.TemptDataSource
+import com.backyardigans.doggiecare.databinding.ActivityChatFragmentBinding
+import com.backyardigans.doggiecare.databinding.FragmentPopupConfigurationsBinding
 
 class ChatFragment : Fragment() {
-
+    private var _binding: ActivityChatFragmentBinding?=null
+    private val binding get() = _binding!!
    private val chatAdapter  = ChatAdapter()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
-        return inflater.inflate(R.layout.activity_chat_fragment, container, false)
+        _binding = ActivityChatFragmentBinding.inflate(inflater, container, false)
+
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

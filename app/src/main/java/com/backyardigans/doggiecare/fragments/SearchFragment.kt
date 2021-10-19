@@ -13,13 +13,20 @@ import androidx.recyclerview.widget.RecyclerView
 import com.backyardigans.doggiecare.R
 import com.backyardigans.doggiecare.adapters.FeedAdapter
 import com.backyardigans.doggiecare.data.TemptDataSource
+import com.backyardigans.doggiecare.databinding.ActivityProfileFragmentBinding
+import com.backyardigans.doggiecare.databinding.ActivitySearchFragmentBinding
 
 class SearchFragment : Fragment() {
+    private var _binding: ActivitySearchFragmentBinding?=null
+    private val binding get() = _binding!!
     private val feedAdapter = FeedAdapter()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
-        return inflater.inflate(R.layout.activity_search_fragment, container, false)
+
+        _binding = ActivitySearchFragmentBinding.inflate(inflater, container, false)
+
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
