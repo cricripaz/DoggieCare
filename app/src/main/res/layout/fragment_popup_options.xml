@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="top|center"
+
     android:background="@color/transparent"
     android:backgroundTint="#00FFFFFF">
 
@@ -26,7 +26,7 @@
             android:layout_marginTop="10dp"
             android:paddingVertical="10dp"
             android:stateListAnimator="@null"
-            android:text="EDITAR INFORMACIÓN"
+            android:text="@string/editar_publicacion"
             android:textColor="@color/white"
             android:textSize="18dp"
             app:layout_constraintBottom_toTopOf="@id/popupoptionsEliminar"
@@ -41,7 +41,7 @@
             android:layout_marginTop="10dp"
             android:paddingVertical="10dp"
             android:stateListAnimator="@null"
-            android:text="CAMBIAR MODO"
+            android:text="@string/eliminar_publicacion"
             android:textColor="@color/white"
             android:textSize="18dp"
             app:layout_constraintLeft_toLeftOf="parent"

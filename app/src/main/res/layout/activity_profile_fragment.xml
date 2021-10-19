@@ -6,6 +6,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/lavander">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/container_configurations_popup"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="-50dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/foto_usuario"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:translationZ="30dp" />
+
     <ImageView
         android:id="@+id/foto_usuario"
         android:layout_width="245dp"
@@ -31,100 +42,67 @@
     android:layout_marginTop="-20dp"
     app:tint="@color/primary" />
 
-    <TextView
-        android:id="@+id/nombre_usuario"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="mockeado mokito"
-        android:layout_marginHorizontal="30dp"
-        android:textColor="@color/darkblue"
-        android:textSize="30dp"
-        android:gravity="center"
-        android:layout_marginTop="40dp"
-        app:layout_constraintBottom_toTopOf="@id/id_usuario"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/foto_usuario"
-        app:layout_constraintVertical_bias="0.37">
-    </TextView>
-
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/container_edit_profile"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:background="@android:color/transparent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/foto_usuario"
-        android:translationZ="30dp" />
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/container_configurations_popup"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="-50dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/foto_usuario"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:translationZ="30dp" />
-
-    <TextView
-        android:id="@+id/id_usuario"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="username"
-        android:layout_marginHorizontal="30dp"
-        android:textColor="@color/primary"
-        android:textSize="22dp"
-        android:gravity="center"
-        app:layout_constraintTop_toBottomOf="@+id/nombre_usuario"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent">
-    </TextView>
-
-    <RatingBar
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/ratingUsuario"
-        app:layout_constraintTop_toBottomOf="@+id/id_usuario"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginTop="-5dp"
-        app:layout_constraintRight_toRightOf="parent"
-        android:rating="3"
-        android:scaleX=".5"
-        android:scaleY=".5"
-        android:isIndicator="true"
-        android:numStars="5"
-        android:progressTint="@color/primary"
-        />
-
     <ScrollView
         android:id="@+id/scrollprofile"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="-5dp"
+        android:layout_marginTop="15dp"
         android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@id/ratingUsuario"
+        app:layout_constraintTop_toBottomOf="@id/profilebotonconfig"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         android:fillViewport="true"
-
         app:layout_constraintRight_toRightOf="parent">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
-    <TextView
+            <TextView
+                android:id="@+id/nombre_usuario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="mockeado mokito"
+                android:layout_marginHorizontal="30dp"
+                android:textColor="@color/darkblue"
+                android:textSize="30dp"
+                android:gravity="center"/>
+
+
+
+
+            <TextView
+                android:id="@+id/id_usuario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="username"
+                android:layout_marginHorizontal="30dp"
+                android:textColor="@color/primary"
+                android:textSize="22dp"
+                android:gravity="center"
+                />
+
+            <RatingBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/ratingUsuario"
+                android:layout_marginTop="-10dp"
+                android:rating="3"
+                android:scaleX=".5"
+                android:scaleY=".5"
+                android:isIndicator="true"
+                android:layout_gravity="center"
+                android:numStars="5"
+                android:progressTint="@color/primary"
+                />
+
+
+            <TextView
         android:id="@+id/bio_usuario"
         android:layout_width="match_parent"
         android:background="@drawable/round_shaped_input"
         android:layout_height="wrap_content"
         android:text="mucho texto nycho texto mucho texto mucho mucho texto texto mucho texto mucho texto mucho texto mucho texto mucho texto"
         android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="10dp"
         android:textColor="@color/darkblue"
         android:textSize="16dp"
         android:gravity="center"

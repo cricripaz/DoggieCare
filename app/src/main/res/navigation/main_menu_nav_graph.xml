@@ -39,6 +39,9 @@
         <action
             android:id="@+id/action_profileFragment_to_configPopUpFragment2"
             app:destination="@id/configPopUpFragment2" />
+        <action
+            android:id="@+id/action_profileFragment_to_optionsPopUpFragment"
+            app:destination="@id/optionsPopUpFragment" />
     </fragment>
     <dialog
         android:id="@+id/configPopUpFragment2"
@@ -91,6 +94,15 @@
         <action
             android:id="@+id/action_contactPopUpFragment_to_chatFragment"
             app:destination="@id/chatFragment" />
+    </dialog>
+    <dialog
+        android:id="@+id/optionsPopUpFragment"
+        android:name="com.backyardigans.doggiecare.fragments.OptionsPopUpFragment"
+        android:label="OptionsPopUpFragment"
+        tools:layout="@layout/fragment_popup_options">
+        <action
+            android:id="@+id/action_optionsPopUpFragment_to_addFragment"
+            app:destination="@id/addFragment" />
     </dialog>
 
 
