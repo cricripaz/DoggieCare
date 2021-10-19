@@ -1,9 +1,11 @@
 package com.backyardigans.doggiecare.activities
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.core.view.isVisible
 import com.backyardigans.doggiecare.R
 import com.backyardigans.doggiecare.Preferences.UserApplication.Companion.prefs
 import com.backyardigans.doggiecare.databinding.ActivityLoginBinding
@@ -57,6 +59,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun signIn() {
+
         val gso = GoogleSignInOptions
             .Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(getString(R.string.default_web_client_id))
@@ -81,8 +84,9 @@ class LoginActivity : AppCompatActivity() {
                     val credential = GoogleAuthProvider.getCredential(account.idToken, null)
                     FirebaseAuth.getInstance().signInWithCredential(credential).addOnCompleteListener {
                         if (it.isSuccessful){
+                            binding.container.isVisible = true
                             prefs.saveEmail(it.result.user?.email.toString())
-                            goFeed()
+
                         }else{
                             error("Error al hacer Sign In")
                         }
