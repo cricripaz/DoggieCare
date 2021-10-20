@@ -1,8 +1,19 @@
 package com.backyardigans.doggiecare.Preferences
 
 import android.content.Context
+import android.util.Log
+import androidx.fragment.app.activityViewModels
+import com.backyardigans.doggiecare.Model.Profile
+import com.backyardigans.doggiecare.viewModel.ProfileViewModel
+import com.google.firebase.firestore.FirebaseFirestore
 
 class Prefs(val context: Context) {
+
+
+
+
+    private val db = FirebaseFirestore.getInstance()
+
     val SHARED_NAME = "auth"
     val SHARED_EMAIL = "email"
     val SHARED_USER = "user"
@@ -24,14 +35,26 @@ class Prefs(val context: Context) {
     }
 
     fun getUser(): String{
-        return storage.getString(SHARED_USER, "deafault")!!
+        var defaultNick = "default"
+        db.collection("users").document(getEmail()).get().addOnSuccessListener {
+            if (it.exists()) {
+                defaultNick = it.data?.get("userNick") as String
+                saveUser(defaultNick)
+            } else {
+                //TODO podriamos mandarlos al login
+            }
+        }
+
+        return storage.getString(SHARED_USER, defaultNick)!!
     }
     fun saveBio(bio:String){
         storage.edit().putString(SHARED_BIO, bio).apply()
     }
 
     fun getBio(): String{
-        return storage.getString(SHARED_BIO, "default")!!
+        var defaultBio = "default"
+
+        return storage.getString(SHARED_BIO, defaultBio)!!
     }
 
     fun erase(){

@@ -5,9 +5,12 @@ import androidx.lifecycle.ViewModel
 import com.backyardigans.doggiecare.Model.Profile
 import com.backyardigans.doggiecare.Preferences.Prefs
 import com.backyardigans.doggiecare.Preferences.UserApplication.Companion.prefs
+import com.google.firebase.firestore.FirebaseFirestore
 
 class ProfileViewModel:ViewModel() {
+    val db = FirebaseFirestore.getInstance()
     val profileModel = MutableLiveData<Profile>(Profile(prefs.getUser(), prefs.getBio()))
+
 
     fun actualizar(profile:Profile){
 
