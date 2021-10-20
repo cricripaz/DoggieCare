@@ -33,7 +33,7 @@
     <EditText
         android:id="@+id/welcomebio"
         android:layout_width="match_parent"
-        android:layout_height="190dp"
+        android:layout_height="wrap_content"
         android:background="@drawable/round_shaped_input"
         app:layout_constraintTop_toBottomOf="@+id/welcomeimagen"
         app:layout_constraintLeft_toLeftOf="parent"
