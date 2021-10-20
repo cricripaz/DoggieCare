@@ -7,36 +7,40 @@ import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
+import com.backyardigans.doggiecare.Model.Profile
 import com.backyardigans.doggiecare.R
+import com.backyardigans.doggiecare.databinding.FragmentEditProfileBinding
+import com.backyardigans.doggiecare.databinding.FragmentPopupContactMenuBinding
+import com.backyardigans.doggiecare.viewModel.ProfileViewModel
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
-class ContactPopUpFragment : Fragment() {
+class ContactPopUpFragment : BottomSheetDialogFragment(){
+    private var _binding: FragmentPopupContactMenuBinding?=null
+    private val binding get() = _binding!!
+
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
-        val  contactar= view?.findViewById<View>(R.id.popupContactar) as TextView
-        contactar?.setOnClickListener {
-            //integrar
-            Toast.makeText(activity, "abriendo mensajería", Toast.LENGTH_LONG).show()
+        _binding = FragmentPopupContactMenuBinding.inflate(inflater, container, false)
+        binding.popupVerPerfil.setOnClickListener{
+            findNavController().navigate(R.id.action_contactPopUpFragment_to_profileFragment)
         }
-        val  verperfil= view?.findViewById<View>(R.id.popupVerPerfil) as TextView
-        verperfil?.setOnClickListener {
-            //Ver perfil de usuario
-            Toast.makeText(activity, "Redigiriendo", Toast.LENGTH_LONG).show()
+
+        binding.popupContactar.setOnClickListener{
+            findNavController().navigate(R.id.action_contactPopUpFragment_to_chatFragment)
         }
-        val  denunciar= view?.findViewById<View>(R.id.popupDenunciar) as TextView
-        denunciar?.setOnClickListener {
-            //implementar?
+
+        binding.popupDenunciar.setOnClickListener{    //implementar?
             Toast.makeText(activity, "Denuncia enviada", Toast.LENGTH_LONG).show()
         }
-        val  bloquear= view?.findViewById<View>(R.id.popupBloquear) as TextView
-        bloquear?.setOnClickListener {
-            //usar dialogo?
+        binding.popupBloquear.setOnClickListener{    //usar dialogo?
             Toast.makeText(activity, "¿Seguro que desea bloquear a este usuario?", Toast.LENGTH_LONG).show()
         }
 
 
-
-
-        return inflater.inflate(R.layout.fragment_popup_contact_menu, container, false)
+        return binding.root
     }
 
 }

@@ -11,12 +11,18 @@ import com.backyardigans.doggiecare.databinding.ActivityCardsBinding
 class FeedAdapter(): RecyclerView.Adapter<FeedAdapter.ViewHolder>() {
 
    val elementList:MutableList<Feed> = mutableListOf()
+    private var onFeedItemClickListener: ((feed: Feed) -> Unit)? = null
 
     fun addAll(newElementList:MutableList<Feed>){
         elementList.clear()
         elementList.addAll(newElementList)
         notifyDataSetChanged()
     }
+
+    fun setOnFeedItemClickListener(onFeedItemClickListener: ((feed: Feed) -> Unit)?) {
+        this.onFeedItemClickListener = onFeedItemClickListener
+    }
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutInflater=LayoutInflater.from(parent.context)
@@ -26,7 +32,7 @@ class FeedAdapter(): RecyclerView.Adapter<FeedAdapter.ViewHolder>() {
 
     class ViewHolder(view: View): RecyclerView.ViewHolder(view){
         val binding = ActivityCardsBinding.bind(view)
-        //Todo ??
+
 
 
         fun bind(feed: Feed) {
@@ -40,6 +46,9 @@ class FeedAdapter(): RecyclerView.Adapter<FeedAdapter.ViewHolder>() {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(elementList[position])
+        holder.itemView.setOnClickListener {
+            onFeedItemClickListener?.invoke(elementList[position])
+        }
     }
 
     override fun getItemCount(): Int {

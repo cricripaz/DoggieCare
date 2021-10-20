@@ -21,7 +21,9 @@
     <string name="google_sign_in">Google Sign In</string>
 
     <string name="prefs_file">com.backyardigans.doggiecare.PREFERENCE_FILE_KEY</string>
-
+    <string name="editar_publicacion">EDITAR PUBLICACIÓN</string>
+    <string name="eliminar_publicacion">ELIMINAR PUBLICACIÓN</string>
+    <string name="buscar_publicacion">Buscar Publicacion</string>
 
 
 </resources>

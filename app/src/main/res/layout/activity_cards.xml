@@ -6,8 +6,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/card_view"
     android:layout_margin="20dp"
-    android:background="@color/darkblue"
     android:orientation="vertical"
+    android:background="@drawable/ic_card_shapebackground"
 
 
     >
@@ -24,7 +24,9 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@drawable/ic_icon_perrito"
         tools:tint="@color/darkblue"
-        android:paddingTop="20dp"/>
+        android:paddingTop="20dp"
+        android:background="@drawable/ic_card_shapebackgroundup"
+        />
 
     <TextView
         android:id="@+id/tvFeedUserName"
