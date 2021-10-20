@@ -16,6 +16,7 @@ import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 
 
@@ -23,7 +24,7 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
     private val RC_SIGN_IN = 100
     private lateinit var googleSignInClient:GoogleSignInClient
-
+    private val db = FirebaseFirestore.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -84,8 +85,14 @@ class LoginActivity : AppCompatActivity() {
                     val credential = GoogleAuthProvider.getCredential(account.idToken, null)
                     FirebaseAuth.getInstance().signInWithCredential(credential).addOnCompleteListener {
                         if (it.isSuccessful){
-                            binding.container.isVisible = true
                             prefs.saveEmail(it.result.user?.email.toString())
+
+                            var user = db.collection("users").document(prefs.getEmail()).get()
+                            if (user == null){
+                                binding.container.isVisible = true
+                            }else{
+                                goFeed()
+                            }
 
                         }else{
                             error("Error al hacer Sign In")

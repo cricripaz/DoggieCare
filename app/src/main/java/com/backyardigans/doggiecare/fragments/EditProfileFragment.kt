@@ -28,7 +28,7 @@ class EditProfileFragment : BottomSheetDialogFragment() {
         _binding = FragmentEditProfileBinding.inflate(inflater, container, false)
         binding.buttonSave.setOnClickListener{
             db.collection("users").document(UserApplication.prefs.getEmail()).set(
-                hashMapOf("userBio" to binding.inputBio.text.toString(), "userNick" to binding.inputBio.text.toString() ), SetOptions.merge()
+                hashMapOf("userBio" to binding.inputBio.text.toString(), "userNick" to binding.inputNombre.text.toString() ), SetOptions.merge()
             )
 
             profileViewModel.actualizar(Profile(binding.inputNombre.text.toString(), binding.inputBio.text.toString()))
