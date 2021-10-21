@@ -20,7 +20,6 @@ class WelcomeBioFragment :  StepsBaseFragment() {
     private val profileViewModel: ProfileViewModel by activityViewModels()
     private val db = FirebaseFirestore.getInstance()
 
-
     private var _binding: FragmentWelcomeBioBinding?=null
     private val binding get() = _binding!!
 

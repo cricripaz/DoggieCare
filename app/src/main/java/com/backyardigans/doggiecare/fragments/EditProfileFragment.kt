@@ -46,5 +46,6 @@ class EditProfileFragment : BottomSheetDialogFragment() {
         return binding.root
     }
 
+    //TODO no permitiir si no tiene internet
 
 }
