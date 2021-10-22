@@ -74,6 +74,26 @@ dependencies {
     //Navigation
     implementation 'androidx.navigation:navigation-fragment-ktx:2.3.5'
     implementation 'androidx.navigation:navigation-ui-ktx:2.3.5'
+
+    // Retrofit:
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.8.1'
+
+    // Koin:
+    implementation "io.insert-koin:koin-android:$koinVersion"
+    implementation "io.insert-koin:koin-android-viewmodel:$koinVersion"
+
+    // Room:
+    implementation "androidx.room:room-common:$roomVersion"
+    implementation "androidx.datastore:datastore-preferences:1.0.0"
+    implementation "androidx.core:core-ktx:$coreVersion"
+
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycleVersion"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.3.7"
+
+
+
+
 }
 apply plugin: 'com.google.gms.google-services'
 
