@@ -19,25 +19,7 @@ class SplashScreenActivity  : AppCompatActivity() {
         supportActionBar?.hide()
 
         Handler().postDelayed({
-            if (prefs.getEmail().isNotEmpty()){
 
-                db.collection("users").document(prefs.getEmail()).get().addOnSuccessListener {
-                if (it.exists()){
-                    val defaultBio = it.data?.get("userBio") as String
-                    prefs.saveBio(defaultBio)
-
-
-                }
-            }
-            db.collection("users").document(prefs.getEmail()).get().addOnSuccessListener {
-                if (it.exists()){
-                    val defaultBio = it.data?.get("userNick") as String
-                    prefs.saveUser(defaultBio)
-
-
-                }
-            }
-            }
 
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
