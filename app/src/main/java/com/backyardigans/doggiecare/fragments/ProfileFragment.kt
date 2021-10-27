@@ -27,13 +27,14 @@ import com.backyardigans.doggiecare.data.TemptDataSource
 import com.backyardigans.doggiecare.databinding.ActivityProfileFragmentBinding
 import com.backyardigans.doggiecare.viewModel.ProfileViewModel
 import com.google.firebase.firestore.FirebaseFirestore
+import java.text.SimpleDateFormat
+import java.util.*
 
 class ProfileFragment :  Fragment() {
     private var _binding: ActivityProfileFragmentBinding? = null
     private val binding get() = _binding!!
     private val profileViewModel: ProfileViewModel by activityViewModels()
     private val feedAdapter = FeedAdapter()
-    private var connected = false
 
 
     private val db = FirebaseFirestore.getInstance()
@@ -58,6 +59,7 @@ class ProfileFragment :  Fragment() {
         binding.profilebotonconfig.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
                 findNavController().navigate(R.id.action_profileFragment_to_configPopUpFragment2)
+
             }
         })
 
