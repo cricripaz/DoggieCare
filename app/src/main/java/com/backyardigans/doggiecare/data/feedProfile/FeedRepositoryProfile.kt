@@ -1,8 +1,8 @@
 package com.backyardigans.doggiecare.data.feedProfile
 
 import com.backyardigans.doggiecare.Model.Feed
-import com.backyardigans.doggiecare.data.feed.network.FeedNetworkController
-import com.backyardigans.doggiecare.data.feed.persistency.FeedPersistencyController
+import com.backyardigans.doggiecare.data.feedProfile.network.FeedNetworkController
+import com.backyardigans.doggiecare.data.feedProfile.persistency.FeedPersistencyController
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 

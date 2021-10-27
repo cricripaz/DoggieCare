@@ -2,7 +2,7 @@ package com.backyardigans.doggiecare.data.feedProfile.persistency
 
 import com.backyardigans.doggiecare.Model.Feed
 
-class FeedPersistencyControllerImp : FeedPersistencyController {
+class FeedPersistencyControllerProfileImp : FeedPersistencyController {
     private var postList: List<Feed> = listOf()
 
     override fun getAllPosts(): List<Feed> {

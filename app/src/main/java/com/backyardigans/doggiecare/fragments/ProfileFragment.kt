@@ -35,7 +35,7 @@ class ProfileFragment :  Fragment() {
     private val binding get() = _binding!!
     private val profileViewModel: ProfileViewModel by activityViewModels()
     private val feedAdapter = FeedAdapter()
-    private val feedModelProfile : FeedViewModel by activityViewModels()
+    private val feedModel:FeedViewModel by activityViewModels()
 
 
     private val db = FirebaseFirestore.getInstance()
@@ -70,11 +70,11 @@ class ProfileFragment :  Fragment() {
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         LinearSnapHelper().attachToRecyclerView(recyclerView)
 
-        feedModelProfile.feedList.observe(viewLifecycleOwner , {
+        feedModel.feedListProfile.observe(viewLifecycleOwner , {
             feedAdapter.addAll(it as MutableList<Feed>)
         }
         )
-        feedModelProfile.updatePost()
+        feedModel.updatePostProfile()
 
         feedAdapter.setOnFeedItemClickListener {
             val directions = ProfileFragmentDirections.actionProfileFragmentToOptionsPopUpFragment()

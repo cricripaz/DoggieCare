@@ -9,7 +9,7 @@ import kotlinx.coroutines.tasks.await
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class FeedNetworkControllerImp : FeedNetworkController {
+class FeedNetworkControllerProfileImp : FeedNetworkController {
 
     val db = Firebase.firestore
 
