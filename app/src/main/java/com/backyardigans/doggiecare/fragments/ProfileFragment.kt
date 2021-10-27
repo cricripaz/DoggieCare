@@ -71,6 +71,8 @@ class ProfileFragment :  Fragment() {
         profileViewModel.userProfile.observe(viewLifecycleOwner, Observer {
             binding.bioUsuario.text = it.userBio
             binding.idUsuario.text = it.userNick
+            prefs.saveUser(it.userNick)
+
 
         })
 
