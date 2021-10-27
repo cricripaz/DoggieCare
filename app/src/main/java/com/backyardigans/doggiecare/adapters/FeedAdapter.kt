@@ -36,9 +36,8 @@ class FeedAdapter(): RecyclerView.Adapter<FeedAdapter.ViewHolder>() {
 
 
         fun bind(feed: Feed) {
-            binding.imgFeed.setImageResource(feed.img)
-            binding.tvFeedUserName.text=feed.userName
-            binding.tvFeedNickName.text=feed.nickName
+            binding.imgFeed.setImageResource(R.drawable.ic_img_dog)//todo to url
+            binding.tvFeedUserName.text=feed.userNick
             binding.tvAnimalAge.text=feed.AnimalAge
             binding.tvAnimalName.text=feed.AnimalName
         }

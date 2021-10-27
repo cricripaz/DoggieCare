@@ -7,6 +7,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.backyardigans.doggiecare.Model.Profile
 import com.backyardigans.doggiecare.Preferences.UserApplication
+import com.backyardigans.doggiecare.Preferences.UserApplication.Companion.prefs
 import com.backyardigans.doggiecare.R
 import com.backyardigans.doggiecare.databinding.FragmentEditProfileBinding
 import com.backyardigans.doggiecare.viewModel.ProfileViewModel
@@ -35,6 +36,29 @@ class EditProfileFragment : BottomSheetDialogFragment() {
             findNavController().navigate(R.id.action_editProfileFragment_to_profileFragment)
 
         }
+
+
+        /**
+         //Desbloquear para publicaciones masivas
+        binding.buttonSave.setOnClickListener{
+            db.collection("publicaciones").document(
+                Math.random().toString().substring(2, 15)).set(
+                hashMapOf(
+                    "animalAge" to "1 mes",
+                    "animalName" to "Betto",
+                    "animalBreed" to "Chupacabras",
+                    "description" to "Super Larga descripcion........" +
+                            "................................................." +
+                            "................................................." +
+                            "................................................." +
+                            "................................................." +
+                            "................................................." +
+                            ".............................................",
+                    "userNick" to prefs.getUser(),
+                    "userMail" to prefs.getEmail()
+                ), SetOptions.merge()
+            )
+        }**/
 
 
         binding.editImageButton.setOnClickListener(object : View.OnClickListener {

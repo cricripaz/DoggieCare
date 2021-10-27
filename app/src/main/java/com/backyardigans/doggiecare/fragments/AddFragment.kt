@@ -36,7 +36,7 @@ class AddFragment : Fragment() {
         } else {
             TemptDataSource.postList.add(Feed(
                     R.drawable.ic_img_dog, "Mesa Cocien", "LaRepetidora",
-                binding.etNombre.text.toString(), binding.etEdad.text.toString()
+                binding.etNombre.text.toString(), binding.etEdad.text.toString(),""
             ))
             Toast.makeText(activity, "Agregado", Toast.LENGTH_SHORT).show()
 //TODO hacer que vaya a la pagina principal luego de agregarlo

@@ -88,7 +88,7 @@ class LoginActivity : AppCompatActivity() {
                             prefs.saveEmail(it.result.user?.email.toString())
 
                             var user = db.collection("users").document(prefs.getEmail()).get()
-                            if (user == null){
+                            if (!user.isCanceled){
                                 binding.container.isVisible = true
                             }else{
                                 goFeed()

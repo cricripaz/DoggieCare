@@ -30,9 +30,10 @@
 
     <TextView
         android:id="@+id/tvFeedUserName"
-        android:layout_width="wrap_content"
+        android:layout_width="130dp"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
         android:textColor="@color/lavander"
         android:textSize="16dp"
         android:textStyle="bold"
@@ -40,23 +41,12 @@
         app:layout_constraintTop_toBottomOf="@+id/imgFeed"
         tools:text="Calvo Peinado" />
 
-    <TextView
-        android:id="@+id/tvFeedNickName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:textColor="@color/lavander"
-        android:textSize="16dp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/imgFeed"
-        app:layout_constraintTop_toBottomOf="@+id/tvFeedUserName"
-        tools:text="$@quqa" />
+
 
     <TextView
         android:id="@+id/tvAnimalName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
         android:textColor="@color/lavander"
         android:textSize="16dp"
         android:layout_marginTop="10dp"
@@ -69,11 +59,11 @@
         android:id="@+id/tvAnimalAge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="150dp"
         android:textColor="@color/lavander"
         android:textSize="16dp"
-        android:layout_marginStart="10dp"
-        app:layout_constraintStart_toEndOf="@+id/tvFeedNickName"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvAnimalName"
         tools:text="10 semanas" />
 

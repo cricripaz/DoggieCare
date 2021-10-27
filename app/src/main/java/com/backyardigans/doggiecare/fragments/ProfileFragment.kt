@@ -19,12 +19,14 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.RecyclerView
+import com.backyardigans.doggiecare.Model.Feed
 import com.backyardigans.doggiecare.Model.Profile
 import com.backyardigans.doggiecare.Preferences.UserApplication
 import com.backyardigans.doggiecare.Preferences.UserApplication.Companion.prefs
 import com.backyardigans.doggiecare.adapters.FeedAdapter
 import com.backyardigans.doggiecare.data.TemptDataSource
 import com.backyardigans.doggiecare.databinding.ActivityProfileFragmentBinding
+import com.backyardigans.doggiecare.viewModel.FeedViewModel
 import com.backyardigans.doggiecare.viewModel.ProfileViewModel
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -33,7 +35,7 @@ class ProfileFragment :  Fragment() {
     private val binding get() = _binding!!
     private val profileViewModel: ProfileViewModel by activityViewModels()
     private val feedAdapter = FeedAdapter()
-    private var connected = false
+    private val feedModelProfile : FeedViewModel by activityViewModels()
 
 
     private val db = FirebaseFirestore.getInstance()
@@ -67,7 +69,12 @@ class ProfileFragment :  Fragment() {
         recyclerView.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         LinearSnapHelper().attachToRecyclerView(recyclerView)
-        feedAdapter.addAll(TemptDataSource.postList)
+
+        feedModelProfile.feedList.observe(viewLifecycleOwner , {
+            feedAdapter.addAll(it as MutableList<Feed>)
+        }
+        )
+        feedModelProfile.updatePost()
 
         feedAdapter.setOnFeedItemClickListener {
             val directions = ProfileFragmentDirections.actionProfileFragmentToOptionsPopUpFragment()
@@ -83,9 +90,9 @@ class ProfileFragment :  Fragment() {
 
     }
 
-    @RequiresApi(Build.VERSION_CODES.M)
+
     private fun atualizarSinPrefs() {
-        if (prefs.getEmail().isNotEmpty() and isOnline(requireContext())) {
+        if (prefs.getEmail().isNotEmpty()) {//todo Agregar if is not online
 
             db.collection("users").document(UserApplication.prefs.getEmail()).get()
                 .addOnSuccessListener {
@@ -108,26 +115,4 @@ class ProfileFragment :  Fragment() {
         }
     }
 
-    @RequiresApi(Build.VERSION_CODES.M)
-    fun isOnline(context: Context): Boolean {
-        val connectivityManager =
-            context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-        if (connectivityManager != null) {
-            val capabilities =
-                connectivityManager.getNetworkCapabilities(connectivityManager.activeNetwork)
-            if (capabilities != null) {
-                if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR)) {
-                   // Log.i("Internet", "NetworkCapabilities.TRANSPORT_CELLULAR")
-                    return true
-                } else if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI)) {
-                    //Log.i("Internet", "NetworkCapabilities.TRANSPORT_WIFI")
-                    return true
-                } else if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET)) {
-                    //Log.i("Internet", "NetworkCapabilities.TRANSPORT_ETHERNET")
-                    return true
-                }
-            }
-        }
-        return false
-    }
 }
