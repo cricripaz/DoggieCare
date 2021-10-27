@@ -7,6 +7,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.backyardigans.doggiecare.Model.Profile
 import com.backyardigans.doggiecare.Preferences.UserApplication
+import com.backyardigans.doggiecare.Preferences.UserApplication.Companion.prefs
 import com.backyardigans.doggiecare.R
 import com.backyardigans.doggiecare.databinding.FragmentEditProfileBinding
 import com.backyardigans.doggiecare.viewModel.ProfileViewModel
@@ -20,21 +21,47 @@ class EditProfileFragment : BottomSheetDialogFragment() {
 
     private var _binding: FragmentEditProfileBinding?=null
     private val binding get() = _binding!!
-    private val profileViewModel:ProfileViewModel by activityViewModels()
+
 
     override fun  onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                                savedInstanceState: Bundle?): View {
 
         _binding = FragmentEditProfileBinding.inflate(inflater, container, false)
         binding.buttonSave.setOnClickListener{
-            db.collection("users").document(UserApplication.prefs.getEmail()).set(
-                hashMapOf("userBio" to binding.inputBio.text.toString(), "userNick" to binding.inputNombre.text.toString() ), SetOptions.merge()
-            )
+            if (binding.inputBio.text.isEmpty() or binding.inputNombre.text.isEmpty()){
+                Toast.makeText(context, "Debes llenar los espacios en blanco", Toast.LENGTH_SHORT).show()
 
-            profileViewModel.actualizar(Profile(binding.inputNombre.text.toString(), binding.inputBio.text.toString()))
-            findNavController().navigate(R.id.action_editProfileFragment_to_profileFragment)
+            }else{
+                db.collection("users").document(prefs.getEmail()).set(
+                    hashMapOf("userBio" to binding.inputBio.text.toString(), "userNick" to binding.inputNombre.text.toString() ), SetOptions.merge()
+                )
 
+                findNavController().navigate(R.id.action_editProfileFragment_to_profileFragment)
+            }
         }
+
+
+        /**
+         //Desbloquear para publicaciones masivas
+        binding.buttonSave.setOnClickListener{
+            db.collection("publicaciones").document(
+                Math.random().toString().substring(2, 15)).set(
+                hashMapOf(
+                    "animalAge" to "1 mes",
+                    "animalName" to "Betto",
+                    "animalBreed" to "Chupacabras",
+                    "description" to "Super Larga descripcion........" +
+                            "................................................." +
+                            "................................................." +
+                            "................................................." +
+                            "................................................." +
+                            "................................................." +
+                            ".............................................",
+                    "userNick" to prefs.getUser(),
+                    "userMail" to prefs.getEmail()
+                ), SetOptions.merge()
+            )
+        }**/
 
 
         binding.editImageButton.setOnClickListener(object : View.OnClickListener {

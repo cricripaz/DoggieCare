@@ -84,15 +84,28 @@ class LoginActivity : AppCompatActivity() {
                 if (account != null){
                     val credential = GoogleAuthProvider.getCredential(account.idToken, null)
                     FirebaseAuth.getInstance().signInWithCredential(credential).addOnCompleteListener {
-                        if (it.isSuccessful){
-                            prefs.saveEmail(it.result.user?.email.toString())
+                        if (it.isSuccessful) {
 
-                            var user = db.collection("users").document(prefs.getEmail()).get()
-                            if (user == null){
-                                binding.container.isVisible = true
-                            }else{
-                                goFeed()
+
+                            prefs.saveEmail(it.result.user?.email.toString())
+                            var user = db.collection("users").document(prefs.getEmail())
+
+                            user.get().addOnCompleteListener {
+                                if (it.isSuccessful){
+
+                                    val document = it.getResult()
+                                    if (document.exists()){
+                                        goFeed()
+                                    }else{
+                                        binding.container.isVisible = true
+                                    }
+                                }else{
+                                    error("Error al hacer Sign In")
+                                }
                             }
+
+
+
 
                         }else{
                             error("Error al hacer Sign In")

@@ -6,6 +6,9 @@ import com.backyardigans.doggiecare.Model.Chat
 
 class ChatViewModel:ViewModel() {
 
+
+
+
     val chatModel = MutableLiveData<Chat>(Chat("Default","Default",0))
 
 
@@ -16,6 +19,8 @@ class ChatViewModel:ViewModel() {
         chatModel.postValue(currentData)
 
     }
+
+
 
 
 }

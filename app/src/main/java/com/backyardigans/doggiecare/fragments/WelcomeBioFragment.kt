@@ -44,7 +44,6 @@ class WelcomeBioFragment :  StepsBaseFragment() {
                 hashMapOf("userBio" to binding.welcomebio.text.toString()), SetOptions.merge()
             )
 
-            profileViewModel.actualizar(Profile(null, binding.welcomebio.text.toString()))
             findNavController().navigate(goToFeed)
         }
     }
