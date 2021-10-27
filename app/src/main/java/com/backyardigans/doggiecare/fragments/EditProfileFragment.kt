@@ -21,20 +21,23 @@ class EditProfileFragment : BottomSheetDialogFragment() {
 
     private var _binding: FragmentEditProfileBinding?=null
     private val binding get() = _binding!!
-    private val profileViewModel:ProfileViewModel by activityViewModels()
+
 
     override fun  onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                                savedInstanceState: Bundle?): View {
 
         _binding = FragmentEditProfileBinding.inflate(inflater, container, false)
         binding.buttonSave.setOnClickListener{
-            db.collection("users").document(UserApplication.prefs.getEmail()).set(
-                hashMapOf("userBio" to binding.inputBio.text.toString(), "userNick" to binding.inputNombre.text.toString() ), SetOptions.merge()
-            )
+            if (binding.inputBio.text.isEmpty() or binding.inputNombre.text.isEmpty()){
+                Toast.makeText(context, "Debes llenar los espacios en blanco", Toast.LENGTH_SHORT).show()
 
-            profileViewModel.actualizar(Profile(binding.inputNombre.text.toString(), binding.inputBio.text.toString()))
-            findNavController().navigate(R.id.action_editProfileFragment_to_profileFragment)
+            }else{
+                db.collection("users").document(prefs.getEmail()).set(
+                    hashMapOf("userBio" to binding.inputBio.text.toString(), "userNick" to binding.inputNombre.text.toString() ), SetOptions.merge()
+                )
 
+                findNavController().navigate(R.id.action_editProfileFragment_to_profileFragment)
+            }
         }
 
 

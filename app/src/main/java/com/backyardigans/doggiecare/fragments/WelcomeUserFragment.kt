@@ -41,8 +41,6 @@ class WelcomeUserFragment :  StepsBaseFragment() {
            db.collection("users").document(prefs.getEmail()).set(
                hashMapOf("userNick" to binding.welcomeusuario.text.toString()), SetOptions.merge()
            )
-            profileViewModel.actualizar(Profile(binding.welcomeusuario.text.toString(),null ))
-
 
             findNavController().navigate(goToBio)
         }

@@ -13,8 +13,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.backyardigans.doggiecare.Model.Feed
-import com.backyardigans.doggiecare.Model.Profile
-import com.backyardigans.doggiecare.Preferences.UserApplication
 import com.backyardigans.doggiecare.Preferences.UserApplication.Companion.prefs
 import com.backyardigans.doggiecare.adapters.FeedAdapter
 import com.backyardigans.doggiecare.databinding.ActivityProfileFragmentBinding
@@ -39,8 +37,6 @@ class ProfileFragment :  Fragment() {
     ): View {
 
         _binding = ActivityProfileFragmentBinding.inflate(inflater, container, false)
-
-        atualizarSinPrefs()
         return binding.root
     }
 
@@ -72,37 +68,17 @@ class ProfileFragment :  Fragment() {
         }
         binding.nombreUsuario.text = prefs.getEmail()
 
-        profileViewModel.profileModel.observe(viewLifecycleOwner, Observer {
-            binding.bioUsuario.text = it.bio
-            binding.idUsuario.text = it.nickName
+        profileViewModel.userProfile.observe(viewLifecycleOwner, Observer {
+            binding.bioUsuario.text = it.userBio
+            binding.idUsuario.text = it.userNick
 
         })
 
+        profileViewModel.updateProfile()
+
     }
 
 
-    private fun atualizarSinPrefs() {
-        if (prefs.getEmail().isNotEmpty()) {//todo Agregar if is not online
 
-            db.collection("users").document(UserApplication.prefs.getEmail()).get()
-                .addOnSuccessListener {
-                    if (it.exists()) {
-                        val defaultBio = it.data?.get("userBio") as String
-                        profileViewModel.actualizar(Profile(null, defaultBio))
-
-
-                    }
-                }
-            db.collection("users").document(UserApplication.prefs.getEmail()).get()
-                .addOnSuccessListener {
-                    if (it.exists()) {
-                        val defaultNick = it.data?.get("userNick") as String
-                        profileViewModel.actualizar(Profile(defaultNick, null))
-
-
-                    }
-                }
-        }
-    }
 
 }
