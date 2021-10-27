@@ -17,6 +17,12 @@ class FeedRepository (val network : FeedNetworkController , val persistency : Fe
         }
     }
 
+    fun getAllPostProfile() : Flow<List<Feed>> {
+        return flow {
+            emit(network.getAllPostsProfile())
+        }
+    }
+
 
 
 }

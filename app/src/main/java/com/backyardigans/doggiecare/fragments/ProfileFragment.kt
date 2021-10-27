@@ -1,16 +1,9 @@
 package com.backyardigans.doggiecare.fragments
 
-import android.content.Context
-import android.net.ConnectivityManager
-import android.net.NetworkCapabilities
-import android.net.NetworkInfo
-import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import com.backyardigans.doggiecare.R
 import androidx.fragment.app.activityViewModels
@@ -24,7 +17,6 @@ import com.backyardigans.doggiecare.Model.Profile
 import com.backyardigans.doggiecare.Preferences.UserApplication
 import com.backyardigans.doggiecare.Preferences.UserApplication.Companion.prefs
 import com.backyardigans.doggiecare.adapters.FeedAdapter
-import com.backyardigans.doggiecare.data.TemptDataSource
 import com.backyardigans.doggiecare.databinding.ActivityProfileFragmentBinding
 import com.backyardigans.doggiecare.viewModel.FeedViewModel
 import com.backyardigans.doggiecare.viewModel.ProfileViewModel
@@ -41,7 +33,6 @@ class ProfileFragment :  Fragment() {
     private val db = FirebaseFirestore.getInstance()
 
 
-    @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -72,8 +63,7 @@ class ProfileFragment :  Fragment() {
 
         feedModel.feedListProfile.observe(viewLifecycleOwner , {
             feedAdapter.addAll(it as MutableList<Feed>)
-        }
-        )
+        })
         feedModel.updatePostProfile()
 
         feedAdapter.setOnFeedItemClickListener {

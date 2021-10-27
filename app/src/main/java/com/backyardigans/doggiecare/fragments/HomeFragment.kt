@@ -13,11 +13,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.backyardigans.doggiecare.Model.Feed
 import com.backyardigans.doggiecare.adapters.FeedAdapter
 import com.backyardigans.doggiecare.R
-import com.backyardigans.doggiecare.data.TemptDataSource
 import com.backyardigans.doggiecare.databinding.ActivityHomeFragmentBinding
-import com.backyardigans.doggiecare.databinding.FragmentEditProfileBinding
 import com.backyardigans.doggiecare.viewModel.FeedViewModel
-
 
 class HomeFragment : Fragment() {
 
@@ -40,14 +37,11 @@ class HomeFragment : Fragment() {
 
         LinearSnapHelper().attachToRecyclerView(recyclerView)
 
-
         feedModel.feedList.observe(viewLifecycleOwner , {
             feedAdapter.addAll(it as MutableList<Feed>)
         }
         )
         feedModel.updatePost()
-
-
 
         feedAdapter.setOnFeedItemClickListener {
             val directions = HomeFragmentDirections.actionHomeFragmentToDetailsFragment()

@@ -6,9 +6,6 @@ import com.backyardigans.doggiecare.Model.Feed
 import com.backyardigans.doggiecare.data.feed.FeedRepository
 import com.backyardigans.doggiecare.data.feed.network.FeedNetworkControllerImp
 import com.backyardigans.doggiecare.data.feed.persistency.FeedPersistencyControllerImp
-import com.backyardigans.doggiecare.data.feedProfile.FeedRepositoryProfile
-import com.backyardigans.doggiecare.data.feedProfile.network.FeedNetworkControllerProfileImp
-import com.backyardigans.doggiecare.data.feedProfile.persistency.FeedPersistencyControllerProfileImp
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.launchIn
@@ -18,7 +15,6 @@ class FeedViewModel : ViewModel() {
 
 
     val feedRepository = FeedRepository(FeedNetworkControllerImp(), FeedPersistencyControllerImp())
-    val feedRepositoryProfile = FeedRepositoryProfile(FeedNetworkControllerProfileImp(), FeedPersistencyControllerProfileImp())
 
 
     val feedList = MutableLiveData<List<Feed>>()
@@ -32,8 +28,8 @@ class FeedViewModel : ViewModel() {
     }
 
     fun updatePostProfile ( ){
-        feedRepositoryProfile.getAllPost().onEach {
-            feedList.postValue(it)
+        feedRepository.getAllPostProfile().onEach {
+            feedListProfile.postValue(it)
         }.launchIn(CoroutineScope(Dispatchers.IO))
     }
 }

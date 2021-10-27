@@ -4,4 +4,6 @@ import com.backyardigans.doggiecare.Model.Feed
 
 interface FeedNetworkController {
     suspend fun getAllPosts(): List<Feed>
+    suspend fun getAllPostsProfile(): List<Feed>
+
 }
