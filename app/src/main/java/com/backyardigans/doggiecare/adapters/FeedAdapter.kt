@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.backyardigans.doggiecare.Model.Feed
 import com.backyardigans.doggiecare.R
 import com.backyardigans.doggiecare.databinding.ActivityCardsBinding
+import com.bumptech.glide.Glide
 
 class FeedAdapter(): RecyclerView.Adapter<FeedAdapter.ViewHolder>() {
 
@@ -30,13 +31,14 @@ class FeedAdapter(): RecyclerView.Adapter<FeedAdapter.ViewHolder>() {
         return ViewHolder(layoutInflater.inflate(R.layout.activity_cards, parent, false))
     }
 
-    class ViewHolder(view: View): RecyclerView.ViewHolder(view){
+    class ViewHolder( val view: View): RecyclerView.ViewHolder(view){
         val binding = ActivityCardsBinding.bind(view)
 
 
 
         fun bind(feed: Feed) {
-            binding.imgFeed.setImageResource(R.drawable.ic_img_dog)//todo to url
+            Glide.with(view.context).load(feed.urlImage).into(binding.imgFeed)
+            // binding.imgFeed.setImageResource(R.drawable.ic_img_dog)
             binding.tvFeedUserName.text=feed.userNick
             binding.tvAnimalAge.text=feed.AnimalAge
             binding.tvAnimalName.text=feed.AnimalName
