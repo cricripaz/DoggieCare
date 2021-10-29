@@ -8,6 +8,11 @@ import com.backyardigans.doggiecare.Model.Feed
 import com.backyardigans.doggiecare.R
 import com.backyardigans.doggiecare.databinding.ActivityCardsBinding
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
+import com.bumptech.glide.load.resource.bitmap.CenterInside
+import com.bumptech.glide.load.resource.bitmap.GranularRoundedCorners
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.bumptech.glide.request.RequestOptions
 
 class FeedAdapter(): RecyclerView.Adapter<FeedAdapter.ViewHolder>() {
 
@@ -37,8 +42,10 @@ class FeedAdapter(): RecyclerView.Adapter<FeedAdapter.ViewHolder>() {
 
 
         fun bind(feed: Feed) {
-            Glide.with(view.context).load(feed.urlImage).into(binding.imgFeed)
-            // binding.imgFeed.setImageResource(R.drawable.ic_img_dog)
+            Glide.with(view.context).load(feed.urlImage)
+               .transform( CenterCrop(), GranularRoundedCorners(40F, 40F, 0F,0F))
+                .placeholder(R.drawable.ic_icon_perrito) //si se puede ponerle tinta al svg
+                .into(binding.imgFeed)
             binding.tvFeedUserName.text=feed.userNick
             binding.tvAnimalAge.text=feed.AnimalAge
             binding.tvAnimalName.text=feed.AnimalName
