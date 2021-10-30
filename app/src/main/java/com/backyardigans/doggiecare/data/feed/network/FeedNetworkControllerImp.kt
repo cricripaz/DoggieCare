@@ -21,6 +21,7 @@ class FeedNetworkControllerImp : FeedNetworkController {
     override suspend fun getAllPostsProfile(): List<Feed> {
         val tempt = db.collection("publicaciones")
             .whereEqualTo("userMail", prefs.getEmail())
+            .orderBy("created", Query.Direction.DESCENDING)
 
 
         val response =tempt.get().await()
