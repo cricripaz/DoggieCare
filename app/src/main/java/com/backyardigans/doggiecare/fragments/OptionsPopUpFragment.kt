@@ -20,12 +20,27 @@ class OptionsPopUpFragment : BottomSheetDialogFragment() {
 
         _binding = FragmentPopupOptionsBinding.inflate(inflater, container, false)
 
-        binding.popupoptionsEliminar.setOnClickListener {
-            Toast.makeText(activity, "Publicación eliminada", Toast.LENGTH_SHORT).show()
+        if (arguments?.getString("previous").equals("post")) {
+            binding.popupoptions1.text=requireContext().getString(R.string.editar_publicacion)
+            binding.popupoptions2.text= requireContext().getString(R.string.eliminar_publicacion)
+
+            binding.popupoptions1.setOnClickListener {
+                findNavController().navigate(R.id.action_optionsPopUpFragment_to_addFragment)
+                //todo editar publicación
+            }
+
+            binding.popupoptions2.setOnClickListener {
+                Toast.makeText(activity, "Publicación eliminada", Toast.LENGTH_SHORT).show()
+                //todo eliminar publicación
+            }
+
+
+        } else if (arguments?.getString("previous").equals("add")) {
+            binding.popupoptions1.text=requireContext().getString(R.string.camara)
+            binding.popupoptions2.text= requireContext().getString(R.string.galeria)
+
         }
-        binding.popupoptionsEditar.setOnClickListener {
-            findNavController().navigate(R.id.action_optionsPopUpFragment_to_addFragment)
-        }
+
 
 
         return binding.root

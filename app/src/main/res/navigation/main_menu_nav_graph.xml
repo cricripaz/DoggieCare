@@ -27,6 +27,9 @@
         <action
             android:id="@+id/action_addFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_addFragment_to_optionsPopUpFragment"
+            app:destination="@id/optionsPopUpFragment" />
     </fragment>
     <fragment
         android:id="@+id/chatFragment"

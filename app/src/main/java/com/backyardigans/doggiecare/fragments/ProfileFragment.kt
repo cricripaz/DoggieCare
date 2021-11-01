@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import com.backyardigans.doggiecare.R
 import androidx.fragment.app.activityViewModels
@@ -63,8 +64,9 @@ class ProfileFragment : Fragment() {
         feedModel.updatePostProfile()
 
         feedAdapter.setOnFeedItemClickListener {
-            val directions = ProfileFragmentDirections.actionProfileFragmentToOptionsPopUpFragment()
-            findNavController().navigate(directions)
+            val bundle = bundleOf("previous" to "post")
+            findNavController().navigate(R.id.action_profileFragment_to_optionsPopUpFragment, bundle)
+
         }
         binding.nombreUsuario.text = prefs.getEmail()
 

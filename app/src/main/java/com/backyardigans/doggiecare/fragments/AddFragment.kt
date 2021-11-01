@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.backyardigans.doggiecare.Preferences.UserApplication.Companion.prefs
@@ -42,7 +43,14 @@ class AddFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.btnEnviar.setOnClickListener { isTextEmpty() }
-        binding.imagenupload.setOnClickListener { takePhoto() }
+       // binding.imagenupload.setOnClickListener { takePhoto() }
+        binding.imagenupload.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(v: View?) {
+                val bundle = bundleOf("previous" to "add")
+                findNavController().navigate(R.id.action_addFragment_to_optionsPopUpFragment, bundle)
+            }
+        })
+
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
