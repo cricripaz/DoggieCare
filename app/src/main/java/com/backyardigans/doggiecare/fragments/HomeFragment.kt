@@ -44,7 +44,16 @@ class HomeFragment : Fragment() {
         feedModel.updatePost()
 
         feedAdapter.setOnFeedItemClickListener {
-            val directions = HomeFragmentDirections.actionHomeFragmentToDetailsFragment()
+
+            val userNick = it.userNick
+            val animalName:String=it.AnimalName
+            val animalAge:String=it.AnimalAge
+            val animalBreed:String=it.AnimalBreed
+            val description:String=it.description
+            val urlImage = it.img//todo agregar img
+
+            val directions = HomeFragmentDirections.actionHomeFragmentToDetailsFragment(
+                userNick, animalName, animalAge,animalBreed,description)
             findNavController().navigate(directions)
         }
     }

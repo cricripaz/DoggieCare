@@ -86,6 +86,22 @@
         <action
             android:id="@+id/action_detailsFragment_to_contactPopUpFragment"
             app:destination="@id/contactPopUpFragment" />
+        <argument
+            android:name="userNick"
+            app:argType="string"
+            android:defaultValue="Default" />
+        <argument
+            android:name="animalName"
+            app:argType="string"
+            android:defaultValue="Default" />
+        <argument android:name="animalAge"
+            app:argType="string" />
+        <argument
+            android:name="animalBreed"
+            app:argType="string" />
+        <argument
+            android:name="description"
+            app:argType="string" />
     </fragment>
     <dialog
         android:id="@+id/contactPopUpFragment"
