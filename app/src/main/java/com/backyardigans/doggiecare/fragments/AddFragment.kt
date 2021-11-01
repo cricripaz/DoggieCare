@@ -17,7 +17,9 @@ import com.backyardigans.doggiecare.Preferences.UserApplication.Companion.prefs
 import com.backyardigans.doggiecare.R
 import com.backyardigans.doggiecare.databinding.ActivityAddFragmentBinding
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.bumptech.glide.request.RequestOptions
 
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -48,8 +50,11 @@ class AddFragment : Fragment() {
         when (requestCode) {
             REQUEST_CODE -> {
                 if (resultCode == Activity.RESULT_OK && data != null) {
+                    binding.imagenupload.setColorFilter(android.R.color.transparent)
                     binding.imagenupload.scaleType= ImageView.ScaleType.CENTER_CROP
-                    Glide.with(requireContext()).load(data.extras!!.get("data")).transform(RoundedCorners(40)).into(binding.imagenupload)
+                    Glide.with(requireContext()).load(data.extras!!.get("data"))
+                        .transform(CenterCrop(),RoundedCorners(60))
+                        .into(binding.imagenupload)
                 }
             }
             else -> {
