@@ -1,10 +1,15 @@
 package com.backyardigans.doggiecare.fragments
 
 import android.annotation.SuppressLint
+import android.app.Activity
+import android.content.Intent
+import android.graphics.Bitmap
 import android.os.Bundle
+import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
@@ -22,6 +27,7 @@ class AddFragment : Fragment() {
     private var _binding:ActivityAddFragmentBinding?=null
     private val binding get() = _binding!!
     private val db = Firebase.firestore
+    private val REQUEST_CODE = 200
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -34,7 +40,24 @@ class AddFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.btnEnviar.setOnClickListener { isTextEmpty() }
+        binding.imagenupload.setOnClickListener { takePhoto() }
             }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        when (requestCode) {
+            REQUEST_CODE -> {
+                if (resultCode == Activity.RESULT_OK && data != null) {
+                    binding.imagenupload.scaleType= ImageView.ScaleType.CENTER_CROP
+                    Glide.with(requireContext()).load(data.extras!!.get("data")).transform(RoundedCorners(40)).into(binding.imagenupload)
+                }
+            }
+            else -> {
+                Toast.makeText(context, "Woops! algo ha salido mal", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
 
     private fun isTextEmpty() {
 
@@ -60,7 +83,12 @@ class AddFragment : Fragment() {
             findNavController().navigate(R.id.action_addFragment_to_homeFragment)
 
 
-
         }
+    }
+
+
+    private fun takePhoto() {
+        val cameraIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+        startActivityForResult(cameraIntent, REQUEST_CODE)
     }
 }
