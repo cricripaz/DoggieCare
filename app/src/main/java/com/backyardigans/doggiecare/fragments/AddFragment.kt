@@ -50,6 +50,7 @@ class AddFragment : Fragment() {
         when (requestCode) {
             REQUEST_CODE -> {
                 if (resultCode == Activity.RESULT_OK && data != null) {
+                    binding.imagenupload.setPadding(0,0,0,0)
                     binding.imagenupload.setColorFilter(android.R.color.transparent)
                     binding.imagenupload.scaleType= ImageView.ScaleType.CENTER_CROP
                     Glide.with(requireContext()).load(data.extras!!.get("data"))

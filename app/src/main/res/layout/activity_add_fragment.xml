@@ -10,10 +10,10 @@
     <ImageView
         android:id="@+id/imagenupload"
         android:layout_width="match_parent"
-        android:layout_height="230dp"
+        android:layout_height="240dp"
         android:padding="50dp"
         android:layout_marginHorizontal="25dp"
-        android:layout_marginVertical="40dp"
+        android:layout_marginVertical="20dp"
         android:adjustViewBounds="true"
         android:background="@drawable/round_shaped_input"
         android:src="@drawable/ic_upload"
