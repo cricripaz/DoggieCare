@@ -11,10 +11,12 @@ import com.backyardigans.doggiecare.databinding.FragmentPopupOptionsBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 class OptionsPopUpFragment : BottomSheetDialogFragment() {
-    private var _binding: FragmentPopupOptionsBinding?=null
+    private var _binding: FragmentPopupOptionsBinding? = null
     private val binding get() = _binding!!
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
 
         _binding = FragmentPopupOptionsBinding.inflate(inflater, container, false)
 

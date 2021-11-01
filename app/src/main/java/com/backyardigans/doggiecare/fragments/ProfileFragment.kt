@@ -20,12 +20,12 @@ import com.backyardigans.doggiecare.viewModel.FeedViewModel
 import com.backyardigans.doggiecare.viewModel.ProfileViewModel
 import com.google.firebase.firestore.FirebaseFirestore
 
-class ProfileFragment :  Fragment() {
+class ProfileFragment : Fragment() {
     private var _binding: ActivityProfileFragmentBinding? = null
     private val binding get() = _binding!!
     private val profileViewModel: ProfileViewModel by activityViewModels()
     private val feedAdapter = FeedAdapter()
-    private val feedModel:FeedViewModel by activityViewModels()
+    private val feedModel: FeedViewModel by activityViewModels()
 
 
     private val db = FirebaseFirestore.getInstance()
@@ -57,7 +57,7 @@ class ProfileFragment :  Fragment() {
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         LinearSnapHelper().attachToRecyclerView(recyclerView)
 
-        feedModel.feedListProfile.observe(viewLifecycleOwner , {
+        feedModel.feedListProfile.observe(viewLifecycleOwner, {
             feedAdapter.addAll(it as MutableList<Feed>)
         })
         feedModel.updatePostProfile()
@@ -79,8 +79,6 @@ class ProfileFragment :  Fragment() {
         profileViewModel.updateProfile()
 
     }
-
-
 
 
 }

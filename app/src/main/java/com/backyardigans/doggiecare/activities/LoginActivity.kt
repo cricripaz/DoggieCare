@@ -1,6 +1,5 @@
 package com.backyardigans.doggiecare.activities
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -15,15 +14,12 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
-import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.ktx.Firebase
-
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
     private val RC_SIGN_IN = 100
-    private lateinit var googleSignInClient:GoogleSignInClient
+    private lateinit var googleSignInClient: GoogleSignInClient
     private val db = FirebaseFirestore.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,31 +27,23 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
-        if (prefs.getEmail().isNotEmpty()){
+        if (prefs.getEmail().isNotEmpty()) {
             goFeed()
         }
-
-
 
         binding.googleButton.setOnClickListener {
-
             signIn()
         }
-        binding.loginButton.setOnClickListener {
-            goFeed()
-        }
-
-
-
 
     }
-    private fun goFeed(){
+
+    private fun goFeed() {
         val intent = Intent(this, FeedActivity::class.java)
         startActivity(intent)
 
     }
-    private fun error(text:String){
+
+    private fun error(text: String) {
         Toast.makeText(this, text, Toast.LENGTH_SHORT).show()
     }
 
@@ -80,40 +68,38 @@ class LoginActivity : AppCompatActivity() {
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
             try {
                 // Google Sign In was successful, authenticate with Firebase
-                 val account = task.getResult(ApiException::class.java)!!
-                if (account != null){
+                val account = task.getResult(ApiException::class.java)!!
+                if (account != null) {
                     val credential = GoogleAuthProvider.getCredential(account.idToken, null)
-                    FirebaseAuth.getInstance().signInWithCredential(credential).addOnCompleteListener {
-                        if (it.isSuccessful) {
+                    FirebaseAuth.getInstance().signInWithCredential(credential)
+                        .addOnCompleteListener {
+                            if (it.isSuccessful) {
 
 
-                            prefs.saveEmail(it.result.user?.email.toString())
-                            var user = db.collection("users").document(prefs.getEmail())
+                                prefs.saveEmail(it.result.user?.email.toString())
+                                var user = db.collection("users").document(prefs.getEmail())
 
-                            user.get().addOnCompleteListener {
-                                if (it.isSuccessful){
+                                user.get().addOnCompleteListener {
+                                    if (it.isSuccessful) {
 
-                                    val document = it.getResult()
-                                    if (document.exists()){
-                                        goFeed()
-                                    }else{
-                                        binding.container.isVisible = true
+                                        val document = it.getResult()
+                                        if (document.exists()) {
+                                            goFeed()
+                                        } else {
+                                            binding.container.isVisible = true
+                                        }
+                                    } else {
+                                        error("Error al hacer Sign In")
                                     }
-                                }else{
-                                    error("Error al hacer Sign In")
                                 }
+
+
+                            } else {
+                                error("Error al hacer Sign In")
                             }
-
-
-
-
-                        }else{
-                            error("Error al hacer Sign In")
                         }
-                    }
                 }
             } catch (e: ApiException) {
-                // Google Sign In failed, update UI appropriately
                 error("No se pudo conectar")
             }
         }

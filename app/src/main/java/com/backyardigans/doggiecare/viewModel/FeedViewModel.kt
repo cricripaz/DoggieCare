@@ -12,14 +12,9 @@ import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 
 class FeedViewModel : ViewModel() {
-
-
     val feedRepository = FeedRepository(FeedNetworkControllerImp(), FeedPersistencyControllerImp())
-
-
     val feedList = MutableLiveData<List<Feed>>()
     val feedListProfile = MutableLiveData<List<Feed>>()
-
 
     fun updatePost ( ){
         feedRepository.getAllPost().onEach {

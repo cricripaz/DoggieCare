@@ -14,10 +14,12 @@ import com.backyardigans.doggiecare.databinding.FragmentPopupConfigurationsBindi
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 class ConfigPopUpFragment : BottomSheetDialogFragment() {
-    private var _binding: FragmentPopupConfigurationsBinding?=null
+    private var _binding: FragmentPopupConfigurationsBinding? = null
     private val binding get() = _binding!!
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
 
         _binding = FragmentPopupConfigurationsBinding.inflate(inflater, container, false)
 
@@ -25,7 +27,7 @@ class ConfigPopUpFragment : BottomSheetDialogFragment() {
             findNavController().navigate(R.id.action_configPopUpFragment2_to_editProfileFragment)
         }
 
-        binding.popupSolicitarVerificacion.setOnClickListener{
+        binding.popupSolicitarVerificacion.setOnClickListener {
             Toast.makeText(activity, "Solicitando verificacion", Toast.LENGTH_SHORT).show()
 
         }
@@ -38,8 +40,8 @@ class ConfigPopUpFragment : BottomSheetDialogFragment() {
             prefs.erase()
 
             Toast.makeText(activity, "Saliendo de la cuenta", Toast.LENGTH_SHORT).show()
-            activity?.let{
-                val intent = Intent (it, LoginActivity::class.java)
+            activity?.let {
+                val intent = Intent(it, LoginActivity::class.java)
                 it.startActivity(intent)
             }
         }

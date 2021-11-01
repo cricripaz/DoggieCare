@@ -3,14 +3,10 @@ package com.backyardigans.doggiecare.fragments
 import android.os.Bundle
 import android.view.*
 import android.widget.Toast
-import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
-import com.backyardigans.doggiecare.Model.Profile
-import com.backyardigans.doggiecare.Preferences.UserApplication
 import com.backyardigans.doggiecare.Preferences.UserApplication.Companion.prefs
 import com.backyardigans.doggiecare.R
 import com.backyardigans.doggiecare.databinding.FragmentEditProfileBinding
-import com.backyardigans.doggiecare.viewModel.ProfileViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions

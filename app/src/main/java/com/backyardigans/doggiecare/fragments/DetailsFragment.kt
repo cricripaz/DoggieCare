@@ -12,14 +12,16 @@ import com.backyardigans.doggiecare.R
 import com.backyardigans.doggiecare.databinding.FragmentDetailsBinding
 
 class DetailsFragment : Fragment() {
-    private var _binding: FragmentDetailsBinding?=null
+    private var _binding: FragmentDetailsBinding? = null
     private val binding get() = _binding!!
 
     @SuppressLint("SetTextI18n")
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         _binding = FragmentDetailsBinding.inflate(inflater, container, false)
-        binding.detalleBotonMore.setOnClickListener{
+        binding.detalleBotonMore.setOnClickListener {
             findNavController().navigate(R.id.action_detailsFragment_to_contactPopUpFragment)
         }
 

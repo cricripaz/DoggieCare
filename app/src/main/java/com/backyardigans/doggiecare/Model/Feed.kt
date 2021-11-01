@@ -1,7 +1,4 @@
 package com.backyardigans.doggiecare.Model
-
-
-
 class Feed(){
 
     var  urlImage:String = ""
