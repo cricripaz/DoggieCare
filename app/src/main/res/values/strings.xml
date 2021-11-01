@@ -25,6 +25,8 @@
     <string name="eliminar_publicacion">ELIMINAR PUBLICACIÓN</string>
     <string name="camara">ABRIR CÁMARA</string>
     <string name="galeria">ABRIR GALERÍA</string>
+    <string name="proseguir">DESEO PROSEGUIR</string>
+    <string name="abortar">CANCELAR</string>
     <string name="buscar_publicacion">Buscar Publicacion</string>
 
 

@@ -3,6 +3,7 @@ package com.backyardigans.doggiecare.fragments
 import android.os.Bundle
 import android.view.*
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.navigation.fragment.findNavController
 import com.backyardigans.doggiecare.Preferences.UserApplication.Companion.prefs
 import com.backyardigans.doggiecare.R
@@ -59,12 +60,11 @@ class EditProfileFragment : BottomSheetDialogFragment() {
             )
         }**/
 
+        binding.editImageButton.setOnClickListener {
+            val bundle = bundleOf("previous" to "editProfile")
+            findNavController().navigate(R.id.action_editProfileFragment_to_optionsPopUpFragment, bundle)
+        }
 
-        binding.editImageButton.setOnClickListener(object : View.OnClickListener {
-            override fun onClick(v: View?) {
-                Toast.makeText(context, "Woops! todavía no puedes cambiar tu foto de perfil", Toast.LENGTH_SHORT).show()
-            }
-        })
 
         return binding.root
     }

@@ -44,12 +44,14 @@ class AddFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.btnEnviar.setOnClickListener { isTextEmpty() }
        // binding.imagenupload.setOnClickListener { takePhoto() }
-        binding.imagenupload.setOnClickListener(object : View.OnClickListener {
-            override fun onClick(v: View?) {
-                val bundle = bundleOf("previous" to "add")
-                findNavController().navigate(R.id.action_addFragment_to_optionsPopUpFragment, bundle)
-            }
-        })
+        binding.imagenupload.setOnClickListener {
+            val bundle = bundleOf("previous" to "add")
+            findNavController().navigate(
+                R.id.action_addFragment_to_optionsPopUpFragment,
+                bundle
+            )
+
+        }
 
     }
 

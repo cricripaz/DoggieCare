@@ -66,7 +66,6 @@ class ProfileFragment : Fragment() {
         feedAdapter.setOnFeedItemClickListener {
             val bundle = bundleOf("previous" to "post")
             findNavController().navigate(R.id.action_profileFragment_to_optionsPopUpFragment, bundle)
-
         }
         binding.nombreUsuario.text = prefs.getEmail()
 

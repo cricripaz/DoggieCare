@@ -35,11 +35,16 @@ class OptionsPopUpFragment : BottomSheetDialogFragment() {
             }
 
 
-        } else if (arguments?.getString("previous").equals("add")) {
+        } else if (arguments?.getString("previous").equals("add") or arguments?.getString("previous").equals("editProfile") ) {
             binding.popupoptions1.text=requireContext().getString(R.string.camara)
             binding.popupoptions2.text= requireContext().getString(R.string.galeria)
-
+                //todo if camara y galeria
+        } else if (arguments?.getString("previous").equals("block") or arguments?.getString("previous").equals("report") or arguments?.getString("previous").equals("verification")) {
+            binding.popupoptions1.text=requireContext().getString(R.string.proseguir)
+            binding.popupoptions2.text= requireContext().getString(R.string.abortar)
+                //todo bloquear verificar y reportar
         }
+
 
 
 
