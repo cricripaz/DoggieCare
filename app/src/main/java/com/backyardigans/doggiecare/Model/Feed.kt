@@ -4,7 +4,7 @@ import androidx.annotation.DrawableRes
 
 class Feed(){
 
-    @DrawableRes  var  img:Int = 0
+    var  img:Int = 0
     var userNick:String = ""
     var AnimalName:String=""
     var AnimalAge:String=""
