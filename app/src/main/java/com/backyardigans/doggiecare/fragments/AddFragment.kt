@@ -20,7 +20,9 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
-
+import com.google.firebase.firestore.FieldValue
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.SetOptions
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
@@ -79,12 +81,14 @@ class AddFragment : Fragment() {
                 "animalBreed" to binding.etRaza.text.toString(),
                 "description" to binding.etDescripcion.text.toString(),
                 "userNick" to prefs.getUser(),
-                "userMail" to prefs.getEmail()
+                "userMail" to prefs.getEmail(),
+                "created" to  FieldValue.serverTimestamp()//firebase.database.ServerValue.TIMESTAMP
             )
 
             db.collection("publicaciones").document(
                 prefs.getEmail()+Math.random().toString().substring(2, 4)).set(data)
             Toast.makeText(activity, "Agregado", Toast.LENGTH_SHORT).show()
+
 
             findNavController().navigate(R.id.action_addFragment_to_homeFragment)
 

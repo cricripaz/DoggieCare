@@ -4,7 +4,7 @@ package com.backyardigans.doggiecare.Model
 
 class Feed(){
 
-      var  urlImage:String = ""
+    var  urlImage:String = ""
     var userNick:String = ""
     var AnimalName:String=""
     var AnimalAge:String=""

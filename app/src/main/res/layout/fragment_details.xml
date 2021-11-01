@@ -77,7 +77,7 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/detalleDueñoMascota"
+                        android:id="@+id/detalleDuenioMascota"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="nombre dueño"
@@ -97,7 +97,7 @@
                         android:textSize="16dp"
 
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/detalleDueñoMascota">
+                        app:layout_constraintTop_toBottomOf="@id/detalleDuenioMascota">
 
                     </TextView>
                 </LinearLayout>

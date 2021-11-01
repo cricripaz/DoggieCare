@@ -8,6 +8,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.backyardigans.doggiecare.Model.Profile
 import com.backyardigans.doggiecare.Preferences.UserApplication
+import com.backyardigans.doggiecare.Preferences.UserApplication.Companion.prefs
 import com.backyardigans.doggiecare.R
 import com.backyardigans.doggiecare.base.StepsBaseFragment
 import com.backyardigans.doggiecare.databinding.ActivityProfileFragmentBinding
@@ -43,7 +44,7 @@ class WelcomeBioFragment :  StepsBaseFragment() {
             db.collection("users").document(UserApplication.prefs.getEmail()).set(
                 hashMapOf("userBio" to binding.welcomebio.text.toString()), SetOptions.merge()
             )
-
+            prefs.saveBio(binding.welcomebio.text.toString())
             findNavController().navigate(goToFeed)
         }
     }

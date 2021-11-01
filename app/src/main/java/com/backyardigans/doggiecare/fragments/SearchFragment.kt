@@ -39,8 +39,8 @@ class SearchFragment : Fragment() {
 
 
         feedAdapter.setOnFeedItemClickListener {
-            val directions = HomeFragmentDirections.actionHomeFragmentToDetailsFragment()
-            findNavController().navigate(directions)
+//            val directions = HomeFragmentDirections.actionHomeFragmentToDetailsFragment("","","")
+//            findNavController().navigate(directions)
         }
     }
 
