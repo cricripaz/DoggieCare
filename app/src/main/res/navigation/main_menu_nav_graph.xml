@@ -135,6 +135,9 @@
         <action
             android:id="@+id/action_optionsPopUpFragment_to_addFragment"
             app:destination="@id/addFragment" />
+        <action
+            android:id="@+id/action_optionsPopUpFragment_to_editProfileFragment"
+            app:destination="@id/editProfileFragment" />
     </dialog>
 
 
