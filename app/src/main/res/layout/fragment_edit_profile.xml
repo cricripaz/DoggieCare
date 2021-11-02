@@ -12,14 +12,15 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:paddingHorizontal="30dp"
-        android:paddingVertical="40dp"
+        android:paddingBottom="40dp"
+        android:paddingTop="20dp"
         android:background="@color/primary">
 
         <ImageButton
             android:id="@+id/edit_imageButton"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:scaleType="fitXY"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:scaleType="centerCrop"
             android:layout_gravity="center"
             android:background="@android:color/transparent"
             android:src="@drawable/ic_edit"
@@ -69,7 +70,7 @@
             android:layout_marginVertical="15dp"
             android:paddingHorizontal="20dp"
             android:paddingBottom="15dp"
-            android:textSize="18dp" android:layout_height="200dp">
+            android:textSize="18dp" android:layout_height="170dp">
         </EditText>
 
         <Button
