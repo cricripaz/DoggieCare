@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.navigation.fragment.findNavController
 import com.backyardigans.doggiecare.Preferences.UserApplication.Companion.prefs
 import com.backyardigans.doggiecare.R
@@ -28,7 +29,11 @@ class ConfigPopUpFragment : BottomSheetDialogFragment() {
         }
 
         binding.popupSolicitarVerificacion.setOnClickListener {
-            Toast.makeText(activity, "Solicitando verificacion", Toast.LENGTH_SHORT).show()
+            val bundle = bundleOf("previous" to "verification")
+            findNavController().navigate(
+                R.id.action_configPopUpFragment2_to_optionsPopUpFragment,
+                bundle
+            )
 
         }
 

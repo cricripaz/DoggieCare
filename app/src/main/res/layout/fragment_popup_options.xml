@@ -11,7 +11,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/primary"
+        android:background="@color/darkblue"
         android:padding="20dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -20,33 +20,31 @@
         >
 
         <Button
-            android:id="@+id/popupoptionsEditar"
+            android:id="@+id/popupoptions1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:paddingVertical="10dp"
             android:stateListAnimator="@null"
-            android:text="@string/editar_publicacion"
             android:textColor="@color/white"
             android:textSize="18dp"
-            app:layout_constraintBottom_toTopOf="@id/popupoptionsEliminar"
+            app:layout_constraintBottom_toTopOf="@id/popupoptions2"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="parent"/>
 
         <Button
-            android:id="@+id/popupoptionsEliminar"
+            android:id="@+id/popupoptions2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:paddingVertical="10dp"
             android:stateListAnimator="@null"
-            android:text="@string/eliminar_publicacion"
             android:textColor="@color/white"
             android:textSize="18dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/popupoptionsEditar"/>
+            app:layout_constraintTop_toBottomOf="@id/popupoptions1"/>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

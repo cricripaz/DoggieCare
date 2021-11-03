@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.navigation.fragment.findNavController
 import com.backyardigans.doggiecare.R
 import com.backyardigans.doggiecare.databinding.FragmentPopupContactMenuBinding
@@ -28,16 +28,22 @@ class ContactPopUpFragment : BottomSheetDialogFragment() {
             findNavController().navigate(R.id.action_contactPopUpFragment_to_chatFragment)
         }
 
-        binding.popupDenunciar.setOnClickListener {    //implementar?
-            Toast.makeText(activity, "Denuncia enviada", Toast.LENGTH_LONG).show()
+        binding.popupDenunciar.setOnClickListener {
+            val bundle = bundleOf("previous" to "report")
+            findNavController().navigate(
+                R.id.action_contactPopUpFragment_to_optionsPopUpFragment,
+                bundle
+            )
+
         }
-        binding.popupBloquear.setOnClickListener {    //usar dialogo?
-            Toast.makeText(
-                activity,
-                "¿Seguro que desea bloquear a este usuario?",
-                Toast.LENGTH_LONG
-            ).show()
+        binding.popupBloquear.setOnClickListener {
+            val bundle = bundleOf("previous" to "block")
+            findNavController().navigate(
+                R.id.action_contactPopUpFragment_to_optionsPopUpFragment,
+                bundle
+            )
         }
+
 
 
         return binding.root

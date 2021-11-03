@@ -10,7 +10,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.setFragmentResultListener
 import androidx.navigation.fragment.findNavController
 import com.backyardigans.doggiecare.Preferences.UserApplication.Companion.prefs
 import com.backyardigans.doggiecare.R
@@ -22,13 +24,11 @@ import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
-
 class AddFragment : Fragment() {
     private var _binding: ActivityAddFragmentBinding? = null
     private val binding get() = _binding!!
     private val db = Firebase.firestore
-    private val REQUEST_CODE = 200
-
+    private var REQUEST_CODE = 0
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -41,8 +41,27 @@ class AddFragment : Fragment() {
     @SuppressLint("UseRequireInsteadOfGet")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setFragmentResultListener("requestKey") { requestKey, bundle ->
+            if (bundle.getString("camorgal").toString().equals("cam")) {
+                REQUEST_CODE = 200
+                takePhoto()
+            } else if (bundle.getString("camorgal").toString().equals("gal")) {
+                REQUEST_CODE = 100
+                pickFromGallery()
+            } else {
+                Toast.makeText(context, "Woops! algo ha salido mal", Toast.LENGTH_SHORT).show()
+            }
+        }
         binding.btnEnviar.setOnClickListener { isTextEmpty() }
-        binding.imagenupload.setOnClickListener { takePhoto() }
+        binding.imagenupload.setOnClickListener {
+            val bundle = bundleOf("previous" to "add")
+            findNavController().navigate(
+                R.id.action_addFragment_to_optionsPopUpFragment,
+                bundle
+            )
+
+        }
+
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -53,7 +72,8 @@ class AddFragment : Fragment() {
                     binding.imagenupload.setPadding(0, 0, 0, 0)
                     binding.imagenupload.setColorFilter(android.R.color.transparent)
                     binding.imagenupload.scaleType = ImageView.ScaleType.CENTER_CROP
-                    Glide.with(requireContext()).load(data.extras!!.get("data"))
+                    val uri = if (REQUEST_CODE == 200) data.extras!!.get("data") else data!!.data
+                    Glide.with(requireContext()).load(uri)
                         .transform(CenterCrop(), RoundedCorners(60))
                         .into(binding.imagenupload)
                 }
@@ -87,16 +107,17 @@ class AddFragment : Fragment() {
                 prefs.getEmail() + Math.random().toString().substring(2, 4)
             ).set(data)
             Toast.makeText(activity, "Agregado", Toast.LENGTH_SHORT).show()
-
-
             findNavController().navigate(R.id.action_addFragment_to_homeFragment)
-
-
         }
     }
 
     private fun takePhoto() {
         val cameraIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
         startActivityForResult(cameraIntent, REQUEST_CODE)
+    }
+
+    private fun pickFromGallery() {
+        val galleryIntent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+        startActivityForResult(galleryIntent, REQUEST_CODE)
     }
 }

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -12,22 +11,18 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:paddingHorizontal="30dp"
-        android:paddingVertical="40dp"
+        android:paddingBottom="40dp"
+        android:paddingTop="20dp"
         android:background="@color/primary">
 
         <ImageButton
             android:id="@+id/edit_imageButton"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:scaleType="fitXY"
+            android:layout_width="225dp"
+            android:layout_height="225dp"
+            android:scaleType="centerCrop"
             android:layout_gravity="center"
             android:background="@android:color/transparent"
             android:src="@drawable/ic_edit"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-
             app:tint="@color/darkblue"/>
         <EditText
             android:id="@+id/input_nombre"
@@ -42,10 +37,7 @@
             android:layout_height="55dp"
             android:textColorHint="@color/white"
             android:layout_marginBottom="15dp"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            android:textSize="18dp"
-            app:layout_constraintBottom_toTopOf="@id/input_bio">
+            android:textSize="18dp">
         </EditText>
 
 
@@ -55,21 +47,15 @@
             android:background="@drawable/round_shaped_input"
             android:hint="biografía"
             android:paddingVertical="20dp"
-            android:paddingLeft="20dp"
             android:gravity="top|start"
             android:textColor="@color/white"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/input_nombre"
-            app:layout_constraintBottom_toTopOf="@id/button_save"
             android:inputType="textMultiLine"
             android:textColorHint="@color/white"
             android:maxLines="9"
             android:maxLength="140"
-            android:layout_marginVertical="15dp"
             android:paddingHorizontal="20dp"
             android:paddingBottom="15dp"
-            android:textSize="18dp" android:layout_height="200dp">
+            android:textSize="18dp" android:layout_height="170dp">
         </EditText>
 
         <Button
@@ -81,17 +67,12 @@
             android:textColor="@color/lavander"
             android:background="@drawable/round_shaped_button"
             app:backgroundTint="@null"
-            android:layout_marginBottom="40dp"
             android:textSize="17dp"
             android:layout_gravity="center"
             android:layout_marginVertical="20dp"
             android:paddingVertical="10dp"
-            android:paddingHorizontal="40dp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/input_bio">
+            android:paddingHorizontal="40dp">
         </Button>
-
     </LinearLayout>
 
 
