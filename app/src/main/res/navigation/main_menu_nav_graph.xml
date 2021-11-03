@@ -111,6 +111,12 @@
         <argument
             android:name="description"
             app:argType="string" />
+        <argument
+            android:name="userMail"
+            app:argType="string" />
+        <argument
+            android:name="urlImage"
+            app:argType="string" />
     </fragment>
     <dialog
         android:id="@+id/contactPopUpFragment"

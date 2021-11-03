@@ -9,8 +9,6 @@ import kotlinx.coroutines.flow.flow
 
 class FeedRepository (val network : FeedNetworkController , val persistency : FeedPersistencyController){
 
-
-
     fun getAllPost() : Flow<List<Feed>> {
         return flow {
             emit(network.getAllPosts())
