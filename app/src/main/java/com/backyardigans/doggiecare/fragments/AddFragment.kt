@@ -1,11 +1,17 @@
 package com.backyardigans.doggiecare.fragments
 
 import android.annotation.SuppressLint
+import android.graphics.Bitmap;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import android.os.Environment;
 import android.app.Activity
 import android.content.Context
 import android.content.ContextWrapper
 import android.content.Intent
 import android.graphics.Bitmap
+import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
@@ -14,6 +20,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResultListener
@@ -95,6 +102,19 @@ class AddFragment : Fragment() {
                         Glide.with(requireContext()).load(data.extras!!.get("data") as Bitmap)
                             .transform(CenterCrop(), RoundedCorners(60))
                             .into(binding.imagenupload)
+
+
+
+
+
+
+//
+//                    Uri.fromFile(bitmapToFile(data.extras!!.get("data") as Bitmap)
+//
+//                    uploadImageToFirebase(uri)
+
+
+
                 }
 
                         if (requestCode == GALLERY_REQUEST_CODE
@@ -188,6 +208,68 @@ class AddFragment : Fragment() {
                     print(e.message)
                 })
             Toast.makeText(activity, "foto subida", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun saveImageToInternalStorage(drawableId:Int):Uri{
+        // Get the image from drawable resource as drawable object
+        val drawable = ContextCompat.getDrawable(requireContext().applicationContext,drawableId)
+
+        // Get the bitmap from drawable object
+        val bitmap = (drawable as BitmapDrawable).bitmap
+
+        // Get the context wrapper instance
+        val wrapper = ContextWrapper(requireContext().applicationContext)
+
+        // Initializing a new file
+        // The bellow line return a directory in internal storage
+        var file = wrapper.getDir("images", Context.MODE_PRIVATE)
+
+
+        // Create a file to save the image
+        file = File(file, "${UUID.randomUUID()}.jpg")
+
+        try {
+            // Get the file output stream
+            val stream: OutputStream = FileOutputStream(file)
+
+            // Compress bitmap
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream)
+
+            // Flush the stream
+            stream.flush()
+
+            // Close stream
+            stream.close()
+        } catch (e: IOException){ // Catch the exception
+            e.printStackTrace()
+        }
+
+        // Return the saved image uri
+        return Uri.parse(file.absolutePath)
+    }
+
+    fun bitmapToFile(bitmap: Bitmap, fileNameToSave: String): File? { // File name like "image.png"
+        //create a file to write bitmap data
+        var file: File? = null
+        return try {
+            file = File(Environment.getExternalStorageDirectory().toString() + File.separator + fileNameToSave)
+            file.createNewFile()
+
+            //Convert bitmap to byte array
+            val bos = ByteArrayOutputStream()
+            bitmap.compress(Bitmap.CompressFormat.PNG, 0, bos) // YOU can also save it in JPEG
+            val bitmapdata = bos.toByteArray()
+
+            //write the bytes in file
+            val fos = FileOutputStream(file)
+            fos.write(bitmapdata)
+            fos.flush()
+            fos.close()
+            file
+        } catch (e: Exception) {
+            e.printStackTrace()
+            file // it will return null
         }
     }
 }
