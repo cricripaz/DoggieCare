@@ -28,14 +28,14 @@ class OptionsPopUpFragment : BottomSheetDialogFragment() {
 
             binding.popupoptions1.setOnClickListener {
                 findNavController().navigate(R.id.action_optionsPopUpFragment_to_addFragment)
+                Toast.makeText(activity, "Edite su publicación", Toast.LENGTH_SHORT).show()
                 //todo editar publicación
             }
 
             binding.popupoptions2.setOnClickListener {
-                Toast.makeText(activity, "Publicación eliminada", Toast.LENGTH_SHORT).show()
-                //todo eliminar publicación
+                val bundle = bundleOf("previous" to "deletePost")
+                findNavController().navigate(R.id.action_optionsPopUpFragment_self, bundle)
             }
-
 
         } else if (arguments?.getString("previous")
                 .equals("add") or arguments?.getString("previous").equals("editProfile")
@@ -55,15 +55,19 @@ class OptionsPopUpFragment : BottomSheetDialogFragment() {
         } else if (arguments?.getString("previous")
                 .equals("block") or arguments?.getString("previous")
                 .equals("report") or arguments?.getString("previous").equals("verification")
+            or arguments?.getString("previous").equals("deletePost")
         ) {
             binding.popupoptions1.text = requireContext().getString(R.string.proseguir)
             binding.popupoptions2.text = requireContext().getString(R.string.abortar)
 
             binding.popupoptions1.setOnClickListener {
-                Toast.makeText(activity, "Su solicitud ha sido enviada", Toast.LENGTH_SHORT).show()
-                //todo bloquear abortar verificar
+                if (arguments?.getString("previous").equals("deletePost")) {
+                   //TODO BORRAR
+                } else {
+                    Toast.makeText(activity, "Su solicitud ha sido enviada", Toast.LENGTH_SHORT).show()
+                    //todo bloquear abortar verificar
+                }
             }
-
             binding.popupoptions2.setOnClickListener {
                 findNavController().popBackStack()
             }
