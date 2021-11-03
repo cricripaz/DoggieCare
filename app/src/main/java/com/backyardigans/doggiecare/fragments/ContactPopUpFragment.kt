@@ -14,7 +14,6 @@ class ContactPopUpFragment : BottomSheetDialogFragment() {
     private var _binding: FragmentPopupContactMenuBinding? = null
     private val binding get() = _binding!!
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -44,8 +43,8 @@ class ContactPopUpFragment : BottomSheetDialogFragment() {
             )
         }
 
-
-
+        binding.popupnombredueno.text = arguments?.getString("userNick")
+        binding.popupusuario.text = arguments?.getString("userMail")
         return binding.root
     }
 

@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.backyardigans.doggiecare.Preferences.UserApplication.Companion.prefs
 import com.backyardigans.doggiecare.R
 import com.backyardigans.doggiecare.databinding.FragmentDetailsBinding
 import com.bumptech.glide.Glide
@@ -25,14 +24,19 @@ class DetailsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentDetailsBinding.inflate(inflater, container, false)
+        val userNick= arguments?.getString("userNick").toString()
+        val userMail = arguments?.getString("userMail").toString()
+
         binding.detalleBotonMore.setOnClickListener {
-            findNavController().navigate(R.id.action_detailsFragment_to_contactPopUpFragment)
+            val directions = DetailsFragmentDirections.actionDetailsFragmentToContactPopUpFragment(
+                userNick, userMail)
+            findNavController().navigate(directions)
         }
         Glide.with(requireContext()).load(arguments?.getString("urlImage")).transform(CenterCrop(), RoundedCorners(40)).error(R.drawable.ic_icon_perrito).into(binding.detalleFotoMascota)
         binding.detalleNombreMascota.text =
             arguments?.getString("animalName") + " - " + arguments?.getString("animalAge")
-        binding.detalleDuenioMascota.text = arguments?.getString("userNick")
-            binding.detalleUsuarioMascota.text = arguments?.getString("userMail")
+        binding.detalleDuenioMascota.text = userNick
+        binding.detalleUsuarioMascota.text = userMail
         binding.detalleDescripcionMascota.text = arguments?.getString("description")
         return binding.root
     }

@@ -113,7 +113,8 @@
             app:argType="string" />
         <argument
             android:name="userMail"
-            app:argType="string" />
+            app:argType="string"
+            android:defaultValue=""/>
         <argument
             android:name="urlImage"
             app:argType="string" />
@@ -132,6 +133,15 @@
         <action
             android:id="@+id/action_contactPopUpFragment_to_optionsPopUpFragment"
             app:destination="@id/optionsPopUpFragment" />
+        <argument
+            android:name="userNick"
+            app:argType="string"
+            android:defaultValue=""/>
+        <argument
+            android:name="userMail"
+            app:argType="string"
+            android:defaultValue=""/>
+
     </dialog>
     <dialog
         android:id="@+id/optionsPopUpFragment"
