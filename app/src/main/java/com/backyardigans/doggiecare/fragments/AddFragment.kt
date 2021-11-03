@@ -2,7 +2,11 @@ package com.backyardigans.doggiecare.fragments
 
 import android.annotation.SuppressLint
 import android.app.Activity
+import android.content.Context
+import android.content.ContextWrapper
 import android.content.Intent
+import android.graphics.Bitmap
+import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.view.LayoutInflater
@@ -20,15 +24,29 @@ import com.backyardigans.doggiecare.databinding.ActivityAddFragmentBinding
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.google.android.gms.tasks.OnFailureListener
+import com.google.android.gms.tasks.OnSuccessListener
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.UploadTask
+import com.google.firebase.storage.ktx.storage
+import java.io.*
+import java.util.*
 
 class AddFragment : Fragment() {
     private var _binding: ActivityAddFragmentBinding? = null
     private val binding get() = _binding!!
     private val db = Firebase.firestore
     private var REQUEST_CODE = 0
+    val GALLERY_REQUEST_CODE = 2
+
+    val storage = Firebase.storage
+    var storageRef = storage.reference
+
+    var imageUrl = ""
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -47,7 +65,7 @@ class AddFragment : Fragment() {
                 takePhoto()
             } else if (bundle.getString("camorgal").toString().equals("gal")) {
                 REQUEST_CODE = 100
-                pickFromGallery()
+                selectImageFromGallery()
             } else {
                 Toast.makeText(context, "Woops! algo ha salido mal", Toast.LENGTH_SHORT).show()
             }
@@ -66,21 +84,40 @@ class AddFragment : Fragment() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        when (requestCode) {
-            REQUEST_CODE -> {
-                if (resultCode == Activity.RESULT_OK && data != null) {
+
+
+                if (requestCode == REQUEST_CODE && resultCode == Activity.RESULT_OK && data != null) {
                     binding.imagenupload.setPadding(0, 0, 0, 0)
                     binding.imagenupload.setColorFilter(android.R.color.transparent)
                     binding.imagenupload.scaleType = ImageView.ScaleType.CENTER_CROP
-                    val uri = if (REQUEST_CODE == 200) data.extras!!.get("data") else data!!.data
-                    Glide.with(requireContext()).load(uri)
-                        .transform(CenterCrop(), RoundedCorners(60))
-                        .into(binding.imagenupload)
+
+
+                        Glide.with(requireContext()).load(data.extras!!.get("data") as Bitmap)
+                            .transform(CenterCrop(), RoundedCorners(60))
+                            .into(binding.imagenupload)
                 }
+
+                        if (requestCode == GALLERY_REQUEST_CODE
+            && resultCode == Activity.RESULT_OK
+            && data != null
+            && data.data != null
+        ){
+            binding.imagenupload.setPadding(0, 0, 0, 0)
+            binding.imagenupload.setColorFilter(android.R.color.transparent)
+            binding.imagenupload.scaleType = ImageView.ScaleType.CENTER_CROP
+
+            if (data != null) {
+                val file_uri = data.data
+
+                Glide.with(requireContext()).load(file_uri)
+                    .transform(CenterCrop(), RoundedCorners(60))
+                    .into(binding.imagenupload)
+                if (file_uri != null) {
+                    uploadImageToFirebase(file_uri)
+                }
+
             }
-            else -> {
-                Toast.makeText(context, "Woops! algo ha salido mal", Toast.LENGTH_SHORT).show()
-            }
+
         }
     }
 
@@ -116,8 +153,41 @@ class AddFragment : Fragment() {
         startActivityForResult(cameraIntent, REQUEST_CODE)
     }
 
-    private fun pickFromGallery() {
-        val galleryIntent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
-        startActivityForResult(galleryIntent, REQUEST_CODE)
+    private fun selectImageFromGallery() {
+
+        val intent = Intent()
+        intent.type = "image/*"
+        intent.action = Intent.ACTION_GET_CONTENT
+        startActivityForResult(
+            Intent.createChooser(
+                intent,
+                "Please select..."
+            ),
+            GALLERY_REQUEST_CODE
+        )
+    }
+
+
+
+    private fun uploadImageToFirebase(fileUri: Uri) {
+        if (fileUri != null) {
+            val fileName = UUID.randomUUID().toString() +".jpg"
+
+
+            val refStorage = storage.reference.child("feed/$fileName")
+
+            refStorage.putFile(fileUri)
+                .addOnSuccessListener(
+                    OnSuccessListener<UploadTask.TaskSnapshot> { taskSnapshot ->
+                        taskSnapshot.storage.downloadUrl.addOnSuccessListener {
+                            imageUrl = it.toString()
+                        }
+                    })
+
+                ?.addOnFailureListener(OnFailureListener { e ->
+                    print(e.message)
+                })
+            Toast.makeText(activity, "foto subida", Toast.LENGTH_SHORT).show()
+        }
     }
 }
