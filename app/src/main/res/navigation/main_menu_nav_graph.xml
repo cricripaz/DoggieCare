@@ -141,6 +141,10 @@
             android:name="userMail"
             app:argType="string"
             android:defaultValue=""/>
+        <argument
+            android:name="userPic"
+            app:argType="string"
+            />
 
     </dialog>
     <dialog

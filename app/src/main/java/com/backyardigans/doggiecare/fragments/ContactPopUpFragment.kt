@@ -8,6 +8,7 @@ import androidx.core.os.bundleOf
 import androidx.navigation.fragment.findNavController
 import com.backyardigans.doggiecare.R
 import com.backyardigans.doggiecare.databinding.FragmentPopupContactMenuBinding
+import com.bumptech.glide.Glide
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 class ContactPopUpFragment : BottomSheetDialogFragment() {
@@ -42,7 +43,8 @@ class ContactPopUpFragment : BottomSheetDialogFragment() {
                 bundle
             )
         }
-
+        Glide.with(requireContext()).load(arguments?.getString("userPic")).circleCrop().error(R.drawable.ic_maleowner)
+            .into(binding.popupimagen)
         binding.popupnombredueno.text = arguments?.getString("userNick")
         binding.popupusuario.text = arguments?.getString("userMail")
         return binding.root

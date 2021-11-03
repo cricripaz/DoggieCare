@@ -27,10 +27,7 @@ class ProfileFragment : Fragment() {
     private val profileViewModel: ProfileViewModel by activityViewModels()
     private val feedAdapter = FeedAdapter()
     private val feedModel: FeedViewModel by activityViewModels()
-
-
     private val db = FirebaseFirestore.getInstance()
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
