@@ -19,6 +19,10 @@ import com.backyardigans.doggiecare.adapters.FeedAdapter
 import com.backyardigans.doggiecare.databinding.ActivityProfileFragmentBinding
 import com.backyardigans.doggiecare.viewModel.FeedViewModel
 import com.backyardigans.doggiecare.viewModel.ProfileViewModel
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
+import com.bumptech.glide.load.resource.bitmap.CircleCrop
+import com.bumptech.glide.load.resource.bitmap.GranularRoundedCorners
 import com.google.firebase.firestore.FirebaseFirestore
 
 class ProfileFragment : Fragment() {
@@ -69,6 +73,9 @@ class ProfileFragment : Fragment() {
         profileViewModel.userProfile.observe(viewLifecycleOwner, Observer {
             binding.bioUsuario.text = it.userBio
             binding.idUsuario.text = it.userNick
+            Glide.with(view.context).load(it.userPic)
+                .transform( CenterCrop(), CircleCrop()) 
+                .into(binding.fotoUsuario)
             prefs.saveUser(it.userNick)
 
 
