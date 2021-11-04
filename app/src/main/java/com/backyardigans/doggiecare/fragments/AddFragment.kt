@@ -68,38 +68,38 @@ class AddFragment : Fragment() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-                if (requestCode == REQUEST_CODE && resultCode == Activity.RESULT_OK && data != null) {
-                    binding.imagenupload.setPadding(0, 0, 0, 0)
-                    binding.imagenupload.setColorFilter(android.R.color.transparent)
-                    binding.imagenupload.scaleType = ImageView.ScaleType.CENTER_CROP
-                    val imageUri = data.extras!!.get("data") as Bitmap//data.extras!!.get("data") as Bitmap
-                    val file = createImageFile()
-                    if (file != null) {
-                        val fout: FileOutputStream
-                        try {
-                            fout = FileOutputStream(file)
-                            imageUri.compress(Bitmap.CompressFormat.PNG, 70, fout)
-                            fout.flush()
-                        } catch (e: Exception) {
-                            e.printStackTrace()
-                        }
-                        val uri = Uri.fromFile(file)
-                        uploadImageToFirebase(uri)
-                    }
-                        Glide.with(requireContext()).load(imageUri)
-                            .transform(CenterCrop(), RoundedCorners(60))
-                            .into(binding.imagenupload)
-                }
-                        if (requestCode == GALLERY_REQUEST_CODE && resultCode == Activity.RESULT_OK && data != null && data.data != null){
+        if (requestCode == REQUEST_CODE && resultCode == Activity.RESULT_OK && data != null) {
             binding.imagenupload.setPadding(0, 0, 0, 0)
             binding.imagenupload.setColorFilter(android.R.color.transparent)
             binding.imagenupload.scaleType = ImageView.ScaleType.CENTER_CROP
-                            val file_uri = data.data
-                            Glide.with(requireContext()).load(file_uri)
-                                .transform(CenterCrop(), RoundedCorners(60))
-                                .into(binding.imagenupload)
-                            if (file_uri != null) {
-                                uploadImageToFirebase(file_uri) } } }
+            val imageUri = data.extras!!.get("data") as Bitmap//data.extras!!.get("data") as Bitmap
+            val file = createImageFile()
+            if (file != null) {
+                val fout: FileOutputStream
+                try {
+                    fout = FileOutputStream(file)
+                    imageUri.compress(Bitmap.CompressFormat.PNG, 70, fout)
+                    fout.flush()
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
+                val uri = Uri.fromFile(file)
+                uploadImageToFirebase(uri)
+            }
+            Glide.with(requireContext()).load(imageUri)
+                .transform(CenterCrop(), RoundedCorners(60))
+                .into(binding.imagenupload)
+        }
+        if (requestCode == GALLERY_REQUEST_CODE && resultCode == Activity.RESULT_OK && data != null && data.data != null){
+            binding.imagenupload.setPadding(0, 0, 0, 0)
+            binding.imagenupload.setColorFilter(android.R.color.transparent)
+            binding.imagenupload.scaleType = ImageView.ScaleType.CENTER_CROP
+            val file_uri = data.data
+            Glide.with(requireContext()).load(file_uri)
+                .transform(CenterCrop(), RoundedCorners(60))
+                .into(binding.imagenupload)
+            if (file_uri != null) {
+                uploadImageToFirebase(file_uri) } } }
 
     fun createImageFile(): File? {
         val timeStamp: String = SimpleDateFormat("yyyyMMdd_HHmmss", Locale.US).format(Date())

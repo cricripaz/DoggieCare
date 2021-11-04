@@ -1,7 +1,5 @@
 package com.backyardigans.doggiecare.data.feed.network
 
-import androidx.compose.ui.text.capitalize
-import androidx.compose.ui.text.toLowerCase
 import com.backyardigans.doggiecare.Model.Feed
 import com.backyardigans.doggiecare.Preferences.UserApplication.Companion.prefs
 import com.google.firebase.firestore.Query
