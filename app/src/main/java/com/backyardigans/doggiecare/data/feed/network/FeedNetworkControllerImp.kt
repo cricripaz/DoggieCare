@@ -32,10 +32,8 @@ class FeedNetworkControllerImp : FeedNetworkController {
 
     override suspend fun getAllPostsSearch(search:String): List<Feed> {
 
-        val response1 = db.collection("publicaciones").whereEqualTo("animalname",search.capitalize())
-            .whereEqualTo("animalname",search).get().await()
+        val response = db.collection("publicaciones").orderBy("animalName").startAt(search).endAt(search + "\uf8ff").get().await()
 
-        val response = db.collection("publicaciones").whereEqualTo("animalName", search).get().await()
         return response.toObjects(Feed::class.java)
     }
 
