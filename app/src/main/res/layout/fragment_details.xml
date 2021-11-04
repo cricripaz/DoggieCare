@@ -10,8 +10,8 @@
     <ImageView
         android:id="@+id/detalleFotoMascota"
         android:layout_width="match_parent"
-        android:layout_height="400dp"
-        android:maxHeight="400dp"
+        android:layout_height="300dp"
+        android:maxHeight="300dp"
         android:layout_margin="20dp"
         android:src="@drawable/ic_femaleowner"
         app:layout_constraintBottom_toTopOf="@id/detalleScroll"
