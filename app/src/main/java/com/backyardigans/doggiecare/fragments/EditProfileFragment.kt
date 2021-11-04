@@ -41,7 +41,7 @@ class EditProfileFragment : BottomSheetDialogFragment() {
     private var REQUEST_CODE = 0
     val GALLERY_REQUEST_CODE = 2
     val storage = Firebase.storage
-    var imageUrl = ""
+    var imageUrl =""
 
     override fun  onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                                savedInstanceState: Bundle?): View {
@@ -51,9 +51,23 @@ class EditProfileFragment : BottomSheetDialogFragment() {
                 Toast.makeText(context, "Debes llenar los espacios en blanco", Toast.LENGTH_SHORT).show()
 
             }else{
-                db.collection("users").document(prefs.getEmail()).set(
-                    hashMapOf("userBio" to binding.inputBio.text.toString(), "userNick" to binding.inputNombre.text.toString() ), SetOptions.merge()
-                )
+                    if(imageUrl==""){
+                        db.collection("users").document(prefs.getEmail()).set(
+
+                            hashMapOf(
+                            "userBio" to binding.inputBio.text.toString(),
+                            "userNick" to binding.inputNombre.text.toString(),
+                            ), SetOptions.merge())
+                    }else{
+                        db.collection("users").document(prefs.getEmail()).set(
+
+                            hashMapOf(
+                            "userBio" to binding.inputBio.text.toString(),
+                            "userNick" to binding.inputNombre.text.toString(),
+                            "userPic" to imageUrl), SetOptions.merge())
+                    }
+
+
 
                 findNavController().navigate(R.id.action_editProfileFragment_to_profileFragment)
             }
