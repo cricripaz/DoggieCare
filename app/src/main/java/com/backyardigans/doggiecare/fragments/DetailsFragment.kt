@@ -20,6 +20,7 @@ class DetailsFragment : Fragment() {
     private var _binding: FragmentDetailsBinding? = null
     private val binding get() = _binding!!
     private val profileViewModel: ProfileViewModel by activityViewModels()
+    private lateinit var pic : String
     @SuppressLint("SetTextI18n")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,17 +29,14 @@ class DetailsFragment : Fragment() {
         _binding = FragmentDetailsBinding.inflate(inflater, container, false)
         val userNick = arguments?.getString("userNick").toString()
         val userMail = arguments?.getString("userMail").toString()
-        val userPic =
-            arguments?.getString("userPic").toString() //TODO se muestra la foto de quien posteó
+
 
         binding.detalleBotonMore.setOnClickListener {
             val directions = DetailsFragmentDirections.actionDetailsFragmentToContactPopUpFragment(
-                userNick, userMail, userPic
+                userNick, userMail, pic
             )
             findNavController().navigate(directions)
         }
-        Glide.with(requireContext()).load(userPic).circleCrop().placeholder(R.drawable.ic_maleowner)
-            .into(binding.detalleFotoUsuario)
         Glide.with(requireContext()).load(arguments?.getString("urlImage"))
             .transform(CenterCrop(), RoundedCorners(40)).placeholder(R.drawable.ic_icon_perrito)
             .into(binding.detalleFotoMascota)
@@ -48,11 +46,12 @@ class DetailsFragment : Fragment() {
         binding.detalleUsuarioMascota.text = userMail
         binding.detalleDescripcionMascota.text = arguments?.getString("description")
         profileViewModel.userPhotoProfile.observe(viewLifecycleOwner, {
-
+pic = it.userPic
             Glide.with(view?.context!!).load(it.userPic)
-                .transform( CenterCrop(), CircleCrop())
+                .transform( CenterCrop(), CircleCrop()).error(R.drawable.ic_maleowner)
                 .into(binding.detalleFotoUsuario)
         })
+
         profileViewModel.updatePhotoProfile(userMail)
         return binding.root
     }
