@@ -79,10 +79,11 @@ class SearchFragment : Fragment() {
             val animalAge: String = it.AnimalAge
             val animalBreed: String = it.AnimalBreed
             val description: String = it.description
+            val userEmail : String = it.userMail
             val urlImage = it.urlImage
 
             val directions = HomeFragmentDirections.actionHomeFragmentToDetailsFragment(
-                userNick, animalName, animalAge, animalBreed, description
+                userNick, animalName, animalAge, animalBreed, description, userEmail, urlImage
             )
             findNavController().navigate(directions)
         }
