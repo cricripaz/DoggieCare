@@ -9,11 +9,25 @@
     <string name="name_bottom_message">Chat</string>
     <string name="name_bottom_profile">Profile</string>
     <string name="login">Login</string>
+    <string name="listo">LISTO</string>
+    <string name="que_bueno_que_est_s_aqu">¡Que bueno que estás aquí!</string>
     <string name="contactar">CONTACTAR</string>
     <string name="denunciar">DENUNCIAR</string>
     <string name="bloquear">BLOQUEAR</string>
     <string name="ver_perfil">VER PERFIL</string>
     <string name="borrar_cuenta">BORRAR CUENTA</string>
 
+    <string name="verificar">VERIFICAR</string>
+    <string name="google_sign_in">Google Sign In</string>
+
     <string name="prefs_file">com.backyardigans.doggiecare.PREFERENCE_FILE_KEY</string>
+    <string name="editar_publicacion">EDITAR PUBLICACIÓN</string>
+    <string name="eliminar_publicacion">ELIMINAR PUBLICACIÓN</string>
+    <string name="camara">ABRIR CÁMARA</string>
+    <string name="galeria">ABRIR GALERÍA</string>
+    <string name="proseguir">DESEO PROSEGUIR</string>
+    <string name="abortar">CANCELAR</string>
+    <string name="buscar_publicacion">Buscar Publicacion</string>
+
+
 </resources>

@@ -1,6 +1,26 @@
 package com.backyardigans.doggiecare.Model
+class Feed(){
 
-import androidx.annotation.DrawableRes
+    var  urlImage:String = ""
+    var userNick:String = ""
+    var userMail:String = ""
+    var AnimalName:String=""
+    var AnimalAge:String=""
+    var AnimalBreed:String=""
+    var description:String=""
 
-data class Feed(@DrawableRes val img:Int, val userName:String, val nickName:String,
-                val AnimalName:String, val AnimalAge:String)
+    constructor( img:String, userNick:String, userMail:String,  animalName:String, animalAge:String, animalBreed:String, description:String):this() {
+
+        this.urlImage = img
+        this.userNick = userNick
+        this.userMail = userMail
+        this.AnimalAge = animalAge
+        this.AnimalName = animalName
+        this.AnimalBreed = animalBreed
+        this.description = description
+
+    }
+}
+
+
+

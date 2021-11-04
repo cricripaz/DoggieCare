@@ -1,6 +1,12 @@
 package com.backyardigans.doggiecare.Model
+class Profile() {
+    var userNick: String = ""
+    var userBio: String = ""
+    var userPic: String = ""
 
-import androidx.annotation.DrawableRes
-
-data class Profile(val nickName:String,
-                val bio:String)
+    constructor(userNick: String, userBio: String, userPic: String) : this() {
+        this.userNick = userNick
+        this.userBio = userBio
+        this.userPic = userPic
+    }
+}

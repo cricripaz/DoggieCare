@@ -2,8 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginHorizontal="30dp"
-    android:layout_marginVertical="100dp"
+    android:layout_gravity="bottom"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -14,7 +13,7 @@
         app:layout_constraintRight_toRightOf="parent"
         android:padding="20dp"
 
-        android:background="@drawable/round_shaped_container">
+        android:background="@color/primary">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -22,6 +21,7 @@
             android:orientation="horizontal"
             android:padding="15dp"
             android:id="@+id/cardPopUp"
+            android:paddingHorizontal="20dp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toTopOf="@+id/popupContactar"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -41,26 +41,28 @@
 
 
             <TextView
-                android:id="@+id/popupDueñoMascota"
+                android:id="@+id/popupnombredueno"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="nombre dueño"
                 android:textColor="@color/white"
                 android:textSize="20dp"
                 app:layout_constraintBottom_toTopOf="@+id/popupusuario"
                 app:layout_constraintLeft_toRightOf="@+id/popupimagen"
+                app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
             </TextView>
+
+
 
             <TextView
                 android:id="@+id/popupusuario"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="arrobausuario"
                 android:textColor="@color/white"
                 android:textSize="16dp"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/popupusuario"
                 app:layout_constraintLeft_toRightOf="@+id/popupimagen">
 
@@ -83,62 +85,71 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <TextView
-        android:id="@+id/popupContactar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="18dp"
-        android:textColor="@color/white"
-        android:layout_marginTop="10dp"
-        android:text="@string/contactar"
-        app:layout_constraintTop_toBottomOf="@id/cardPopUp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/popupVerPerfil"
-        app:layout_constraintRight_toRightOf="parent">
-    </TextView>
 
-
-        <TextView
-            android:id="@+id/popupVerPerfil"
-            android:layout_width="wrap_content"
+        <Button
+            android:id="@+id/popupContactar"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="18dp"
-            android:textColor="@color/white"
             android:layout_marginTop="10dp"
+            android:paddingVertical="10dp"
+            android:stateListAnimator="@null"
+            android:textColor="@color/white"
+            android:textSize="18dp"
+            android:text="@string/contactar"
+            app:layout_constraintTop_toBottomOf="@id/cardPopUp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/popupVerPerfil"
+            app:layout_constraintRight_toRightOf="parent"/>
+
+
+        <Button
+            android:id="@+id/popupVerPerfil"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:paddingVertical="10dp"
+            android:stateListAnimator="@null"
+            android:textColor="@color/white"
+            android:textSize="18dp"
             android:text="@string/ver_perfil"
             app:layout_constraintTop_toBottomOf="@id/popupContactar"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintBottom_toTopOf="@id/popupDenunciar"
-            app:layout_constraintRight_toRightOf="parent">
-        </TextView>
+            app:layout_constraintRight_toRightOf="parent"/>
 
-    <TextView
-        android:id="@+id/popupDenunciar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="18dp"
-        android:textColor="@color/white"
-        android:layout_marginTop="10dp"
-        android:text="@string/denunciar"
-        app:layout_constraintTop_toBottomOf="@id/popupVerPerfil"
-        app:layout_constraintBottom_toTopOf="@id/popupBloquear"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent">
-    </TextView>
 
-    <TextView
-        android:id="@+id/popupBloquear"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="18dp"
-        android:textColor="@color/white"
-        android:layout_marginTop="10dp"
-        android:paddingBottom="10dp"
-        android:text="@string/bloquear"
-        app:layout_constraintTop_toBottomOf="@id/popupDenunciar"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent">
-    </TextView>
+        <Button
+            android:id="@+id/popupDenunciar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:paddingVertical="10dp"
+            android:stateListAnimator="@null"
+            android:textColor="@color/white"
+            android:textSize="18dp"
+            android:text="@string/denunciar"
+            app:layout_constraintTop_toBottomOf="@id/popupVerPerfil"
+            app:layout_constraintBottom_toTopOf="@id/popupBloquear"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"/>
+
+
+
+        <Button
+            android:id="@+id/popupBloquear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:paddingVertical="10dp"
+            android:stateListAnimator="@null"
+            android:textColor="@color/white"
+            android:textSize="18dp"
+            android:text="@string/bloquear"
+            app:layout_constraintTop_toBottomOf="@id/popupDenunciar"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"/>
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

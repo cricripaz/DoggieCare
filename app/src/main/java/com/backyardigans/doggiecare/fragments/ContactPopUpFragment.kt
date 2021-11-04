@@ -4,39 +4,50 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import android.widget.Toast
-import androidx.fragment.app.Fragment
+import androidx.core.os.bundleOf
+import androidx.navigation.fragment.findNavController
 import com.backyardigans.doggiecare.R
+import com.backyardigans.doggiecare.databinding.FragmentPopupContactMenuBinding
+import com.bumptech.glide.Glide
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
-class PopUpFragment : Fragment() {
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View {
-        val  contactar= view?.findViewById<View>(R.id.popupEditarPerfil) as TextView
-        contactar?.setOnClickListener {
-            //integrar
-            Toast.makeText(activity, "abriendo mensajería", Toast.LENGTH_LONG).show()
-        }
-        val  verperfil= view?.findViewById<View>(R.id.popupVerPerfil) as TextView
-        verperfil?.setOnClickListener {
-            //Ver perfil de usuario
-            Toast.makeText(activity, "Redigiriendo", Toast.LENGTH_LONG).show()
-        }
-        val  denunciar= view?.findViewById<View>(R.id.popupDenunciar) as TextView
-        denunciar?.setOnClickListener {
-            //implementar?
-            Toast.makeText(activity, "Denuncia enviada", Toast.LENGTH_LONG).show()
-        }
-        val  bloquear= view?.findViewById<View>(R.id.popupBloquear) as TextView
-        bloquear?.setOnClickListener {
-            //usar dialogo?
-            Toast.makeText(activity, "¿Seguro que desea bloquear a este usuario?", Toast.LENGTH_LONG).show()
+class ContactPopUpFragment : BottomSheetDialogFragment() {
+    private var _binding: FragmentPopupContactMenuBinding? = null
+    private val binding get() = _binding!!
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        _binding = FragmentPopupContactMenuBinding.inflate(inflater, container, false)
+        binding.popupVerPerfil.setOnClickListener {
+            findNavController().navigate(R.id.action_contactPopUpFragment_to_profileFragment)
         }
 
+        binding.popupContactar.setOnClickListener {
+            findNavController().navigate(R.id.action_contactPopUpFragment_to_chatFragment)
+        }
 
+        binding.popupDenunciar.setOnClickListener {
+            val bundle = bundleOf("previous" to "report")
+            findNavController().navigate(
+                R.id.action_contactPopUpFragment_to_optionsPopUpFragment,
+                bundle
+            )
 
-
-        return inflater.inflate(R.layout.fragment_popup_contact_menu, container, false)
+        }
+        binding.popupBloquear.setOnClickListener {
+            val bundle = bundleOf("previous" to "block")
+            findNavController().navigate(
+                R.id.action_contactPopUpFragment_to_optionsPopUpFragment,
+                bundle
+            )
+        }
+        Glide.with(requireContext()).load(arguments?.getString("userPic")).circleCrop().placeholder(R.drawable.ic_maleowner)
+            .into(binding.popupimagen)
+        binding.popupnombredueno.text = arguments?.getString("userNick")
+        binding.popupusuario.text = arguments?.getString("userMail")
+        return binding.root
     }
 
 }

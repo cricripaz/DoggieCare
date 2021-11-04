@@ -4,8 +4,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.backyardigans.doggiecare.Preferences.UserApplication.Companion.prefs
-import com.backyardigans.doggiecare.R
-import com.backyardigans.doggiecare.databinding.ActivityLoginBinding
 import com.backyardigans.doggiecare.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -15,12 +13,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.btn.setOnClickListener{
+        binding.btn.setOnClickListener {
             prefs.erase()
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
-
 
 
     }

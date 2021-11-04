@@ -33,7 +33,7 @@
             app:layout_constraintBottom_toTopOf="@id/popupSolicitarVerificacion"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="parent"></Button>
+            app:layout_constraintTop_toBottomOf="parent"/>
 
         <Button
             android:id="@+id/popupCambiarModo"
@@ -48,7 +48,7 @@
             app:layout_constraintBottom_toTopOf="@id/popupSalir"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/popupSolicitarVerificacion"></Button>
+            app:layout_constraintTop_toBottomOf="@id/popupSolicitarVerificacion"/>
 
         <Button
             android:id="@+id/popupSolicitarVerificacion"
@@ -63,7 +63,7 @@
             app:layout_constraintBottom_toTopOf="@id/popupCambiarModo"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/popupEditarPerfil"></Button>
+            app:layout_constraintTop_toBottomOf="@id/popupEditarPerfil"/>
 
 
         <Button
@@ -80,6 +80,6 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/popupCambiarModo"></Button>
+            app:layout_constraintTop_toBottomOf="@id/popupCambiarModo"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

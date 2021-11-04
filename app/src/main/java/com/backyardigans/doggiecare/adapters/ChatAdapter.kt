@@ -2,6 +2,7 @@ package com.backyardigans.doggiecare.adapters
 
 import android.content.Context
 import android.graphics.ColorSpace
+import android.text.Layout
 import android.view.Display
 import android.view.LayoutInflater
 import android.view.View
@@ -9,27 +10,52 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
 import com.backyardigans.doggiecare.Model.Chat
 import com.backyardigans.doggiecare.R
+import com.backyardigans.doggiecare.databinding.ChatModelBinding
 
-class ChatAdapter(var mCtx : Context, var resources : Int, var items : List<Chat>):ArrayAdapter<Chat>(mCtx ,resources,items) {
-    override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
+class ChatAdapter(): RecyclerView.Adapter<ChatAdapter.ViewHolder>() {
 
-       val layoutInflater :LayoutInflater = LayoutInflater.from(mCtx)
-       val view : View = layoutInflater.inflate(resources , null)
+    val elementList:MutableList<Chat> = mutableListOf()
 
-       val imageView : ImageView = view.findViewById(R.id.image_profile)
-       val titleTextView : TextView = view.findViewById(R.id.nameChat)
-       val descriptionTextView : TextView = view.findViewById(R.id.messageChat)
+    fun addAll(newElementList : MutableList<Chat>){
+        elementList.clear()
+        elementList.addAll(newElementList)
+        notifyDataSetChanged()
 
-       var mItem : Chat = items[position]
-
-       imageView.setImageDrawable(mCtx.resources.getDrawable(mItem.img))
-       titleTextView.text = mItem.title
-       descriptionTextView.text = mItem.description
-
-
-
-        return view
     }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+
+        val layoutInflater = LayoutInflater.from(parent.context)
+
+        return ViewHolder(layoutInflater.inflate(R.layout.chat_model,parent,false))
+
+    }
+
+
+
+    class ViewHolder(view:View): RecyclerView.ViewHolder(view){
+
+        val binding = ChatModelBinding.bind(view)
+
+        fun bind(chat : Chat) {
+            binding.nameChat.text = chat.title
+            binding.messageChat.text = chat.description
+           binding.imageProfile.setImageResource(chat.img)
+        }
+
+    }
+
+    override fun onBindViewHolder(holder: ChatAdapter.ViewHolder, position: Int) {
+        holder.bind(elementList[position])
+    }
+
+    override fun getItemCount(): Int {
+        return elementList.size
+    }
+
+
+
 }

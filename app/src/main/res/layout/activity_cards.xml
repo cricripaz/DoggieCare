@@ -6,14 +6,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/card_view"
     android:layout_margin="20dp"
-    android:background="@color/darkblue"
     android:orientation="vertical"
+    android:background="@drawable/ic_card_shapebackground"
 
 
     >
 
     <ImageView
-
         android:id="@+id/imgFeed"
         android:layout_width="match_parent"
         android:layout_height="200dp"
@@ -22,58 +21,50 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@drawable/ic_icon_perrito"
-        tools:tint="@color/darkblue"
-        android:paddingTop="20dp"/>
+        tools:tint="@color/primary"
+        />
 
-    <TextView
-        android:id="@+id/tvFeedUserName"
+    <LinearLayout
+        android:id="@+id/linear"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:textColor="@color/lavander"
-        android:textSize="16dp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgFeed"
-        tools:text="Calvo Peinado" />
-
-    <TextView
-        android:id="@+id/tvFeedNickName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:textColor="@color/lavander"
-        android:textSize="16dp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/imgFeed"
-        app:layout_constraintTop_toBottomOf="@+id/tvFeedUserName"
-        tools:text="$@quqa" />
-
+        android:orientation="horizontal"
+        android:layout_marginVertical="10dp"
+        app:layout_constraintRight_toLeftOf="@id/imgFeedMore"
+        app:layout_constraintTop_toBottomOf="@id/imgFeed"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/tvFeedUserName">
     <TextView
         android:id="@+id/tvAnimalName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
         android:textColor="@color/lavander"
+        android:layout_marginHorizontal="20dp"
         android:textSize="16dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="10dp"
-        app:layout_constraintStart_toEndOf="@+id/tvFeedUserName"
-        app:layout_constraintTop_toBottomOf="@+id/imgFeed"
         tools:text="Pancho geremeio" />
 
     <TextView
         android:id="@+id/tvAnimalAge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
         android:textColor="@color/lavander"
         android:textSize="16dp"
-        android:layout_marginStart="10dp"
-        app:layout_constraintStart_toEndOf="@+id/tvFeedNickName"
-        app:layout_constraintTop_toBottomOf="@+id/tvAnimalName"
         tools:text="10 semanas" />
+    </LinearLayout>
+    <TextView
+        android:id="@+id/tvFeedUserName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/lavander"
+        android:textSize="16dp"
+        android:textStyle="italic"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linear"
+        app:layout_constraintRight_toLeftOf="@id/imgFeedMore"
+        tools:text="Calvo Peinado" />
+
 
     <ImageView
 
@@ -82,7 +73,7 @@
             android:layout_height="30dp"
             android:src="@drawable/ic_icon_more"
             android:layout_marginVertical="25dp"
-        android:layout_marginHorizontal="10dp"
+        android:layout_marginHorizontal="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:tint="@color/primary" />
