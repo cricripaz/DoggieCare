@@ -41,10 +41,9 @@
 
 
             <TextView
-                android:id="@+id/popupDueñoMascota"
+                android:id="@+id/popupnombredueno"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="nombre dueño"
                 android:textColor="@color/white"
                 android:textSize="20dp"
                 app:layout_constraintBottom_toTopOf="@+id/popupusuario"
@@ -60,7 +59,6 @@
                 android:id="@+id/popupusuario"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="arrobausuario"
                 android:textColor="@color/white"
                 android:textSize="16dp"
                 app:layout_constraintBottom_toBottomOf="parent"
