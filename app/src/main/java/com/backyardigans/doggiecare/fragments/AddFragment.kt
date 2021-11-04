@@ -31,18 +31,10 @@ import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.UploadTask
 import com.google.firebase.storage.ktx.storage
 import java.util.*
-import android.provider.MediaStore.Images
-
-import java.io.ByteArrayOutputStream
 import java.io.IOException
-
 import java.io.File
 import java.text.SimpleDateFormat
 import java.io.FileOutputStream
-
-
-
-
 
 class AddFragment : Fragment() {
     private var _binding: ActivityAddFragmentBinding? = null
@@ -161,6 +153,6 @@ class AddFragment : Fragment() {
                     taskSnapshot.storage.downloadUrl.addOnSuccessListener {
                         imageUrl = it.toString() }})
             ?.addOnFailureListener(OnFailureListener { e ->
-                print(e.message) })
+                Toast.makeText(activity, "Woops! Parece que algo salió mal", Toast.LENGTH_SHORT).show()  })
     }
 }
