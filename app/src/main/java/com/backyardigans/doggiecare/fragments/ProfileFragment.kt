@@ -55,7 +55,7 @@ class ProfileFragment : Fragment() {
         val recyclerView = view.findViewById<RecyclerView>(R.id.misposts)
         recyclerView.adapter = feedAdapter
         recyclerView.layoutManager =
-            LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         LinearSnapHelper().attachToRecyclerView(recyclerView)
 
         feedModel.feedListProfile.observe(viewLifecycleOwner, {
@@ -64,6 +64,7 @@ class ProfileFragment : Fragment() {
         feedModel.updatePostProfile()
 
         feedAdapter.setOnFeedItemClickListener {
+
             val bundle = bundleOf("previous" to "post")
             findNavController().navigate(R.id.action_profileFragment_to_optionsPopUpFragment, bundle)
         }
