@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import com.backyardigans.doggiecare.R
@@ -73,13 +74,14 @@ class ProfileFragment : Fragment() {
         profileViewModel.userProfile.observe(viewLifecycleOwner, Observer {
             binding.bioUsuario.text = it.userBio
             binding.idUsuario.text = it.userNick
+            if (!(it.userPic.equals("") or it.userPic.equals("default"))){
             binding.fotoUsuario.setPadding(0,0,0,0)
             Glide.with(view.context).load(it.userPic)
-                .transform( CenterCrop(), CircleCrop()) .error(R.drawable.ic_maleowner)
+                .transform( CenterCrop(), CircleCrop())
                 .into(binding.fotoUsuario)
-            prefs.saveUser(it.userNick)
-
-
+            prefs.saveUser(it.userNick)} else{
+                binding.fotoUsuario.setImageDrawable(ContextCompat.getDrawable(requireActivity(), R.drawable.ic_maleowner))
+            }
         })
 
         profileViewModel.updateProfile()
