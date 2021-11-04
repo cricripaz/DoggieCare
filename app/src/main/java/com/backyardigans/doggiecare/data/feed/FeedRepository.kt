@@ -24,5 +24,11 @@ class FeedRepository (val network : FeedNetworkController , val persistency : Fe
     }
 
 
+    fun getAllPostSearch(search:String) : Flow<List<Feed>> {
+        return flow {
+            emit(network.getAllPostsSearch(search))
+        }
+    }
 
-}
+
+    }

@@ -15,6 +15,8 @@ class FeedViewModel : ViewModel() {
     val feedRepository = FeedRepository(FeedNetworkControllerImp(), FeedPersistencyControllerImp())
     val feedList = MutableLiveData<List<Feed>>()
     val feedListProfile = MutableLiveData<List<Feed>>()
+    val feedListSearch= MutableLiveData<List<Feed>>()
+
 
     fun updatePost ( ){
         feedRepository.getAllPost().onEach {
@@ -25,6 +27,12 @@ class FeedViewModel : ViewModel() {
     fun updatePostProfile ( ){
         feedRepository.getAllPostProfile().onEach {
             feedListProfile.postValue(it)
+        }.launchIn(CoroutineScope(Dispatchers.IO))
+    }
+
+    fun updatePostSearch (search:String ){
+        feedRepository.getAllPostSearch(search).onEach {
+            feedListSearch.postValue(it)
         }.launchIn(CoroutineScope(Dispatchers.IO))
     }
 }
