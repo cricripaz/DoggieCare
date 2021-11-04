@@ -1,5 +1,7 @@
 package com.backyardigans.doggiecare.data.feed.network
 
+import androidx.compose.ui.text.capitalize
+import androidx.compose.ui.text.toLowerCase
 import com.backyardigans.doggiecare.Model.Feed
 import com.backyardigans.doggiecare.Preferences.UserApplication.Companion.prefs
 import com.google.firebase.firestore.Query
@@ -13,8 +15,8 @@ class FeedNetworkControllerImp : FeedNetworkController {
 
 
     override suspend fun getAllPosts(): List<Feed> {
-      val response = db.collection("publicaciones").orderBy(
-          "created",Query.Direction.DESCENDING).get().await()
+        val response = db.collection("publicaciones").orderBy(
+            "created",Query.Direction.DESCENDING).get().await()
         return response.toObjects(Feed::class.java)
     }
 
@@ -28,6 +30,11 @@ class FeedNetworkControllerImp : FeedNetworkController {
         return response.toObjects(Feed::class.java)
     }
 
+    override suspend fun getAllPostsSearch(search:String): List<Feed> {
+
+        val response = db.collection("publicaciones").orderBy("animalName").startAt(search).endAt(search + "\uf8ff").get().await()
+
+        return response.toObjects(Feed::class.java)
+    }
+
 }
-
-

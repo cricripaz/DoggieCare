@@ -15,7 +15,12 @@ class ProfileRepository (val network : ProfileNetworkController, val persistency
         return flow {
             emit(network.getProfile())
         }
-    }
 
+    }
+    fun getPhotoProfile(userMail:String) : Flow<Profile> {
+        return flow {
+            emit(network.getPhotoProfile(userMail))
+        }
+    }
 
 }

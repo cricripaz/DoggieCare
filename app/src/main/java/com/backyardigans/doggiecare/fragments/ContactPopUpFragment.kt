@@ -43,7 +43,7 @@ class ContactPopUpFragment : BottomSheetDialogFragment() {
                 bundle
             )
         }
-        Glide.with(requireContext()).load(arguments?.getString("userPic")).circleCrop().error(R.drawable.ic_maleowner)
+        Glide.with(requireContext()).load(arguments?.getString("userPic")).circleCrop().placeholder(R.drawable.ic_maleowner)
             .into(binding.popupimagen)
         binding.popupnombredueno.text = arguments?.getString("userNick")
         binding.popupusuario.text = arguments?.getString("userMail")

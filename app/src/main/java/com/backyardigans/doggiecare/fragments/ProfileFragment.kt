@@ -56,7 +56,7 @@ class ProfileFragment : Fragment() {
         val recyclerView = view.findViewById<RecyclerView>(R.id.misposts)
         recyclerView.adapter = feedAdapter
         recyclerView.layoutManager =
-            LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         LinearSnapHelper().attachToRecyclerView(recyclerView)
 
         feedModel.feedListProfile.observe(viewLifecycleOwner, {
@@ -73,6 +73,7 @@ class ProfileFragment : Fragment() {
         profileViewModel.userProfile.observe(viewLifecycleOwner, Observer {
             binding.bioUsuario.text = it.userBio
             binding.idUsuario.text = it.userNick
+            binding.fotoUsuario.setPadding(0,0,0,0)
             Glide.with(view.context).load(it.userPic)
                 .transform( CenterCrop(), CircleCrop()) 
                 .into(binding.fotoUsuario)

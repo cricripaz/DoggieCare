@@ -14,9 +14,15 @@ import kotlinx.coroutines.flow.onEach
 class ProfileViewModel:ViewModel() {
     private val profileRepository = ProfileRepository(ProfileNetworkControllerImp(), ProfilePersistencyControllerImp())
     val userProfile = MutableLiveData<Profile>()
+    val userPhotoProfile = MutableLiveData<Profile>()
     fun updateProfile ( ){
         profileRepository.getProfile().onEach {
             userProfile.postValue(it)
+        }.launchIn(CoroutineScope(Dispatchers.IO))
+    }
+    fun updatePhotoProfile (userMail:String ){
+        profileRepository.getPhotoProfile(userMail).onEach {
+            userPhotoProfile.postValue(it)
         }.launchIn(CoroutineScope(Dispatchers.IO))
     }
 }

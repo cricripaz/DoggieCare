@@ -16,7 +16,11 @@ class ProfileNetworkControllerImp : ProfileNetworkController {
         return response.toObject(Profile::class.java)!!
     }
 
+    override suspend fun getPhotoProfile(userMail:String): Profile {
+        val response = db.collection("users").document(userMail).get().await()
 
+        return response.toObject(Profile::class.java)!!
+    }
 
 
 }

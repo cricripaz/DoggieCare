@@ -49,7 +49,7 @@
         android:id="@+id/scrollprofile"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="15dp"
+
         android:orientation="vertical"
         app:layout_constraintTop_toBottomOf="@id/ratingUsuario"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -60,20 +60,24 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:layout_marginTop="-20dp"
             android:gravity="center" >
-
+            <RelativeLayout
+                android:layout_width="258dp"
+                android:layout_height="258dp"
+                android:layout_gravity="center"
+                app:backgroundTint="@null"
+                android:background="@drawable/round_margin">
             <ImageView
                 android:id="@+id/foto_usuario"
                 android:layout_width="245dp"
+                android:padding="50dp"
                 android:layout_height="245dp"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginTop="15dp"
-                android:src="@drawable/ic_femaleowner"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_maleowner"
                 android:contentDescription="usuario">
             </ImageView>
+            </RelativeLayout>
             <ImageButton
                 android:id="@+id/profilebotonconfig"
                 android:layout_width="60dp"
@@ -85,7 +89,7 @@
                 android:scaleType="fitCenter"
                 android:background="@drawable/round_shaped_oval"
                 android:padding="12dp"
-                android:layout_marginTop="-20dp"
+                android:layout_marginTop="-30dp"
                 app:tint="@color/primary" />
 
 
