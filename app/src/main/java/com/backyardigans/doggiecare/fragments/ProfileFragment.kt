@@ -74,7 +74,7 @@ class ProfileFragment : Fragment() {
             binding.bioUsuario.text = it.userBio
             binding.idUsuario.text = it.userNick
             Glide.with(view.context).load(it.userPic)
-                .transform( CenterCrop(), CircleCrop()) 
+                .transform( CenterCrop(), CircleCrop()).placeholder(R.drawable.ic_maleowner)
                 .into(binding.fotoUsuario)
             prefs.saveUser(it.userNick)
 

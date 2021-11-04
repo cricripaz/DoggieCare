@@ -62,6 +62,7 @@ class OptionsPopUpFragment : BottomSheetDialogFragment() {
 
             binding.popupoptions1.setOnClickListener {
                 if (arguments?.getString("previous").equals("deletePost")) {
+                    Toast.makeText(activity, "Su publicación será dada de baja", Toast.LENGTH_SHORT).show()
                    //TODO BORRAR
                 } else {
                     Toast.makeText(activity, "Su solicitud ha sido enviada", Toast.LENGTH_SHORT).show()

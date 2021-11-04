@@ -42,10 +42,10 @@ class DetailsFragment : Fragment() {
             )
             findNavController().navigate(directions)
         }
-        Glide.with(requireContext()).load(userPic).circleCrop().error(R.drawable.ic_maleowner)
+        Glide.with(requireContext()).load(userPic).circleCrop().placeholder(R.drawable.ic_maleowner)
             .into(binding.detalleFotoUsuario)
         Glide.with(requireContext()).load(arguments?.getString("urlImage"))
-            .transform(CenterCrop(), RoundedCorners(40)).error(R.drawable.ic_icon_perrito)
+            .transform(CenterCrop(), RoundedCorners(40)).placeholder(R.drawable.ic_icon_perrito)
             .into(binding.detalleFotoMascota)
         binding.detalleNombreMascota.text =
             arguments?.getString("animalName") + " ● " + arguments?.getString("animalAge")
