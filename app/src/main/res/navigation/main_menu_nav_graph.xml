@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_menu_nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.backyardigans.doggiecare.fragments.HomeFragment"
+        android:label="HomeFragment"
+        tools:layout="@layout/activity_home_fragment"
+        >
+        <action
+            android:id="@+id/action_homeFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment"
+            app:enterAnim="@anim/slide_in_left_to_right"
+            app:exitAnim="@anim/slide_in_right_to_left"
+            app:popEnterAnim="@anim/slide_out_left_to_right"
+            app:popExitAnim="@anim/slide_out_right_to_left"/>
+    </fragment>
+    <fragment
+        android:id="@+id/addFragment"
+        android:name="com.backyardigans.doggiecare.fragments.AddFragment"
+        android:label="AddFragment"
+        tools:layout="@layout/activity_add_fragment">
+        <action
+            android:id="@+id/action_addFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_addFragment_to_optionsPopUpFragment"
+            app:destination="@id/optionsPopUpFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/chatFragment"
+        android:name="com.backyardigans.doggiecare.fragments.ChatFragment"
+        android:label="ChatFragment"
+        tools:layout="@layout/activity_chat_fragment"
+        />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.backyardigans.doggiecare.fragments.ProfileFragment"
+        android:label="ProfileFragment"
+        tools:layout="@layout/activity_profile_fragment"
+        >
+        <action
+            android:id="@+id/action_profileFragment_to_configPopUpFragment2"
+            app:destination="@id/configPopUpFragment2" />
+        <action
+            android:id="@+id/action_profileFragment_to_optionsPopUpFragment"
+            app:destination="@id/optionsPopUpFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/configPopUpFragment2"
+        android:name="com.backyardigans.doggiecare.fragments.ConfigPopUpFragment"
+        android:label="ConfigPopUpFragment"
+        tools:layout="@layout/fragment_popup_configurations">
+        <action
+            android:id="@+id/action_configPopUpFragment2_to_loginActivity"
+            app:destination="@id/loginActivity" />
+        <action
+            android:id="@+id/action_configPopUpFragment2_to_editProfileFragment"
+            app:destination="@id/editProfileFragment" />
+        <action
+            android:id="@+id/action_configPopUpFragment2_to_optionsPopUpFragment"
+            app:destination="@id/optionsPopUpFragment" />
+    </dialog>
+    <activity
+        android:id="@+id/loginActivity"
+        android:name="com.backyardigans.doggiecare.activities.LoginActivity"
+        android:label="activity_login"
+        tools:layout="@layout/activity_login" />
+    <dialog
+        android:id="@+id/editProfileFragment"
+        android:name="com.backyardigans.doggiecare.fragments.EditProfileFragment"
+        android:label="EditProfileFragment"
+        tools:layout="@layout/fragment_edit_profile">
+        <action
+            android:id="@+id/action_editProfileFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_editProfileFragment_to_optionsPopUpFragment"
+            app:destination="@id/optionsPopUpFragment" />
+    </dialog>
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.backyardigans.doggiecare.fragments.SearchFragment"
+        android:label="SearchFragment" />
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="com.backyardigans.doggiecare.fragments.DetailsFragment"
+        android:label="DetailsFragment"
+        tools:layout="@layout/fragment_details">
+
+        <action
+            android:id="@+id/action_detailsFragment_to_contactPopUpFragment"
+            app:destination="@id/contactPopUpFragment" />
+        <argument
+            android:name="userNick"
+            app:argType="string"
+            android:defaultValue="Default" />
+        <argument
+            android:name="animalName"
+            app:argType="string"
+            android:defaultValue="Default" />
+        <argument android:name="animalAge"
+            app:argType="string" />
+        <argument
+            android:name="animalBreed"
+            app:argType="string" />
+        <argument
+            android:name="description"
+            app:argType="string" />
+        <argument
+            android:name="userMail"
+            app:argType="string"
+            android:defaultValue=""/>
+        <argument
+            android:name="urlImage"
+            app:argType="string" />
+    </fragment>
+    <dialog
+        android:id="@+id/contactPopUpFragment"
+        android:name="com.backyardigans.doggiecare.fragments.ContactPopUpFragment"
+        android:label="ContactPopUpFragment"
+        tools:layout="@layout/fragment_popup_contact_menu">
+        <action
+            android:id="@+id/action_contactPopUpFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_contactPopUpFragment_to_chatFragment"
+            app:destination="@id/chatFragment" />
+        <action
+            android:id="@+id/action_contactPopUpFragment_to_optionsPopUpFragment"
+            app:destination="@id/optionsPopUpFragment" />
+        <argument
+            android:name="userNick"
+            app:argType="string"
+            android:defaultValue=""/>
+        <argument
+            android:name="userMail"
+            app:argType="string"
+            android:defaultValue=""/>
+        <argument
+            android:name="userPic"
+            app:argType="string"
+            />
+
+    </dialog>
+    <dialog
+        android:id="@+id/optionsPopUpFragment"
+        android:name="com.backyardigans.doggiecare.fragments.OptionsPopUpFragment"
+        android:label="OptionsPopUpFragment"
+        tools:layout="@layout/fragment_popup_options">
+        <action
+            android:id="@+id/action_optionsPopUpFragment_to_addFragment"
+            app:destination="@id/addFragment" />
+        <action
+            android:id="@+id/action_optionsPopUpFragment_to_editProfileFragment"
+            app:destination="@id/editProfileFragment" />
+        <action
+            android:id="@+id/action_optionsPopUpFragment_self"
+            app:destination="@id/optionsPopUpFragment" />
+    </dialog>
+
+
+</navigation>

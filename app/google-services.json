@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "194398827652",
+    "project_id": "d0ggiecare",
+    "storage_bucket": "d0ggiecare.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:194398827652:android:711963270b61832bce7ed1",
+        "android_client_info": {
+          "package_name": "com.backyardigans.doggiecare"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "194398827652-m59vvr8b3v4k922vsr7gjiv398rfqfpo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.backyardigans.doggiecare",
+            "certificate_hash": "30f9836cd8d8da50d0e3c023d2f4e33bf50386b9"
+          }
+        },
+        {
+          "client_id": "194398827652-qovu81lotrj1ru69lr4mg7idtocgumc4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDPbOuuyJQ5_OrEUVeWUOE9O-4gkBGcgYo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "194398827652-qovu81lotrj1ru69lr4mg7idtocgumc4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
