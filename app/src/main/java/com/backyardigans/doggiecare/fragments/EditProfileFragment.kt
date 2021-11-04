@@ -1,7 +1,10 @@
 package com.backyardigans.doggiecare.fragments
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
+import android.graphics.Bitmap
+import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.view.*
@@ -16,15 +19,29 @@ import com.backyardigans.doggiecare.databinding.FragmentEditProfileBinding
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.google.android.gms.tasks.OnFailureListener
+import com.google.android.gms.tasks.OnSuccessListener
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.UploadTask
+import com.google.firebase.storage.ktx.storage
+import java.io.File
+import java.io.FileOutputStream
+import java.io.IOException
+import java.text.SimpleDateFormat
+import java.util.*
 
 class EditProfileFragment : BottomSheetDialogFragment() {
-    private val db = FirebaseFirestore.getInstance()
     private var _binding: FragmentEditProfileBinding?=null
     private val binding get() = _binding!!
+    private val db = Firebase.firestore
     private var REQUEST_CODE = 0
+    val GALLERY_REQUEST_CODE = 2
+    val storage = Firebase.storage
+    var imageUrl = ""
 
     override fun  onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                                savedInstanceState: Bundle?): View {
@@ -74,7 +91,7 @@ class EditProfileFragment : BottomSheetDialogFragment() {
                 takePhoto()
             } else if (bundle.getString("camorgal").toString().equals("gal")) {
                 REQUEST_CODE = 100
-                pickFromGallery()
+                selectImageFromGallery()
             } else {
                 Toast.makeText(context, "Woops! algo ha salido mal", Toast.LENGTH_SHORT).show()
             }
@@ -88,33 +105,75 @@ class EditProfileFragment : BottomSheetDialogFragment() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        when (requestCode) {
-            REQUEST_CODE -> {
-                if (resultCode == Activity.RESULT_OK && data != null) {
-                    val uri = if (REQUEST_CODE == 200) data.extras!!.get("data") else data!!.data
-                    binding.editImageButton.setPadding(0, 0, 0, 0)
-                    binding.editImageButton.setColorFilter(android.R.color.transparent)
-                    Glide.with(requireContext()).load(uri)
-                        .circleCrop()
-                        .into(binding.editImageButton)
-                    //todo actualizar imagen en firebase
+        if (requestCode == REQUEST_CODE && resultCode == Activity.RESULT_OK && data != null) {
+            binding.editImageButton.setPadding(0, 0, 0, 0)
+            binding.editImageButton.setColorFilter(android.R.color.transparent)
+            binding.editImageButton.scaleType = ImageView.ScaleType.CENTER_CROP
+            val imageUri = data.extras!!.get("data") as Bitmap//data.extras!!.get("data") as Bitmap
+            val file = createImageFile()
+            if (file != null) {
+                val fout: FileOutputStream
+                try {
+                    fout = FileOutputStream(file)
+                    imageUri.compress(Bitmap.CompressFormat.PNG, 70, fout)
+                    fout.flush()
+                } catch (e: Exception) {
+                    e.printStackTrace()
                 }
+                val uri = Uri.fromFile(file)
+                uploadImageToFirebase(uri)
             }
-            else -> {
-                Toast.makeText(context, "Woops! algo ha salido mal", Toast.LENGTH_SHORT).show()
-            }
+            Glide.with(requireContext()).load(imageUri)
+                .circleCrop()
+                .into(binding.editImageButton)
         }
+        if (requestCode == GALLERY_REQUEST_CODE && resultCode == Activity.RESULT_OK && data != null && data.data != null){
+            binding.editImageButton.setPadding(0, 0, 0, 0)
+            binding.editImageButton.setColorFilter(android.R.color.transparent)
+            binding.editImageButton.scaleType = ImageView.ScaleType.CENTER_CROP
+            val file_uri = data.data
+            Glide.with(requireContext()).load(file_uri)
+                .circleCrop()
+                .into(binding.editImageButton)
+            if (file_uri != null) {
+                uploadImageToFirebase(file_uri) } } }
+
+    fun createImageFile(): File? {
+        val timeStamp: String = SimpleDateFormat("yyyyMMdd_HHmmss", Locale.US).format(Date())
+        val imageFileName = "JPEG_" + timeStamp + "_"
+        var mFileTemp: File? = null
+        val root = requireActivity().getDir("my_sub_dir", Context.MODE_PRIVATE).absolutePath
+        val myDir = File("$root/Img")
+        if (!myDir.exists()) {
+            myDir.mkdirs()
+        }
+        try {
+            mFileTemp = File.createTempFile(imageFileName, ".jpg", myDir.absoluteFile)
+        } catch (e1: IOException) {
+            e1.printStackTrace()
+        }
+        return mFileTemp
     }
 
     private fun takePhoto() {
         val cameraIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-        startActivityForResult(cameraIntent, REQUEST_CODE)
-    }
+        startActivityForResult(cameraIntent, REQUEST_CODE) }
 
-    private fun pickFromGallery() {
-        val galleryIntent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
-        startActivityForResult(galleryIntent, REQUEST_CODE)
-    }
-    //TODO no permitiir si no tiene internet
+    private fun selectImageFromGallery() {
+        val intent = Intent()
+        intent.type = "image/*"
+        intent.action = Intent.ACTION_GET_CONTENT
+        startActivityForResult(Intent.createChooser(intent, "Por favor, elija una imagen"),GALLERY_REQUEST_CODE) }
 
+    private fun uploadImageToFirebase(fileUri: Uri) {
+        val fileName = UUID.randomUUID().toString() +".jpg"
+        val refStorage = storage.reference.child("users/$fileName")
+        refStorage.putFile(fileUri)
+            .addOnSuccessListener(
+                OnSuccessListener<UploadTask.TaskSnapshot> { taskSnapshot ->
+                    taskSnapshot.storage.downloadUrl.addOnSuccessListener {
+                        imageUrl = it.toString() }})
+            ?.addOnFailureListener(OnFailureListener { e ->
+                Toast.makeText(activity, "Woops! Parece que algo salió mal", Toast.LENGTH_SHORT).show()  })
+    }
 }

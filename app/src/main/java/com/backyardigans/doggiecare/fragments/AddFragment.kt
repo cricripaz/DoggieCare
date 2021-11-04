@@ -142,7 +142,7 @@ class AddFragment : Fragment() {
         val intent = Intent()
         intent.type = "image/*"
         intent.action = Intent.ACTION_GET_CONTENT
-        startActivityForResult(Intent.createChooser(intent, "Please select..."),GALLERY_REQUEST_CODE) }
+        startActivityForResult(Intent.createChooser(intent, "Por favor, elija una imagen"),GALLERY_REQUEST_CODE) }
 
     private fun uploadImageToFirebase(fileUri: Uri) {
         val fileName = UUID.randomUUID().toString() +".jpg"
