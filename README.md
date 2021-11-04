@@ -19,10 +19,6 @@ _Preguntar al propietario para agregar el SHA1 o crear su propia base de datos d
 _ejecutar en el Android Studio_
 
 
-## Despliegue 📦
-
-_Agrega notas adicionales sobre como hacer deploy_
-
 ## Construido con 🛠️
 
 * [Firebase](https://firebase.google.com/) - El backend usado
@@ -38,7 +34,7 @@ _Agrega notas adicionales sobre como hacer deploy_
 
 _Menciona a todos aquellos que ayudaron a levantar el proyecto desde sus inicios_
 
-* **Fernanda Martínez** - *Programador* - [femandamartinez](https://github.com/femandamartinez)
+* **Fernanda Martínez** - *Programadora* - [femandamartinez](https://github.com/femandamartinez)
 * **Joel Jarro** - *Programador* - [H0OE](https://github.com/H0OE)
 * **Cristian Paz** - *Programador* - [cricripaz](https://github.com/cricripaz)
 * **Kevin Ponier** - *Programador* - [kpomier777](https://github.com/kpomier777)
@@ -49,7 +45,7 @@ También puedes mirar la lista de todos los [contribuyentes](https://github.com/
 
 ## Licencia 📄
 
-Este proyecto está bajo la Licencia (GNU V.3) - mira el archivo [LICENSE.md](LICENSE.md) para detalles
+Este proyecto está bajo la Licencia (GNU V.3) - mira el archivo [LICENSE](LICENSE) para detalles
 
 ## Expresiones de Gratitud 🎁
 
