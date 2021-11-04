@@ -128,7 +128,8 @@ class AddFragment : Fragment() {
                 "description" to binding.etDescripcion.text.toString(),
                 "userNick" to prefs.getUser(),
                 "userMail" to prefs.getEmail(),
-                "created" to FieldValue.serverTimestamp()//firebase.database.ServerValue.TIMESTAMP
+                "created" to FieldValue.serverTimestamp(),
+                "urlImage" to imageUrl
             )
             db.collection("publicaciones").document(prefs.getEmail() + Math.random().toString().substring(2, 4)).set(data)
             Toast.makeText(activity, "Agregado", Toast.LENGTH_SHORT).show()
