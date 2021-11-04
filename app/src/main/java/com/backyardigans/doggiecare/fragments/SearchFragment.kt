@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.RecyclerView
@@ -73,8 +74,17 @@ class SearchFragment : Fragment() {
 
 
         feedAdapter.setOnFeedItemClickListener {
-//            val directions = HomeFragmentDirections.actionHomeFragmentToDetailsFragment("","","")
-//            findNavController().navigate(directions)
+            val userNick = it.userNick
+            val animalName: String = it.AnimalName
+            val animalAge: String = it.AnimalAge
+            val animalBreed: String = it.AnimalBreed
+            val description: String = it.description
+            val urlImage = it.urlImage
+
+            val directions = HomeFragmentDirections.actionHomeFragmentToDetailsFragment(
+                userNick, animalName, animalAge, animalBreed, description
+            )
+            findNavController().navigate(directions)
         }
     }
 
