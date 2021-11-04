@@ -47,25 +47,19 @@ class EditProfileFragment : BottomSheetDialogFragment() {
                                savedInstanceState: Bundle?): View {
         _binding = FragmentEditProfileBinding.inflate(inflater, container, false)
         binding.buttonSave.setOnClickListener{
-            if (binding.inputBio.text.isEmpty() or binding.inputNombre.text.isEmpty()){
+            if (binding.inputBio.text.isEmpty() or binding.inputNombre.text.isEmpty() || imageUrl==""){
                 Toast.makeText(context, "Debes llenar los espacios en blanco", Toast.LENGTH_SHORT).show()
 
             }else{
-                    if(imageUrl==""){
-                        db.collection("users").document(prefs.getEmail()).set(
 
-                            hashMapOf(
-                            "userBio" to binding.inputBio.text.toString(),
-                            "userNick" to binding.inputNombre.text.toString(),
-                            ), SetOptions.merge())
-                    }else{
+
                         db.collection("users").document(prefs.getEmail()).set(
 
                             hashMapOf(
                             "userBio" to binding.inputBio.text.toString(),
                             "userNick" to binding.inputNombre.text.toString(),
                             "userPic" to imageUrl), SetOptions.merge())
-                    }
+
 
 
 
